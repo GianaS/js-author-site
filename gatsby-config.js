@@ -8,10 +8,7 @@ module.exports = {
             family: 'Megrim'
           },
           {
-            family: 'Abril Fatface'
-          },
-          {
-            family: 'Kumbh Sans'
+            family: 'Montserrat'
           }
         ]
       }

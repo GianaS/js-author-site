@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import styled from 'styled-components'
 import { Link } from 'gatsby'
 
@@ -34,7 +34,7 @@ const NavItemWrapper = styled.div`
 `
 
 const NavItem = styled(Link)`
-  font-family: ${fonts.kumbhSans};
+  font-family: ${fonts.montserrat};
   text-transform: uppercase;
   text-decoration: none;
   letter-spacing: 7px;
@@ -42,9 +42,9 @@ const NavItem = styled(Link)`
   color: ${colors.grey}
 `
 
-const Header = (): JSX.Element => {
+const Header = forwardRef((_, ref): JSX.Element => {
   return (
-    <NavWrapper>
+    <NavWrapper ref={ref}>
       <Title>Janelle Solviletti</Title>
       <NavItemWrapper>
         {
@@ -63,6 +63,6 @@ const Header = (): JSX.Element => {
       </NavItemWrapper>
     </NavWrapper>
   )
-}
+})
 
 export default Header

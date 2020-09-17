@@ -6,8 +6,7 @@ const colors = {
 
 const fonts = {
   megrim: 'Megrim',
-  abrilFatface: 'Abril Fatface',
-  kumbhSans: 'Kumbh Sans'
+  montserrat: 'Montserrat'
 }
 
 export {

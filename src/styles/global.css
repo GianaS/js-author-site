@@ -1,5 +1,10 @@
+html, #___gatsby, #gatsby-focus-wrapper {
+  height: 100%;
+}
+
 body {
   background-color: #F6F6F3;
   margin: 0;
   color: #424242;
+  height: 100%;
 }
