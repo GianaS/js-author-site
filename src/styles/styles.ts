@@ -10,7 +10,9 @@ const colors = {
 
 const fonts = {
   megrim: 'Megrim',
-  montserrat: 'Montserrat'
+  montserrat: 'Montserrat',
+  zeyada: 'Zeyada',
+  yesevaOne: 'Yeseva One'
 }
 
 export {

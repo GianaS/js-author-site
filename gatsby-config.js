@@ -10,12 +10,21 @@ module.exports = {
           {
             family: 'Montserrat',
             variants: ['500']
+          },
+          {
+            family: 'Zeyada'
+          },
+          {
+            family: 'Yeseva One'
           }
         ]
       }
     },
     {
-      resolve: `gatsby-plugin-styled-components`,
+      resolve: 'gatsby-plugin-styled-components',
+    },
+    {
+      resolve: 'gatsby-plugin-remove-trailing-slashes'
     }
-  ],
+  ]
 }
