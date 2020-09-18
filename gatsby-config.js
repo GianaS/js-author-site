@@ -8,7 +8,8 @@ module.exports = {
             family: 'Megrim'
           },
           {
-            family: 'Montserrat'
+            family: 'Montserrat',
+            variants: ['500']
           }
         ]
       }

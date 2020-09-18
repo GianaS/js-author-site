@@ -17,6 +17,11 @@ const NavWrapper = styled.div`
   background-color: ${colors.white}
 `
 
+const LinkWrapper = styled(Link)`
+  color: ${colors.grey};
+  text-decoration: none;
+`
+
 const Title = styled.h1`
   font-family: ${fonts.megrim};
   font-weight: normal;
@@ -39,20 +44,39 @@ const NavItem = styled(Link)`
   text-decoration: none;
   letter-spacing: 7px;
   font-size: 18px;
-  color: ${colors.grey}
+  color: ${colors.beige};
+  font-weight: 500;
+  margin-right: -7px;
+  display: inline-block;
+  position: relative;
+
+  &.activeNavItem {
+    &:after {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      left: 0;
+      bottom: -6px;
+      right: 7px;
+      height: 2px;
+      background: ${colors.beige}; 
+    }
+  }
 `
 
 const Header = forwardRef((_, ref): JSX.Element => {
   return (
     <NavWrapper ref={ref}>
-      <Title>Janelle Solviletti</Title>
+      <LinkWrapper to='/' >
+        <Title>Janelle Solviletti</Title>
+      </LinkWrapper>
       <NavItemWrapper>
         {
           navItems.map(({ title, link }) => {
             return (
               <NavItem
                 to={link}
-                activeClassName={'active'}
+                activeClassName={'activeNavItem'}
                 key={title}
               >
                 {title}
