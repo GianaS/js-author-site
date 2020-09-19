@@ -48,7 +48,6 @@ const MobileNav = (): JSX.Element => {
             onHide={() => setShowSidebar(false)}
             vertical
             visible={showSidebar}
-            width='wide'
             direction='right'
             style={{backgroundColor: colors.beige}}
           >
