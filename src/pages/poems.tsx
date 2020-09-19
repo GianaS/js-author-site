@@ -84,6 +84,11 @@ const PoemSection = styled.div`
   }
 `
 
+const Caption = styled.p`
+  font-family: ${fonts.montserrat};
+  padding: 6px 0 35px 0;
+`
+
 const buildPoemSection = ({ poemTitle, publication, link }: Poem) => {
   const poemAnchor: JSX.Element = (
     <span key={poemTitle}>
@@ -120,6 +125,13 @@ const Poem = (): JSX.Element => {
           )
         })}
       </div>
+      <img
+        src='../images/poem-reading.jpg'
+        alt='janelle reading a poem'
+        width='100%'
+        style={{paddingTop: '20px'}}
+      />
+      <Caption>Janelle reading her poem <i>Idk What It Is</i> at somewhere in 2020.</Caption>
     </>
   )
 }
