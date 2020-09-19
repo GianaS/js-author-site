@@ -1,12 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import Header from '../components/Header'
 import { fonts } from '../styles/styles'
-
-const AboutWrapper = styled.div`
-  padding: 35px 30% 0 30%;
-`
 
 const PhotoTextWrapper = styled.div`
   display: flex;
@@ -25,19 +20,14 @@ const ABOUT_TEXT: JSX.Element = <TextWrapper>Janelle Solviletti is a twenty-five
 
 const About = (): JSX.Element => {
   return (
-    <>
-      <Header />
-      <AboutWrapper>
-        <PhotoTextWrapper>
-          <img
-            src='../images/self-portrait-bw.jpeg'
-            alt='janelle self portrait'
-            width='100%'
-          />
-          {ABOUT_TEXT}
-        </PhotoTextWrapper>
-      </AboutWrapper>
-    </>
+    <PhotoTextWrapper>
+      <img
+        src='../images/self-portrait-bw.jpeg'
+        alt='janelle self portrait'
+        width='100%'
+      />
+      {ABOUT_TEXT}
+    </PhotoTextWrapper>
   )
 }
 

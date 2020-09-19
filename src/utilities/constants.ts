@@ -15,7 +15,7 @@ const navItems = [
     title: 'Contact',
     link: '/contact',
   }
-] as const
+]
 
 export {
   navItems

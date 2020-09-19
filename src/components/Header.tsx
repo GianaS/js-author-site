@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'gatsby'
 
@@ -7,7 +7,7 @@ import MobileNav from './MobileNav'
 import { colors, fonts } from '../styles/styles'
 import { useMedia } from '../utilities'
 
-const NavWrapper = styled.div`
+const HeaderWrapper = styled.div`
   border-bottom: 1px solid ${colors.grey};
   align-items: center;
   position: sticky;
@@ -41,9 +41,10 @@ const Title = styled.h1`
   text-transform: uppercase;
   font-size: 38px;
   font-weight: 900;
+  min-width: 350px;
 `
 
-const Header = forwardRef((_, ref): JSX.Element => {
+const Header = (): JSX.Element => {
   const navBreakpoint = typeof window !== 'undefined'
     ? useMedia('(max-width: 700px)')
     : undefined
@@ -52,13 +53,13 @@ const Header = forwardRef((_, ref): JSX.Element => {
     : navBreakpoint ? <MobileNav /> : <Nav />
 
   return (
-    <NavWrapper ref={ref}>
+    <HeaderWrapper id='header-wrapper'>
       <LinkWrapper to='/' >
         <Title>Janelle Solviletti</Title>
       </LinkWrapper>
       {Navigation}
-    </NavWrapper>
+    </HeaderWrapper>
   )
-})
+}
 
 export default Header
