@@ -9,7 +9,7 @@ module.exports = {
           },
           {
             family: 'Montserrat',
-            variants: ['500']
+            variants: ['400', '500']
           },
           {
             family: 'Zeyada'

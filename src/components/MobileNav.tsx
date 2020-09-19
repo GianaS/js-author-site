@@ -55,7 +55,6 @@ const MobileNav = (): JSX.Element => {
               return (
                 <Menu.Item style={{borderBottom: `${colors.offWhite} 1px solid`}} key={title}>
                   <MenuItemWrapper to={link} onClick={() => setShowSidebar(false)}>
-                    {/* <Icon name={icon} /> */}
                     <ItemText>{title}</ItemText>
                   </MenuItemWrapper>
                 </Menu.Item>
