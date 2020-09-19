@@ -7,6 +7,7 @@ import { fonts } from '../styles/styles'
 const PhotoTextWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  padding-bottom: 40px;
 `
 
 const TextWrapper = styled.p`

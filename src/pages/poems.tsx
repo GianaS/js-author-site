@@ -131,7 +131,7 @@ const Poem = (): JSX.Element => {
         width='100%'
         style={{paddingTop: '20px'}}
       />
-      <Caption>Janelle reading her poem <i>Idk What It Is</i> at somewhere in 2020.</Caption>
+      <Caption>Janelle reading <i>Penultimate</i> at Marist College.</Caption>
     </>
   )
 }
