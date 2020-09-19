@@ -2,6 +2,7 @@ import React, { useState, useLayoutEffect } from 'react'
 import styled from 'styled-components'
 
 import video from '../assets/videos/cameoPromo1.mp4'
+import Seo from '../components/Seo'
 
 const VideoWrapper = styled.div`
   width: 100%;
@@ -27,6 +28,7 @@ const Home = (): JSX.Element => {
 
   return (
     <VideoWrapper headerHeight={headerHeight}>
+      <Seo title='Home | Janelle Solviletti' />
       <video autoPlay muted loop >
         <source src={video} type='video/mp4' />
       </video>

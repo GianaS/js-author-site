@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import Seo from '../components/Seo'
 import { fonts } from '../styles/styles'
 
 const PhotoTextWrapper = styled.div`
@@ -22,6 +23,7 @@ const ABOUT_TEXT: JSX.Element = <TextWrapper>Janelle Solviletti is a twenty-five
 const About = (): JSX.Element => {
   return (
     <PhotoTextWrapper>
+      <Seo title='About Me | Janelle Solviletti'/>
       <img
         src='../images/self-portrait-bw.jpeg'
         alt='janelle self portrait'
