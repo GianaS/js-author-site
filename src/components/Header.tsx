@@ -41,7 +41,6 @@ const Title = styled.h1`
   text-transform: uppercase;
   font-size: 38px;
   font-weight: 900;
-  min-width: 350px;
 `
 
 const Header = (): JSX.Element => {
