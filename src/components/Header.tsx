@@ -21,7 +21,7 @@ const HeaderWrapper = styled.div`
   @media (max-width: 700px) {
     flex-direction: row;
     justify-content: space-between;
-    padding: 30px 0 30px 14px;
+    padding: 0 0 0 14px;
   }
 `
 
@@ -41,6 +41,10 @@ const Title = styled.h1`
   text-transform: uppercase;
   font-size: 38px;
   font-weight: 900;
+
+  @media (max-width: 700px) {
+    font-size: 30px;
+  }
 `
 
 const Header = (): JSX.Element => {
