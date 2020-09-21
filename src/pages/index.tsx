@@ -10,13 +10,11 @@ const VideoWrapper = styled.div`
   padding-top: 0;
   margin-top: 0;
   width: 100%;
-  height: auto;
 
+  ${({ headerHeight }: { headerHeight: number }) => (
+    `height: calc(100vh - ${headerHeight});`
+  )} 
 `
-
-// ${({ headerHeight }: { headerHeight: number }) => (
-//   `height: calc(100vh - ${headerHeight});`
-// )}  
 
 const Home = (): JSX.Element => {
   const [headerHeight, setHeaderHeight] = useState('0px')
