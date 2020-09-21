@@ -5,7 +5,8 @@ const colors = {
   beige: '#9e7762',
   purple: '#d8c3d8',
   offWhite: '#e3dede',
-  sweetBrown: '#A63D40'
+  sweetBrown: '#A63D40',
+  green: '#7DAA7B'
 }
 
 const fonts = {
