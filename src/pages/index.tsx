@@ -18,12 +18,12 @@ const VideoWrapper = styled.div`
 
 const Home = (): JSX.Element => {
   return (
-    <VideoWrapper>
+    <>
       <Seo title='Home | Janelle Solviletti' />
-      <video autoPlay muted loop playsInline >
+      <video width='100%' height='auto' autoPlay muted loop playsInline >
         <source src={video} type='video/mp4' />
       </video>
-    </VideoWrapper>
+    </>
   )
 }
 
