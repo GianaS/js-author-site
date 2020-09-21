@@ -5,7 +5,6 @@ import video from '../assets/videos/cameoPromo1.mp4'
 import Seo from '../components/Seo'
 
 const VideoWrapper = styled.div`
-  width: 100%;
   display: flex;
   justify-content: center;
   padding-top: 0;
