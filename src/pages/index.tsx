@@ -20,7 +20,7 @@ const Home = (): JSX.Element => {
   return (
     <VideoWrapper>
       <Seo title='Home | Janelle Solviletti' />
-      <video autoPlay muted loop >
+      <video autoPlay muted loop playsInline >
         <source src={video} type='video/mp4' />
       </video>
     </VideoWrapper>
