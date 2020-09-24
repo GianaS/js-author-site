@@ -14,6 +14,7 @@ const Title = styled.h1`
 const Text = styled.p`
   font-size: 18px;
   line-height: 30px;
+  font-family: ${fonts.montserrat};
 `
 
 const IconSection = styled.div`
