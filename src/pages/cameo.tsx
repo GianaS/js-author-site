@@ -5,6 +5,7 @@ import Seo from '../components/Seo'
 import roseImage from '../assets/images/rose-transparent.png'
 import coverImage from '../assets/images/cameo-cover.png'
 import { fonts, colors } from '../styles/styles'
+import { useMedia } from '../utilities'
 
 const PageWrapper = styled.div`
   ${({ headerHeight }: { headerHeight: string }) => (
@@ -24,6 +25,12 @@ const Title = styled.h1`
 
 const Flexbox = styled.div`
   display: flex;
+  padding-bottom: 80px;
+
+  @media (max-width: 700px) {
+    flex-direction: column;
+    padding-bottom: 40px;
+  }
 `
 
 const ImageWrapper = styled.div`
@@ -32,6 +39,10 @@ const ImageWrapper = styled.div`
   img {
     height: 100%;
     box-shadow: 2px 4px 15px ${colors.grey};
+  }
+
+  @media (max-width: 700px) {
+    padding-bottom: 30px;
   }
 `
 
@@ -44,6 +55,10 @@ const Text = styled.p`
 
 const RightColumn = styled.div`
   padding-left: 40px;
+
+  @media (max-width: 700px) {
+    padding-left: 0;
+  }
 `
 
 const StyledLink = styled.a`
@@ -64,6 +79,10 @@ const Cameo = (): JSX.Element => {
   const bookDescription: JSX.Element = <Text>“I wish to disunite the postulation that love and time are one and the same.” <i>The Cameo</i> is a short collection of poetry and prose depicting the damage of two souls intertwining, as well as the even bolder proposition that romantic disillusion itself is a mirage. A metaphysical investigation into desire, disorder, and the natural world.</Text>
   const amazonLink: string = 'https://www.amazon.com/dp/B08JLXYL38?ref_=pe_3052080_397514860'
 
+  const navBreakpoint = typeof window !== 'undefined'
+    ? useMedia('(max-width: 700px)')
+    : undefined
+
   const [headerHeight, setHeaderHeight] = useState<string>('0px')
 
   useEffect(() => {
@@ -79,7 +98,7 @@ const Cameo = (): JSX.Element => {
     <PageWrapper headerHeight={headerHeight}>
       <Seo title='The Cameo | Janelle Solviletti' />
       <Title>The Cameo</Title>
-      <Flexbox style={{ paddingBottom: '100px' }}>
+      <Flexbox>
         <ImageWrapper>
           <img
             src={coverImage}
@@ -87,11 +106,12 @@ const Cameo = (): JSX.Element => {
           />
         </ImageWrapper>
         <RightColumn>
-          {bookDescription}
-          <StyledLink href={amazonLink}>Order now</StyledLink>
+          {!navBreakpoint ? bookDescription : null}
+          <div style={{paddingBottom: '20px'}}><StyledLink href={amazonLink}>Order now</StyledLink></div>
+          {navBreakpoint ? bookDescription : null}
         </RightColumn>
       </Flexbox>
-      <Flexbox style={{ paddingBottom: '80px' }}>
+      <Flexbox>
         <Text>
           This is a Spotify playlist to accompany the amazing book. This is a Spotify playlist to accompany the super duper book. This is a Spotify playlist to accompany the book.
           </Text>
