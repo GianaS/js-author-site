@@ -108,14 +108,13 @@ const Cameo = (): JSX.Element => {
         </ImageWrapper>
         <RightColumn>
           {!navBreakpoint ? bookDescription : null}
-          <div style={{paddingBottom: '20px'}}><StyledLink href={amazonLink}>Order now</StyledLink></div>
+          <div style={{ paddingBottom: '20px' }}><StyledLink href={amazonLink}>Order now</StyledLink></div>
           {navBreakpoint ? bookDescription : null}
         </RightColumn>
       </Flexbox>
       <Flexbox>
         <Text>
-          This is a Spotify playlist to accompany the amazing book. This is a Spotify playlist to accompany the super duper book. This is a Spotify playlist to accompany the book.
-          </Text>
+          Music transcends through time. Over the years, these songs were part of the making of The Cameo,  and whisper secrets in the margins. Before you turn the page, tune in to the place where it all began.          </Text>
         <iframe
           src='https://open.spotify.com/embed/playlist/4zwUWpSsVgrRwAWObakMTw'
           width='300'
