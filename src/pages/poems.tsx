@@ -3,6 +3,7 @@ import styled from 'styled-components'
 
 import Seo from '../components/Seo'
 import { fonts } from '../styles/styles'
+import image from '../assets/images/poem-reading.jpg'
 
 type Poem = {
   poemTitle: string
@@ -126,7 +127,7 @@ const Poem = (): JSX.Element => {
         })}
       </div>
       <img
-        src='../images/poem-reading.jpg'
+        src={image}
         alt='janelle reading a poem'
         width='100%'
         style={{paddingTop: '20px'}}

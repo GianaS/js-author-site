@@ -3,6 +3,7 @@ import styled from 'styled-components'
 
 import Seo from '../components/Seo'
 import { fonts } from '../styles/styles'
+import image from '../assets/images/self-portrait-bw.jpeg'
 
 const PhotoTextWrapper = styled.div`
   display: flex;
@@ -25,7 +26,7 @@ const About = (): JSX.Element => {
     <PhotoTextWrapper>
       <Seo title='About Me | Janelle Solviletti'/>
       <img
-        src='../images/self-portrait-bw.jpeg'
+        src={image}
         alt='janelle self portrait'
         width='100%'
       />
