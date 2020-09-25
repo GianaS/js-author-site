@@ -68,6 +68,7 @@ const StyledLink = styled.a`
   padding: 9px 13px;
   font-size: 16px;
   border-radius: 5px;
+  font-family: ${fonts.montserrat};
 
   :hover {
     color: ${colors.white};
