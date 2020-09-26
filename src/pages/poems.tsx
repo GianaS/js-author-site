@@ -81,22 +81,18 @@ const YearSection = styled.div`
 const PoemSection = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-
-  span {
-    display: flex;
-    align-items: center;
-    font-size: 18px;
+  font-size: 18px;
     padding-bottom: 14px;
-    white-space: pre-wrap;
 
-    a {
-      font-size: 18px;
-    }
-  
-    img {
-      height: 35px;
-    }
+  p {
+    display: inline-block;
+  }
+
+  img {
+    height: 35px;
+    top: 11px;
+    display: inline-block;
+    position: relative;
   }
 `
 
@@ -106,23 +102,17 @@ const Caption = styled.p`
 `
 
 const buildPoemSection = ({ poemTitle, publication, link, icon }: Poem) => {
-  const poemAnchor: JSX.Element = (
-    <span key={poemTitle}>
-      {icon && <img src={icon} alt='icon' />}
-      <a href={link}><i>{poemTitle}, </i></a>
-      {publication}
-    </span>
-  )
+  const titleElement: JSX.Element = link
+    ? <a href={link}><i>{poemTitle}, </i></a>
+    : <i>{poemTitle}, </i>
 
-  const poemParagraph: JSX.Element = (
-    <span key={poemTitle}>
+  return (
+    <p key={poemTitle}>
       {icon && <img src={icon} alt='icon' />}
-      <i>{poemTitle}, </i>
+      {titleElement}
       {publication}
-    </span>
+    </p>
   )
-
-  return link ? poemAnchor : poemParagraph
 }
 
 const Poem = (): JSX.Element => {
