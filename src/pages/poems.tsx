@@ -4,11 +4,13 @@ import styled from 'styled-components'
 import Seo from '../components/Seo'
 import { fonts } from '../styles/styles'
 import image from '../assets/images/poem-reading.jpg'
+import roseImage from '../assets/images/rose.png'
 
 type Poem = {
   poemTitle: string
   publication: string
   link?: string
+  icon?: string
 }
 
 type SelectedPoems = {
@@ -19,7 +21,9 @@ const SELECTED_POEMS: SelectedPoems = {
   '2020': [
     {
       poemTitle: 'The Cameo',
-      publication: 'coming soon'
+      publication: 'Available now on Amazon',
+      link: 'https://www.amazon.com/dp/B08JLXYL38?ref_=pe_3052080_397514860',
+      icon: roseImage
     },
     {
       poemTitle: 'Twin Signs, Runner',
@@ -79,9 +83,20 @@ const PoemSection = styled.div`
   flex-direction: column;
   justify-content: space-between;
 
-  span, a {
+  span {
+    display: flex;
+    align-items: center;
     font-size: 18px;
     padding-bottom: 14px;
+    white-space: pre-wrap;
+
+    a {
+      font-size: 18px;
+    }
+  
+    img {
+      height: 35px;
+    }
   }
 `
 
@@ -90,9 +105,10 @@ const Caption = styled.p`
   padding: 6px 0 35px 0;
 `
 
-const buildPoemSection = ({ poemTitle, publication, link }: Poem) => {
+const buildPoemSection = ({ poemTitle, publication, link, icon }: Poem) => {
   const poemAnchor: JSX.Element = (
     <span key={poemTitle}>
+      {icon && <img src={icon} alt='icon' />}
       <a href={link}><i>{poemTitle}, </i></a>
       {publication}
     </span>
@@ -100,6 +116,7 @@ const buildPoemSection = ({ poemTitle, publication, link }: Poem) => {
 
   const poemParagraph: JSX.Element = (
     <span key={poemTitle}>
+      {icon && <img src={icon} alt='icon' />}
       <i>{poemTitle}, </i>
       {publication}
     </span>
@@ -130,7 +147,7 @@ const Poem = (): JSX.Element => {
         src={image}
         alt='janelle reading a poem'
         width='100%'
-        style={{paddingTop: '20px'}}
+        style={{ paddingTop: '20px' }}
       />
       <Caption>Janelle reading <i>Penultimate</i> at Marist College.</Caption>
     </>
