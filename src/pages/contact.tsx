@@ -40,7 +40,7 @@ const Contact = (): JSX.Element => {
       <Seo title='Contact | Janelle Solviletti' />
       <Title>Connect With Me</Title>
       <Text>
-        To order personalized copies of <i>The Cameo</i>, or for other queries, please email {BookEmail}
+        To order personalized copies of <i>The Cameo</i>, or for other inqueries, please email {BookEmail}
       </Text>
       <IconSection>
         <a href='https://www.instagram.com/janellesolviletti'>
