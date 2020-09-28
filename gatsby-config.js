@@ -27,6 +27,9 @@ module.exports = {
       resolve: 'gatsby-plugin-remove-trailing-slashes'
     },
     {
+      resolve: 'gatsby-plugin-react-helmet'
+    },
+    {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `gatsby-starter-default`,
