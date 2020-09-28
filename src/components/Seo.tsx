@@ -27,6 +27,10 @@ const SEO = ({ description, lang, meta = [], title }: SEOProps): JSX.Element => 
       title={title}
       meta={[
         {
+          name: `google-site-verification`,
+          content: `H0acSGcS1g-P3_CO7LylwKL3Q7Do7ISnl93tcr5gtDU`
+        },
+        {
           name: `description`,
           content: metaDescription,
         },
@@ -57,10 +61,6 @@ const SEO = ({ description, lang, meta = [], title }: SEOProps): JSX.Element => 
         {
           name: `twitter:description`,
           content: metaDescription,
-        },
-        {
-          name: `google-site-verification`,
-          content: `H0acSGcS1g-P3_CO7LylwKL3Q7Do7ISnl93tcr5gtDU`
         }
       ].concat(meta)}
     />
