@@ -33,14 +33,19 @@ const StyledIcon = styled(Icon)`
   }
 `
 
+const BOOK_EMAIL: JSX.Element = <a href='mailto:book.janellesolviletti@gmail.com'>book.janellesolviletti@gmail.com</a>
+const META_DESCRIPTION: string = `Connect with Janelle Solviletti via email, Instagram, Linkedin, or Spotify.  To order personalized copies of The Cameo, or for other inqueries, please email ${BOOK_EMAIL}.`
+
 const Contact = (): JSX.Element => {
-  const BookEmail: JSX.Element = <a href='mailto:book.janellesolviletti@gmail.com'>book.janellesolviletti@gmail.com</a>
   return (
     <>
-      <Seo title='Contact | Janelle Solviletti' />
+      <Seo
+        title='Contact | Janelle Solviletti'
+        description={META_DESCRIPTION}
+      />
       <Title>Connect With Me</Title>
       <Text>
-        To order personalized copies of <i>The Cameo</i>, or for other inqueries, please email {BookEmail}
+        To order personalized copies of <i>The Cameo</i>, or for other inqueries, please email {BOOK_EMAIL}
       </Text>
       <IconSection>
         <a href='https://www.instagram.com/janellesolviletti'>

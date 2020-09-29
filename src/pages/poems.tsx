@@ -115,14 +115,19 @@ const buildPoemSection = ({ poemTitle, publication, link, icon }: Poem) => {
   )
 }
 
+const ALL_POEMS = Object.keys(SELECTED_POEMS).reverse()
+const META_DESCRIPTION: string = 'View selection of published poems by Janelle Solviletti.'
+
 const Poem = (): JSX.Element => {
-  const allPoems = Object.keys(SELECTED_POEMS).reverse()
   return (
     <>
-      <Seo title='Poems | Janelle Solviletti' />
+      <Seo
+        title='Poems | Janelle Solviletti'
+        description={META_DESCRIPTION}
+      />
       <Title>Selected Poems</Title>
       <div>
-        {allPoems.map(year => {
+        {ALL_POEMS.map(year => {
           return (
             <YearSection key={year}>
               <h2>{year}</h2>

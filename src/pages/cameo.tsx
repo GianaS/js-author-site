@@ -92,12 +92,12 @@ const StyledLink = styled.a`
     opacity: .9;
   }
 `
+const BOOK_DESCRIPTION: JSX.Element = <Text>“I wish to disunite the postulation that love and time are one and the same.” <i>The Cameo</i> is a short collection of poetry and prose depicting the damage of two souls intertwining, as well as the even bolder proposition that romantic disillusion itself is a mirage. A metaphysical investigation into desire, disorder, and the natural world.</Text>
+const PLAYLIST_DESCRIPTION: JSX.Element = <Text>Music transcends through time. Over the years, these songs were part of the making of <i>The Cameo</i>,  and whisper secrets in the margins. Before you turn the page, tune in to the place where it all began.</Text>
+const AMAZON_LINK: string = 'https://www.amazon.com/dp/B08JLXYL38?ref_=pe_3052080_397514860'
+const META_DESCRIPTION: string = 'The Cameo is a short collection of poetry and prose depicting the damage of two souls intertwining, as well as the even bolder proposition that romantic disillusion itself is a mirage. A metaphysical investigation into desire, disorder, and the natural world. Order The Cameo now!'
 
 const Cameo = (): JSX.Element => {
-  const bookDescription: JSX.Element = <Text>“I wish to disunite the postulation that love and time are one and the same.” <i>The Cameo</i> is a short collection of poetry and prose depicting the damage of two souls intertwining, as well as the even bolder proposition that romantic disillusion itself is a mirage. A metaphysical investigation into desire, disorder, and the natural world.</Text>
-  const playlistDescription: JSX.Element = <Text>Music transcends through time. Over the years, these songs were part of the making of <i>The Cameo</i>,  and whisper secrets in the margins. Before you turn the page, tune in to the place where it all began.</Text>
-  const amazonLink: string = 'https://www.amazon.com/dp/B08JLXYL38?ref_=pe_3052080_397514860'
-
   const navBreakpoint = typeof window !== 'undefined'
     ? useMedia('(max-width: 700px)')
     : undefined
@@ -115,7 +115,10 @@ const Cameo = (): JSX.Element => {
 
   return (
     <PageWrapper headerHeight={headerHeight}>
-      <Seo title='The Cameo | Janelle Solviletti' />
+      <Seo
+        title='The Cameo | Janelle Solviletti'
+        description={META_DESCRIPTION}
+      />
       <Title>The Cameo</Title>
       <Section>
         <ImageWrapper>
@@ -125,15 +128,15 @@ const Cameo = (): JSX.Element => {
           />
         </ImageWrapper>
         <TextButtonWrapper>
-          {!navBreakpoint ? bookDescription : null}
+          {!navBreakpoint ? BOOK_DESCRIPTION : null}
           <ButtonWrapper>
-            <StyledLink href={amazonLink}>Order now</StyledLink>
+            <StyledLink href={AMAZON_LINK}>Order now</StyledLink>
           </ButtonWrapper>
-          {navBreakpoint ? bookDescription : null}
+          {navBreakpoint ? BOOK_DESCRIPTION : null}
         </TextButtonWrapper>
       </Section>
       <Section>
-        {playlistDescription}
+        {PLAYLIST_DESCRIPTION}
         <iframe
           src='https://open.spotify.com/embed/playlist/4zwUWpSsVgrRwAWObakMTw'
           width='300'
