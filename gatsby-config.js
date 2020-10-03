@@ -1,4 +1,7 @@
 module.exports = {
+  siteMetadata: {
+    siteUrl: 'https://www.janellesolviletti.com',
+  },
   plugins: [
     {
       resolve: 'gatsby-plugin-prefetch-google-fonts',
@@ -22,6 +25,9 @@ module.exports = {
     },
     {
       resolve: 'gatsby-plugin-styled-components',
+    },
+    {
+      resolve: 'gatsby-plugin-sitemap'
     },
     {
       resolve: 'gatsby-plugin-remove-trailing-slashes'
