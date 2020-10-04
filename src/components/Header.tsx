@@ -28,22 +28,20 @@ const HeaderWrapper = styled.div`
 const LinkWrapper = styled(Link)`
   color: ${colors.grey};
   text-decoration: none;
-
-  &:hover {
-    color: ${colors.grey};
-  }
-`
-
-const Title = styled.h1`
   font-family: ${fonts.megrim};
   font-weight: normal;
   margin-top: 0;
   text-transform: uppercase;
   font-size: 38px;
   font-weight: 900;
+  padding: 15px 0;
 
   @media (max-width: 700px) {
     font-size: 30px;
+  }
+
+  &:hover {
+    color: ${colors.grey};
   }
 `
 
@@ -58,7 +56,7 @@ const Header = (): JSX.Element => {
   return (
     <HeaderWrapper id='header-wrapper'>
       <LinkWrapper to='/' >
-        <Title>Janelle Solviletti</Title>
+        Janelle Solviletti
       </LinkWrapper>
       {Navigation}
     </HeaderWrapper>

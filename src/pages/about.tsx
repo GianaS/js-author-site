@@ -17,9 +17,18 @@ const TextWrapper = styled.p`
   line-height: 1.7;
   font-size: 16px;
   padding-top: 15px;
+
+  h1 {
+    font-size: 16px;
+    font-weight: inherit;
+    font-family: ${fonts.montserrat};
+    line-height: 1.7;
+    display: inline-block;
+    margin-bottom: 0;
+  }
 `
 
-const ABOUT_TEXT: JSX.Element = <TextWrapper>Janelle Solviletti is a twenty-five-year-old writer from the outskirts of Boston. She graduated from Marist College in Poughkeepsie, New York, with a Masters Degree in Marketing. <i>The Cameo</i> is her debut poetry book, which encapsulates the tensions between time and love and their competing entities. She believes that it is the visionary who can call a moment into existence without the help or hindrance of the hands of time. She hopes those who delve into her poetry will recollect moments and commemorate those relationships with others, the natural world, passions and past times; whatever it may be that was once taken for granted by time’s natural order.</TextWrapper>
+const ABOUT_TEXT: JSX.Element = <TextWrapper><h1>Janelle Solviletti</h1> is a twenty-five-year-old writer from the outskirts of Boston. She graduated from Marist College in Poughkeepsie, New York, with a Masters Degree in Marketing. <i>The Cameo</i> is her debut poetry book, which encapsulates the tensions between time and love and their competing entities. She believes that it is the visionary who can call a moment into existence without the help or hindrance of the hands of time. She hopes those who delve into her poetry will recollect moments and commemorate those relationships with others, the natural world, passions and past times; whatever it may be that was once taken for granted by time’s natural order.</TextWrapper>
 const META_DESCRIPTION: string = 'Janelle Solviletti is a twenty-five-year-old writer from the outskirts of Boston. She graduated from Marist College in Poughkeepsie, New York, with a Masters Degree in Marketing. The Cameo is her debut poetry book, which encapsulates the tensions between time and love and their competing entities. She believes that it is the visionary who can call a moment into existence without the help or hindrance of the hands of time. She hopes those who delve into her poetry will recollect moments and commemorate those relationships with others, the natural world, passions and past times; whatever it may be that was once taken for granted by time’s natural order.'
 
 const About = (): JSX.Element => {
