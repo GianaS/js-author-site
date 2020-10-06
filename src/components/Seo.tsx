@@ -16,13 +16,13 @@ type SEOProps = {
   })[]
 }
 
-const SEO = ({ description, lang, meta = [], title }: SEOProps): JSX.Element => {
+const SEO = ({ description, meta = [], title }: SEOProps): JSX.Element => {
   const metaDescription = description
 
   return (
     <Helmet
       htmlAttributes={{
-        lang,
+        lang: `en`,
       }}
       title={title}
       meta={[
