@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { graphql } from 'gatsby'
 
 import Seo from '../components/Seo'
 import { fonts } from '../styles/styles'
@@ -7,59 +8,14 @@ import image from '../assets/images/poem-reading.jpg'
 import roseImage from '../assets/images/rose.png'
 
 type Poem = {
-  poemTitle: string
+  id: string
+  title: string
   publication: string
   link?: string
-  icon?: string
 }
 
 type SelectedPoems = {
   [_: string]: Poem[]
-}
-
-const SELECTED_POEMS: SelectedPoems = {
-  '2020': [
-    {
-      poemTitle: 'The Cameo',
-      publication: 'Available now on Amazon',
-      link: 'https://www.amazon.com/dp/B08JLXYL38?ref_=pe_3052080_397514860',
-      icon: roseImage
-    },
-    {
-      poemTitle: 'Twin Signs, Runner',
-      publication: 'Truck Stop Trinkets',
-      link: 'https://truckstoptrinkets.wixsite.com/mysite/poetry'
-    }
-  ],
-  '2018': [
-    {
-      poemTitle: 'Manuscript',
-      publication: 'The Feathertale Review',
-      link: 'https://feathertale.com/product/issue-20/'
-    }
-  ],
-  '2017': [
-    {
-      poemTitle: 'Dear Watertown',
-      publication: 'Marist College Mosaic Literary Journal, Spring Edition'
-    },
-    {
-      poemTitle: 'Fernweh, Penultimate, Sur',
-      publication: 'Marist College OED Project'
-    }
-  ],
-  '2016': [
-    {
-      poemTitle: 'The Escapist Journal',
-      publication: 'Special Project',
-      link: 'https://www.instagram.com/escapistjournal/'
-    },
-    {
-      poemTitle: 'Midnight Sand Dollar',
-      publication: 'The Somerville Times',
-      link: 'https://www.thesomervilletimes.com/archives/65527'
-    }
-  ]
 }
 
 const Title = styled.h1`
@@ -101,24 +57,40 @@ const Caption = styled.p`
   padding: 6px 0 35px 0;
 `
 
-const buildPoemSection = ({ poemTitle, publication, link, icon }: Poem) => {
+const buildPoemSection = ({ id, title, publication, link }: Poem) => {
   const titleElement: JSX.Element = link
-    ? <a href={link}><i>{poemTitle}, </i></a>
-    : <i>{poemTitle}, </i>
+    ? <a href={link}><i>{title}, </i></a>
+    : <i>{title}, </i>
 
   return (
-    <p key={poemTitle}>
-      {icon && <img src={icon} alt='icon' />}
+    <p key={id}>
+      {title === 'The Cameo' && <img src={roseImage} alt='rose icon' />}
       {titleElement}
       {publication}
     </p>
   )
 }
 
-const ALL_POEMS = Object.keys(SELECTED_POEMS).reverse()
+const createPoemObject = (poemsFromApi): SelectedPoems => {
+  return poemsFromApi.reduce((acc, poemObject) => {
+    const { node } = poemObject
+    const { year, ...poemWithoutYear } = node
+
+    if (acc[year] === undefined) {
+      return { ...acc, [year]: [poemWithoutYear] }
+    } else {
+      acc[year].push(poemWithoutYear)
+      return acc
+    }
+  }, {})
+}
+
 const META_DESCRIPTION: string = 'View selection of published poems by Janelle Solviletti.'
 
-const Poem = (): JSX.Element => {
+const Poem = ({ data }): JSX.Element => {
+  const { edges: poemsFromApi } = data.allContentfulPoem
+  const formattedPoems = createPoemObject(poemsFromApi)
+
   return (
     <>
       <Seo
@@ -127,12 +99,12 @@ const Poem = (): JSX.Element => {
       />
       <Title>Selected Poems</Title>
       <div>
-        {ALL_POEMS.map(year => {
+        {Object.keys(formattedPoems).reverse().map(year => {
           return (
-            <YearSection key={year}>
+            <YearSection key={formattedPoems.id}>
               <h2>{year}</h2>
               <PoemSection>
-                {SELECTED_POEMS[year].map((poem) => buildPoemSection(poem))}
+                {formattedPoems[year].map((poem) => buildPoemSection(poem))}
               </PoemSection>
             </YearSection>
           )
@@ -148,5 +120,21 @@ const Poem = (): JSX.Element => {
     </>
   )
 }
+
+export const getAllPoems = graphql`
+  query MyQuery {
+    allContentfulPoem(sort: {fields: updatedAt, order: DESC}) {
+      edges {
+        node {
+          link
+          publication
+          title
+          year
+          id
+        }
+      }
+    }
+  }
+`
 
 export default Poem
