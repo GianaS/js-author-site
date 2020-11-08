@@ -11,23 +11,15 @@ module.exports = {
   },
   plugins: [
     {
-      resolve: 'gatsby-plugin-prefetch-google-fonts',
+      resolve: 'gatsby-plugin-google-fonts',
       options: {
         fonts: [
-          {
-            family: 'Megrim'
-          },
-          {
-            family: 'Montserrat',
-            variants: ['400', '500']
-          },
-          {
-            family: 'Zeyada'
-          },
-          {
-            family: 'Yeseva One'
-          }
-        ]
+          'Megrim',
+          'Montserrat\:400,500',
+          'Zeyada',
+          'Yeseva One'
+        ],
+        display: 'swap'
       }
     },
     {
@@ -43,13 +35,13 @@ module.exports = {
       resolve: 'gatsby-plugin-react-helmet'
     },
     {
-      resolve: `gatsby-plugin-manifest`,
+      resolve: 'gatsby-plugin-manifest',
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
-        start_url: `/`,
-        display: `minimal-ui`,
-        icon: `./static/favicon.png`
+        name: 'gatsby-starter-default',
+        short_name: 'starter',
+        start_url: '/',
+        display: 'minimal-ui',
+        icon: './static/favicon.png'
       },
     },
     {
@@ -74,13 +66,13 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-canonical-urls`,
+      resolve: 'gatsby-plugin-canonical-urls',
       options: {
-        siteUrl: `https://www.janellesolviletti.com`,
+        siteUrl: 'https://www.janellesolviletti.com',
       },
     },
     {
-      resolve: `gatsby-source-contentful`,
+      resolve: 'gatsby-source-contentful',
       options: {
         spaceId: process.env.CONTENTFUL_SPACE_ID,
         accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
