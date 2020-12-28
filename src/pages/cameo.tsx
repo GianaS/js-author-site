@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
+import { graphql } from 'gatsby'
+import Img from 'gatsby-image'
 
 import Seo from '../components/Seo'
-import roseImage from '../assets/images/rose-transparent.png'
-import coverImage from '../assets/images/cameo-cover.png'
 import { fonts, colors } from '../styles/styles'
 import { useMedia } from '../utilities'
 
@@ -12,7 +12,10 @@ const PageWrapper = styled.div`
     `height: calc(100vh - ${headerHeight});`
   )}
 
-  background-image: url(${roseImage});
+  ${({ backgroundImage }: { backgroundImage: any }) => (
+    `background-image: url(${backgroundImage});`
+  )}
+
   background-size: contain;
   background-repeat: no-repeat;
 
@@ -42,16 +45,13 @@ const Section = styled.div`
   }
 `
 
-const ImageWrapper = styled.div`
-  height: 48vh;
-
-  img {
-    height: 100%;
-    box-shadow: 2px 4px 15px ${colors.grey};
-  }
+const StyledImage = styled(Img)`
+  box-shadow: 2px 4px 15px ${colors.grey};
+  
+  width: 296px;
 
   @media (max-width: 700px) {
-    padding-bottom: 30px;
+    margin-bottom: 30px;
   }
 `
 
@@ -64,6 +64,7 @@ const Text = styled.p`
 
 const TextButtonWrapper = styled.div`
   padding-left: 40px;
+  flex: 1;
 
   @media (max-width: 700px) {
     padding-left: 0;
@@ -97,7 +98,7 @@ const PLAYLIST_DESCRIPTION: JSX.Element = <Text>Music transcends through time. O
 const AMAZON_LINK: string = 'https://www.amazon.com/dp/B08JLXYL38?ref_=pe_3052080_397514860'
 const META_DESCRIPTION: string = 'The Cameo is a short collection of poetry and prose depicting the damage of two souls intertwining, as well as the even bolder proposition that romantic disillusion itself is a mirage. A metaphysical investigation into desire, disorder, and the natural world. Order The Cameo now!'
 
-const Cameo = (): JSX.Element => {
+const Cameo = ({ data }): JSX.Element => {
   const navBreakpoint = typeof window !== 'undefined'
     ? useMedia('(max-width: 700px)')
     : undefined
@@ -114,19 +115,17 @@ const Cameo = (): JSX.Element => {
   }, [])
 
   return (
-    <PageWrapper headerHeight={headerHeight}>
+    <PageWrapper headerHeight={headerHeight} backgroundImage={data.getRosePhoto.childImageSharp.fluid.src}>
       <Seo
         title='The Cameo | Janelle Solviletti'
         description={META_DESCRIPTION}
       />
       <Title>The Cameo</Title>
       <Section>
-        <ImageWrapper>
-          <img
-            src={coverImage}
-            alt='cameo book cover'
-          />
-        </ImageWrapper>
+        <StyledImage
+          fluid={data.getCoverPhoto.childImageSharp.fluid}
+          alt='cameo book cover'
+        />
         <TextButtonWrapper>
           {!navBreakpoint ? BOOK_DESCRIPTION : null}
           <ButtonWrapper>
@@ -148,5 +147,24 @@ const Cameo = (): JSX.Element => {
     </PageWrapper>
   )
 }
+
+export const getCameoData = graphql`
+  query getCameoData {
+    getCoverPhoto: file(relativePath: { eq: "cameo-cover.png" }) {
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    getRosePhoto: file(relativePath: { eq: "rose-transparent.png" }) {
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+  }
+`
 
 export default Cameo

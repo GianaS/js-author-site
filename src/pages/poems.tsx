@@ -1,17 +1,17 @@
 import React from 'react'
 import styled from 'styled-components'
 import { graphql } from 'gatsby'
+import Img from 'gatsby-image'
 
 import Seo from '../components/Seo'
 import { fonts } from '../styles/styles'
-import image from '../assets/images/poem-reading.jpg'
-import roseImage from '../assets/images/rose.png'
 
 type Poem = {
   id: string
   title: string
   publication: string
   link?: string
+  data?: any
 }
 
 type SelectedPoems = {
@@ -25,12 +25,12 @@ const Title = styled.h1`
 `
 
 const YearSection = styled.div`
-  padding-bottom: 20px;
   font-family: ${fonts.montserrat};
 
   h2 {
     font-weight: 400;
     font-size: 22px;
+    padding-bottom: 8px;
   }
 `
 
@@ -38,18 +38,12 @@ const PoemSection = styled.div`
   display: flex;
   flex-direction: column;
   font-size: 18px;
-    padding-bottom: 14px;
+  padding-bottom: 14px;
+`
 
-  p {
-    display: inline-block;
-  }
-
-  img {
-    height: 35px;
-    top: 11px;
-    display: inline-block;
-    position: relative;
-  }
+const StyledPoem = styled.span`
+  display: inline-block;
+  margin-bottom: 18px;
 `
 
 const Caption = styled.p`
@@ -57,17 +51,31 @@ const Caption = styled.p`
   padding: 6px 0 35px 0;
 `
 
-const buildPoemSection = ({ id, title, publication, link }: Poem) => {
+const StyledImage = styled(Img)`
+  height: 35px;
+  width: 35px;
+  top: 11px;
+  display: inline-block;
+`
+
+const buildPoemSection = ({ id, title, publication, link, data }: Poem) => {
   const titleElement: JSX.Element = link
     ? <a href={link}><i>{title}, </i></a>
     : <i>{title}, </i>
 
   return (
-    <p key={id}>
-      {title === 'The Cameo' && <img src={roseImage} alt='rose icon' />}
+    <StyledPoem key={id}>
+      {
+        title === 'The Cameo'
+        &&
+        <StyledImage
+          fluid={data.getRosePhoto.childImageSharp.fluid}
+          alt='janelle self portrait'
+        />
+      }
       {titleElement}
       {publication}
-    </p>
+    </StyledPoem>
   )
 }
 
@@ -98,31 +106,42 @@ const Poem = ({ data }): JSX.Element => {
         description={META_DESCRIPTION}
       />
       <Title>Selected Poems</Title>
-      <div>
-        {Object.keys(formattedPoems).reverse().map(year => {
-          return (
-            <YearSection key={formattedPoems.id}>
-              <h2>{year}</h2>
-              <PoemSection>
-                {formattedPoems[year].map((poem) => buildPoemSection(poem))}
-              </PoemSection>
-            </YearSection>
-          )
-        })}
-      </div>
-      <img
-        src={image}
+      {Object.keys(formattedPoems).reverse().map(year => {
+        return (
+          <YearSection key={formattedPoems.id}>
+            <h2>{year}</h2>
+            <PoemSection>
+              {formattedPoems[year].map((poem) => buildPoemSection({ ...poem, data }))}
+            </PoemSection>
+          </YearSection>
+        )
+      })}
+      <Img
+        fluid={data.getPoemReadingPhoto.childImageSharp.fluid}
         alt='janelle reading a poem'
-        width='100%'
-        style={{ paddingTop: '20px' }}
+        style={{ marginTop: '40px' }}
       />
       <Caption>Janelle reading <i>Penultimate</i> at Marist College.</Caption>
     </>
   )
 }
 
-export const getAllPoems = graphql`
-  query MyQuery {
+export const getPoemsData = graphql`
+  query getPoemsData {
+    getPoemReadingPhoto: file(relativePath: { eq: "poem-reading.jpg" }) {
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    getRosePhoto: file(relativePath: { eq: "rose.png" }) {
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
     allContentfulPoem(sort: {fields: updatedAt, order: DESC}) {
       edges {
         node {

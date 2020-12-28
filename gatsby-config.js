@@ -10,6 +10,14 @@ module.exports = {
     author: 'Janelle Solviletti'
   },
   plugins: [
+    'gatsby-plugin-sharp',
+    'gatsby-transformer-sharp',
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        path: `${__dirname}/src/assets/images/`,
+      },
+    },
     {
       resolve: 'gatsby-plugin-google-fonts',
       options: {
