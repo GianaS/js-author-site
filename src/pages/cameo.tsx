@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
+import BackgroundImage from 'gatsby-background-image'
 
 import Seo from '../components/Seo'
 import { fonts, colors } from '../styles/styles'
@@ -11,14 +12,7 @@ const PageWrapper = styled.div`
   ${({ headerHeight }: { headerHeight: string }) => (
     `height: calc(100vh - ${headerHeight});`
   )}
-
-  ${({ backgroundImage }: { backgroundImage: any }) => (
-    `background-image: url(${backgroundImage});`
-  )}
-
-  background-size: contain;
-  background-repeat: no-repeat;
-
+  
   iframe {
     box-shadow: 2px 4px 15px ${colors.grey};
     margin-left: 40px;
@@ -26,6 +20,14 @@ const PageWrapper = styled.div`
     @media (max-width: 700px) {
       margin-left: 0;
     }
+  }
+`
+
+const StyledBackgroundImage = styled(BackgroundImage)`
+  position: relative; 
+
+  @media (max-width: 700px) {
+    position: static !important;
   }
 `
 
@@ -93,6 +95,7 @@ const StyledLink = styled.a`
     opacity: .9;
   }
 `
+
 const BOOK_DESCRIPTION: JSX.Element = <Text>“I wish to disunite the postulation that love and time are one and the same.” <i>The Cameo</i> is a short collection of poetry and prose depicting the damage of two souls intertwining, as well as the even bolder proposition that romantic disillusion itself is a mirage. A metaphysical investigation into desire, disorder, and the natural world.</Text>
 const PLAYLIST_DESCRIPTION: JSX.Element = <Text>Music transcends through time. Over the years, these songs were part of the making of <i>The Cameo</i>,  and whisper secrets in the margins. Before you turn the page, tune in to the place where it all began.</Text>
 const AMAZON_LINK: string = 'https://www.amazon.com/dp/B08JLXYL38?ref_=pe_3052080_397514860'
@@ -115,35 +118,40 @@ const Cameo = ({ data }): JSX.Element => {
   }, [])
 
   return (
-    <PageWrapper headerHeight={headerHeight} backgroundImage={data.getRosePhoto.childImageSharp.fluid.src}>
+    <PageWrapper headerHeight={headerHeight}>
       <Seo
         title='The Cameo | Janelle Solviletti'
         description={META_DESCRIPTION}
       />
-      <Title>The Cameo</Title>
-      <Section>
-        <StyledImage
-          fluid={data.getCoverPhoto.childImageSharp.fluid}
-          alt='cameo book cover'
-        />
-        <TextButtonWrapper>
-          {!navBreakpoint ? BOOK_DESCRIPTION : null}
-          <ButtonWrapper>
-            <StyledLink href={AMAZON_LINK}>Order now</StyledLink>
-          </ButtonWrapper>
-          {navBreakpoint ? BOOK_DESCRIPTION : null}
-        </TextButtonWrapper>
-      </Section>
-      <Section>
-        {PLAYLIST_DESCRIPTION}
-        <iframe
-          src='https://open.spotify.com/embed/playlist/4zwUWpSsVgrRwAWObakMTw'
-          width='300'
-          height='380'
-          frameBorder='0'
-          allow='encrypted-media'
-        />
-      </Section>
+      <StyledBackgroundImage
+        Tag="section"
+        fluid={data.getRosePhoto.childImageSharp.fluid}
+      >
+        <Title>The Cameo</Title>
+        <Section>
+          <StyledImage
+            fluid={data.getCoverPhoto.childImageSharp.fluid}
+            alt='cameo book cover'
+          />
+          <TextButtonWrapper>
+            {!navBreakpoint ? BOOK_DESCRIPTION : null}
+            <ButtonWrapper>
+              <StyledLink href={AMAZON_LINK}>Order now</StyledLink>
+            </ButtonWrapper>
+            {navBreakpoint ? BOOK_DESCRIPTION : null}
+          </TextButtonWrapper>
+        </Section>
+        <Section>
+          {PLAYLIST_DESCRIPTION}
+          <iframe
+            src='https://open.spotify.com/embed/playlist/4zwUWpSsVgrRwAWObakMTw'
+            width='300'
+            height='380'
+            frameBorder='0'
+            allow='encrypted-media'
+          />
+        </Section>
+      </StyledBackgroundImage>
     </PageWrapper>
   )
 }
