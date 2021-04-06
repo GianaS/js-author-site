@@ -106,9 +106,9 @@ const Poem = ({ data }): JSX.Element => {
         description={META_DESCRIPTION}
       />
       <Title>Selected Poems</Title>
-      {Object.keys(formattedPoems).reverse().map(year => {
+      {Object.keys(formattedPoems).reverse().map((year, index) => {
         return (
-          <YearSection key={formattedPoems.id}>
+          <YearSection key={index}>
             <h2>{year}</h2>
             <PoemSection>
               {formattedPoems[year].map((poem) => buildPoemSection({ ...poem, data }))}
