@@ -1,6 +1,6 @@
 const navItems = [
   {
-    title: 'About Me',
+    title: 'About',
     link: '/about',
   },
   {

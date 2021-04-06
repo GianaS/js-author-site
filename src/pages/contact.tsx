@@ -43,7 +43,7 @@ const Contact = (): JSX.Element => {
         title='Contact | Janelle Solviletti'
         description={META_DESCRIPTION}
       />
-      <Title>Connect With Me</Title>
+      <Title>Connect With Janelle</Title>
       <Text>
         To order personalized copies of <i>The Cameo</i>, or for other inqueries, please email {BOOK_EMAIL}
       </Text>
