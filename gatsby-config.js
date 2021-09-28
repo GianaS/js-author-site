@@ -10,8 +10,13 @@ module.exports = {
     author: 'Janelle Solviletti'
   },
   plugins: [
+    `gatsby-plugin-image`,
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
+    'gatsby-plugin-styled-components',
+    'gatsby-plugin-sitemap',
+    'gatsby-plugin-remove-trailing-slashes',
+    'gatsby-plugin-react-helmet',
     {
       resolve: 'gatsby-source-filesystem',
       options: {
@@ -29,18 +34,6 @@ module.exports = {
         ],
         display: 'swap'
       }
-    },
-    {
-      resolve: 'gatsby-plugin-styled-components',
-    },
-    {
-      resolve: 'gatsby-plugin-sitemap'
-    },
-    {
-      resolve: 'gatsby-plugin-remove-trailing-slashes'
-    },
-    {
-      resolve: 'gatsby-plugin-react-helmet'
     },
     {
       resolve: 'gatsby-plugin-manifest',
