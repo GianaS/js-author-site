@@ -34,6 +34,14 @@ const ItemText = styled.p`
 const MobileNav = (): JSX.Element => {
   const [showSidebar, setShowSidebar] = React.useState(false)
 
+  const items = [
+    {
+      title: 'Home',
+      link: '/'
+    },
+    ...navItems
+  ]
+
   return (
     <>
       <StyledButton icon onClick={() => setShowSidebar(!showSidebar)}>
@@ -51,7 +59,7 @@ const MobileNav = (): JSX.Element => {
             direction='right'
             style={{backgroundColor: colors.beige}}
           >
-            {navItems.map(({ title, link }) => {
+            {items.map(({ title, link }) => {
               return (
                 <Menu.Item style={{borderBottom: `${colors.offWhite} 1px solid`}} key={title}>
                   <MenuItemWrapper to={link} onClick={() => setShowSidebar(false)}>
