@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { graphql } from 'gatsby'
-import Img from 'gatsby-image'
+import { GatsbyImage } from 'gatsby-plugin-image'
 import { renderRichText } from 'gatsby-source-contentful/rich-text'
 
 import Seo from '../components/Seo'
@@ -39,8 +39,8 @@ const About = ({ data }): JSX.Element => {
         title='About | Janelle Solviletti'
         description={META_DESCRIPTION}
       />
-      <Img
-        fluid={data.getAboutPhoto.childImageSharp.fluid}
+      <GatsbyImage
+        image={data.getAboutPhoto.childImageSharp.gatsbyImageData}
         alt='janelle self portrait'
       />
       <Title>About Janelle Solviletti</Title>
@@ -53,9 +53,10 @@ export const getAboutData = graphql`
   query getAboutData {
     getAboutPhoto: file(relativePath: { eq: "self-portrait-bw.jpeg" }) {
       childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid
-        }
+        gatsbyImageData(
+          placeholder: BLURRED
+          layout: CONSTRAINED
+        )
       }
     }
     allContentfulBio(sort: {fields: updatedAt, order: DESC}) {

@@ -4,18 +4,17 @@
   "version": "0.1.0",
   "scripts": {
     "build": "gatsby build",
+    "clean": "gatsby clean",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
-    "start": "npm run develop",
     "serve": "gatsby serve",
-    "clean": "gatsby clean",
+    "start-prod": "npm run clean && npm run build && npm run serve",
+    "start": "npm run develop",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
   "dependencies": {
     "dotenv": "^8.2.0",
     "gatsby": "^4.0.2",
-    "gatsby-background-image": "^1.5.3",
-    "gatsby-image": "^3.11.0",
     "gatsby-plugin-canonical-urls": "^4.0.0",
     "gatsby-plugin-google-fonts": "^1.0.1",
     "gatsby-plugin-google-gtag": "^4.0.0",

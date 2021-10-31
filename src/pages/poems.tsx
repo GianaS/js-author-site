@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { graphql } from 'gatsby'
-import Img from 'gatsby-image'
+import { GatsbyImage } from 'gatsby-plugin-image'
 
 import Seo from '../components/Seo'
 import { fonts } from '../styles/styles'
@@ -51,10 +51,10 @@ const Caption = styled.p`
   padding: 6px 0 35px 0;
 `
 
-const StyledImage = styled(Img)`
+const StyledImage = styled(GatsbyImage)`
   height: 35px;
   width: 35px;
-  top: 11px;
+  top: -6px;
   display: inline-block;
 `
 
@@ -69,7 +69,7 @@ const buildPoemSection = ({ id, title, publication, link, data }: Poem) => {
         title === 'The Cameo'
         &&
         <StyledImage
-          fluid={data.getRosePhoto.childImageSharp.fluid}
+          image={data.getRosePhoto.childImageSharp.gatsbyImageData}
           alt='janelle self portrait'
         />
       }
@@ -116,8 +116,8 @@ const Poem = ({ data }): JSX.Element => {
           </YearSection>
         )
       })}
-      <Img
-        fluid={data.getPoemReadingPhoto.childImageSharp.fluid}
+      <GatsbyImage
+        image={data.getPoemReadingPhoto.childImageSharp.gatsbyImageData}
         alt='janelle reading a poem'
         style={{ marginTop: '40px' }}
       />
@@ -130,16 +130,18 @@ export const getPoemsData = graphql`
   query getPoemsData {
     getPoemReadingPhoto: file(relativePath: { eq: "poem-reading.jpg" }) {
       childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid
-        }
+        gatsbyImageData(
+          placeholder: BLURRED
+          layout: CONSTRAINED
+        )
       }
     }
     getRosePhoto: file(relativePath: { eq: "rose.png" }) {
       childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid
-        }
+        gatsbyImageData(
+          layout: CONSTRAINED
+          placeholder: BLURRED
+        )
       }
     }
     allContentfulPoem(sort: {fields: updatedAt, order: DESC}) {

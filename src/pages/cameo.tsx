@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { graphql } from 'gatsby'
-import Img from 'gatsby-image'
-import BackgroundImage from 'gatsby-background-image'
+import { GatsbyImage } from 'gatsby-plugin-image'
 
 import Seo from '../components/Seo'
 import { fonts, colors } from '../styles/styles'
@@ -23,12 +22,9 @@ const PageWrapper = styled.div`
   }
 `
 
-const StyledBackgroundImage = styled(BackgroundImage)`
-  position: relative; 
-
-  @media (max-width: 700px) {
-    position: static !important;
-  }
+const StyledBackgroundImage = styled(GatsbyImage)`
+  position: fixed;
+  z-index: -101;
 `
 
 const Title = styled.h1`
@@ -47,7 +43,7 @@ const Section = styled.div`
   }
 `
 
-const StyledImage = styled(Img)`
+const StyledImage = styled(GatsbyImage)`
   box-shadow: 2px 4px 15px ${colors.grey};
   
   width: 296px;
@@ -124,34 +120,34 @@ const Cameo = ({ data }): JSX.Element => {
         description={META_DESCRIPTION}
       />
       <StyledBackgroundImage
-        Tag="section"
-        fluid={data.getRosePhoto.childImageSharp.fluid}
-      >
-        <Title>The Cameo</Title>
-        <Section>
-          <StyledImage
-            fluid={data.getCoverPhoto.childImageSharp.fluid}
-            alt='cameo book cover'
-          />
-          <TextButtonWrapper>
-            {!navBreakpoint ? BOOK_DESCRIPTION : null}
-            <ButtonWrapper>
-              <StyledLink href={AMAZON_LINK}>Order now</StyledLink>
-            </ButtonWrapper>
-            {navBreakpoint ? BOOK_DESCRIPTION : null}
-          </TextButtonWrapper>
-        </Section>
-        <Section>
-          {PLAYLIST_DESCRIPTION}
-          <iframe
-            src='https://open.spotify.com/embed/playlist/4zwUWpSsVgrRwAWObakMTw'
-            width='300'
-            height='380'
-            frameBorder='0'
-            allow='encrypted-media'
-          />
-        </Section>
-      </StyledBackgroundImage>
+        image={data.getRosePhoto.childImageSharp.gatsbyImageData}
+        aria-hidden
+        alt=''
+      />
+      <Title>The Cameo</Title>
+      <Section>
+        <StyledImage
+          image={data.getCoverPhoto.childImageSharp.gatsbyImageData}
+          alt='cameo book cover'
+        />
+        <TextButtonWrapper>
+          {!navBreakpoint ? BOOK_DESCRIPTION : null}
+          <ButtonWrapper>
+            <StyledLink href={AMAZON_LINK}>Order now</StyledLink>
+          </ButtonWrapper>
+          {navBreakpoint ? BOOK_DESCRIPTION : null}
+        </TextButtonWrapper>
+      </Section>
+      <Section>
+        {PLAYLIST_DESCRIPTION}
+        <iframe
+          src='https://open.spotify.com/embed/playlist/4zwUWpSsVgrRwAWObakMTw'
+          width='300'
+          height='380'
+          frameBorder='0'
+          allow='encrypted-media'
+        />
+      </Section>
     </PageWrapper>
   )
 }
@@ -160,16 +156,18 @@ export const getCameoData = graphql`
   query getCameoData {
     getCoverPhoto: file(relativePath: { eq: "cameo-cover.png" }) {
       childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid
-        }
+        gatsbyImageData(
+          placeholder: BLURRED
+          layout: CONSTRAINED
+        )
       }
     }
     getRosePhoto: file(relativePath: { eq: "rose-transparent.png" }) {
       childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid
-        }
+        gatsbyImageData(
+          layout: CONSTRAINED
+          placeholder: BLURRED
+        )
       }
     }
   }
