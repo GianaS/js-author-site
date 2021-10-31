@@ -11,7 +11,7 @@ type Poem = {
   title: string
   publication: string
   link?: string
-  data?: any
+  data?: unknown
 }
 
 type SelectedPoems = {
@@ -93,9 +93,9 @@ const createPoemObject = (poemsFromApi): SelectedPoems => {
   }, {})
 }
 
-const META_DESCRIPTION: string = 'View selection of published poems by Janelle Solviletti.'
+const META_DESCRIPTION = 'View selection of published poems by Janelle Solviletti.'
 
-const Poem = ({ data }): JSX.Element => {
+const Poem = ({ data }: { data: unknown }): JSX.Element => {
   const { edges: poemsFromApi } = data.allContentfulPoem
   const formattedPoems = createPoemObject(poemsFromApi)
 

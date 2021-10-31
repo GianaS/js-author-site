@@ -7,10 +7,13 @@
     "clean": "gatsby clean",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "lint": "eslint --ext .ts,.tsx ./src",
+    "precommit": "npm run typecheck && npm run lint",
     "serve": "gatsby serve",
     "start-prod": "npm run clean && npm run build && npm run serve",
     "start": "npm run develop",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "dotenv": "^8.2.0",
@@ -37,7 +40,14 @@
     "styled-components": "^5.2.1"
   },
   "devDependencies": {
+    "@types/react": "^17.0.33",
     "@types/react-helmet": "^6.1.0",
-    "prettier": "2.1.1"
+    "@types/styled-components": "^5.1.15",
+    "@typescript-eslint/eslint-plugin": "^5.2.0",
+    "@typescript-eslint/parser": "^5.2.0",
+    "eslint": "^7.32.0",
+    "eslint-plugin-react": "^7.26.1",
+    "prettier": "2.1.1",
+    "typescript": "^4.4.4"
   }
 }

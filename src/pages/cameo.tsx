@@ -94,10 +94,10 @@ const StyledLink = styled.a`
 
 const BOOK_DESCRIPTION: JSX.Element = <Text>“I wish to disunite the postulation that love and time are one and the same.” <i>The Cameo</i> is a short collection of poetry and prose depicting the damage of two souls intertwining, as well as the even bolder proposition that romantic disillusion itself is a mirage. A metaphysical investigation into desire, disorder, and the natural world.</Text>
 const PLAYLIST_DESCRIPTION: JSX.Element = <Text>Music transcends through time. Over the years, these songs were part of the making of <i>The Cameo</i>,  and whisper secrets in the margins. Before you turn the page, tune in to the place where it all began.</Text>
-const AMAZON_LINK: string = 'https://www.amazon.com/dp/B08JLXYL38?ref_=pe_3052080_397514860'
-const META_DESCRIPTION: string = 'The Cameo is a short collection of poetry and prose depicting the damage of two souls intertwining, as well as the even bolder proposition that romantic disillusion itself is a mirage. A metaphysical investigation into desire, disorder, and the natural world. Order The Cameo now!'
+const AMAZON_LINK = 'https://www.amazon.com/dp/B08JLXYL38?ref_=pe_3052080_397514860'
+const META_DESCRIPTION = 'The Cameo is a short collection of poetry and prose depicting the damage of two souls intertwining, as well as the even bolder proposition that romantic disillusion itself is a mirage. A metaphysical investigation into desire, disorder, and the natural world. Order The Cameo now!'
 
-const Cameo = ({ data }): JSX.Element => {
+const Cameo = ({ data }: { data: unknown }): JSX.Element => {
   const navBreakpoint = typeof window !== 'undefined'
     ? useMedia('(max-width: 700px)')
     : undefined
