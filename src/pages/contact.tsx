@@ -45,7 +45,7 @@ const Contact = (): JSX.Element => {
       />
       <Title>Connect With Janelle</Title>
       <Text>
-        To order a personalized copy of <i>The Cameo</i>, or for other inqueries, please email {BOOK_EMAIL}
+        To order personalized copies of <i>The Cameo</i>, or for other inqueries, please email {BOOK_EMAIL}
       </Text>
       <IconSection>
         <a href='https://www.instagram.com/janellesolviletti'>
