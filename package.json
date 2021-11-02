@@ -5,6 +5,7 @@
   "scripts": {
     "build": "gatsby build",
     "clean": "gatsby clean",
+    "codegen": "graphql-codegen --config codegen.yml",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "lint": "eslint --ext .ts,.tsx ./src",
@@ -40,6 +41,11 @@
     "styled-components": "^5.2.1"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "^2.2.2",
+    "@graphql-codegen/introspection": "^2.1.0",
+    "@graphql-codegen/typescript": "^2.3.0",
+    "@graphql-codegen/typescript-operations": "^2.2.0",
+    "@graphql-codegen/typescript-react-apollo": "^3.2.0",
     "@types/react": "^17.0.33",
     "@types/react-helmet": "^6.1.0",
     "@types/styled-components": "^5.1.15",

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { graphql } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
+import { GetCameoDataQuery} from '../types/graphql.types'
 
 import Seo from '../components/Seo'
 import { fonts, colors } from '../styles/styles'
@@ -97,7 +98,7 @@ const PLAYLIST_DESCRIPTION: JSX.Element = <Text>Music transcends through time. O
 const AMAZON_LINK = 'https://www.amazon.com/dp/B08JLXYL38?ref_=pe_3052080_397514860'
 const META_DESCRIPTION = 'The Cameo is a short collection of poetry and prose depicting the damage of two souls intertwining, as well as the even bolder proposition that romantic disillusion itself is a mirage. A metaphysical investigation into desire, disorder, and the natural world. Order The Cameo now!'
 
-const Cameo = ({ data }: { data: unknown }): JSX.Element => {
+const Cameo = ({ data }: { data: GetCameoDataQuery }): JSX.Element => {
   const navBreakpoint = typeof window !== 'undefined'
     ? useMedia('(max-width: 700px)')
     : undefined
@@ -120,14 +121,14 @@ const Cameo = ({ data }: { data: unknown }): JSX.Element => {
         description={META_DESCRIPTION}
       />
       <StyledBackgroundImage
-        image={data.getRosePhoto.childImageSharp.gatsbyImageData}
+        image={data.getRosePhoto?.childImageSharp?.gatsbyImageData}
         aria-hidden
         alt=''
       />
       <Title>The Cameo</Title>
       <Section>
         <StyledImage
-          image={data.getCoverPhoto.childImageSharp.gatsbyImageData}
+          image={data.getCoverPhoto?.childImageSharp?.gatsbyImageData}
           alt='cameo book cover'
         />
         <TextButtonWrapper>

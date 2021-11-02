@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { graphql } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
+import { GetPoemsDataQuery, ContentfulPoemEdge } from '../types/graphql.types'
 
 import Seo from '../components/Seo'
 import { fonts } from '../styles/styles'
@@ -79,7 +80,7 @@ const buildPoemSection = ({ id, title, publication, link, data }: Poem) => {
   )
 }
 
-const createPoemObject = (poemsFromApi): SelectedPoems => {
+const createPoemObject = (poemsFromApi: ContentfulPoemEdge): SelectedPoems => {
   return poemsFromApi.reduce((acc, poemObject) => {
     const { node } = poemObject
     const { year, ...poemWithoutYear } = node
@@ -95,7 +96,7 @@ const createPoemObject = (poemsFromApi): SelectedPoems => {
 
 const META_DESCRIPTION = 'View selection of published poems by Janelle Solviletti.'
 
-const Poem = ({ data }: { data: unknown }): JSX.Element => {
+const Poem = ({ data }: { data: GetPoemsDataQuery }): JSX.Element => {
   const { edges: poemsFromApi } = data.allContentfulPoem
   const formattedPoems = createPoemObject(poemsFromApi)
 
@@ -117,7 +118,7 @@ const Poem = ({ data }: { data: unknown }): JSX.Element => {
         )
       })}
       <GatsbyImage
-        image={data.getPoemReadingPhoto.childImageSharp.gatsbyImageData}
+        image={data.getPoemReadingPhoto?.childImageSharp?.gatsbyImageData}
         alt='janelle reading a poem'
         style={{ marginTop: '40px' }}
       />
