@@ -1,6 +1,6 @@
+import { useState } from 'react'
 import { css } from '@emotion/react'
 import { Link } from 'gatsby'
-import { Dropdown } from 'semantic-ui-react'
 
 import { navItems } from '../utilities'
 import { colors, fonts } from '../styles/styles'
@@ -41,44 +41,81 @@ const navItem = css`
         }
     }
 `
-const dropdownNavItem = css`
-    ${navItem};
+
+
+const menu = css`
+    background-color: ${colors.white};
+    position: absolute;
+    background-color: #f1f1f1;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 8%);
+    z-index: 1001;
+    display: flex;
+    flex-direction: column;
+    border-radius: 2%;
+    box-sizing: border-box;
 `
 
-const NavigationItem = ({ title, link }: { title: string, link: string }) => (
-    <Link css={navItem}
-        to={link}
-        activeClassName={'activeLink'}
-        key={title}
-    >
-        {title}
-    </Link>
-)
+const nestedItem = css`
+    ${navItem};
+    padding: 12px 12px;
+    margin-right: 0;
+
+    :hover {
+        background-color: #ddd;
+    }
+`
 
 const Nav = () => {
+    const [isOpen, setIsOpen] = useState<boolean>(false)
+
     return (
         <div css={navItemWrapper}>
             {navItems.map((item) => {
                 if (item.nested) {
                     return (
-                        <Dropdown icon={null} text={item.title} css={dropdownNavItem} simple>
-                            <Dropdown.Menu css={css`background-color: ${colors.white} !important;`}>
-                                {item.childItems.map(childItem => {
-                                    if (!childItem.nested) {
-                                        const { title, link } = childItem
-                                        return (
-                                            <Dropdown.Item>
-                                                <NavigationItem title={title} link={link} />
-                                            </Dropdown.Item>
-                                        )
-                                    }
-                                })}
-                            </Dropdown.Menu>
-                        </Dropdown>
+                        <div
+                            key={item.title}
+                            onFocus={() => setIsOpen(true)}
+                            onMouseOver={() => setIsOpen(true)}
+                            onMouseLeave={() => setIsOpen(false)}
+                            tabIndex={0}
+                        >
+                            <a css={css`${navItem}; cursor: pointer;`} >
+                                {item.title}
+                            </a>
+                            {isOpen && (
+                                <div css={menu}>
+                                    {item.childItems.map((childItem) => {
+                                        if (!childItem.nested) {
+                                            const { title, link } = childItem
+                                            return (
+                                                <Link
+                                                    css={nestedItem}
+                                                    to={link}
+                                                    activeClassName={'activeLink'}
+                                                    key={title}
+                                                    onClick={() => setIsOpen(false)}
+                                                >
+                                                    {title}
+                                                </Link>
+                                            )
+                                        }
+                                    })}
+                                </div>
+                            )}
+                        </div>
                     )
                 } else {
                     const { link, title } = item
-                    return <NavigationItem title={title} link={link} />
+                    return (
+                        <Link css={navItem}
+                            to={link}
+                            activeClassName={'activeLink'}
+                            key={title}
+                        >
+                            {title}
+                        </Link>
+                    )
                 }
             })}
         </div>

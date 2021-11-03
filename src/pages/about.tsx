@@ -22,6 +22,10 @@ const textWrapper = css`
   font-family: ${fonts.montserrat};
   line-height: 1.7;
   font-size: 16px;
+  
+  p {
+    line-height: 26px;
+  }
 `
 
 const META_DESCRIPTION = 'Janelle Solviletti is a writer from Boston, Massachusetts. Euphony is her second poetry collection, following her debut poetry book, The Cameo, released in September 2020. Previously, she published works in The Horn Pond Review, The Feathertale Review and The Somerville Lyrical. She attended Marist College in Poughkeepsie, New York, and currently lives and works in Boston.'
