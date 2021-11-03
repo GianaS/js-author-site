@@ -1,7 +1,9 @@
-import { navItems } from './constants'
+import { navItems, NavItem, NotNestedNavItem } from './constants'
 import { useMedia } from './functions'
 
 export {
   navItems,
-  useMedia
+  useMedia,
+  NavItem,
+  NotNestedNavItem
 }

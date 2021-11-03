@@ -92,12 +92,12 @@ const styledLink = css`
     }
 `
 
-const BOOK_DESCRIPTION: JSX.Element = <p css={text}>“I wish to disunite the postulation that love and time are one and the same.” <i>The Cameo</i> is a short collection of poetry and prose depicting the damage of two souls intertwining, as well as the even bolder proposition that romantic disillusion itself is a mirage. A metaphysical investigation into desire, disorder, and the natural world.</p>
-const PLAYLIST_DESCRIPTION: JSX.Element = <p css={text}>Music transcends through time. Over the years, these songs were part of the making of <i>The Cameo</i>,  and whisper secrets in the margins. Before you turn the page, tune in to the place where it all began.</p>
+const BOOK_DESCRIPTION: JSX.Element = <p css={text}><i>Euphony</i> is a new collection of poetry and prose written by Janelle Solviletti, uncovering those &lsquo;sweet sounds&rsquo; that seemingly exist with us perpetually. If only life had a soundtrack...what would ours sound like?</p>
+const PLAYLIST_DESCRIPTION: JSX.Element = <p css={text}>Each poetic confession in <i>Euphony</i> dives headfirst into the intimate and secretive relationship we share with music, art, and those words that never leave us. Escape in the complexities and intensities of the deep emotions that divide dreamscapes from what is in front of our own eyes.</p>
 const AMAZON_LINK = 'https://www.amazon.com/dp/B08JLXYL38?ref_=pe_3052080_397514860'
-const META_DESCRIPTION = 'The Cameo is a short collection of poetry and prose depicting the damage of two souls intertwining, as well as the even bolder proposition that romantic disillusion itself is a mirage. A metaphysical investigation into desire, disorder, and the natural world. Order The Cameo now!'
+const META_DESCRIPTION = 'Euphony is a new collection of poetry and prose written by Janelle Solviletti, uncovering those sweet sounds that seemingly exist with us perpetually. If only life had a soundtrack...what would ours sound like? Each poetic confession in Euphony dives headfirst into the intimate and secretive relationship we share with music, art, and those words that never leave us. Escape in the complexities and intensities of the deep emotions that divide dreamscapes from what is in front of our own eyes.'
 
-const Cameo = ({ data }: { data: unknown }): JSX.Element => {
+const Euphony = ({ data }: { data: unknown }): JSX.Element => {
     const navBreakpoint = typeof window !== 'undefined'
         ? useMedia('(max-width: 700px)')
         : undefined
@@ -116,7 +116,7 @@ const Cameo = ({ data }: { data: unknown }): JSX.Element => {
     return (
         <div css={makePageWrapper(headerHeight)}>
             <Seo
-                title='The Cameo | Janelle Solviletti'
+                title='Euphony | Janelle Solviletti'
                 description={META_DESCRIPTION}
             />
             <GatsbyImage
@@ -125,7 +125,7 @@ const Cameo = ({ data }: { data: unknown }): JSX.Element => {
                 alt=''
                 css={styledBackgroundImage}
             />
-            <h1 css={title}>The Cameo</h1>
+            <h1 css={title}>Euphony</h1>
             <div css={section}>
                 <GatsbyImage
                     image={data.getCoverPhoto.childImageSharp.gatsbyImageData}
@@ -143,7 +143,7 @@ const Cameo = ({ data }: { data: unknown }): JSX.Element => {
             <div css={section}>
                 {PLAYLIST_DESCRIPTION}
                 <iframe
-                    src='https://open.spotify.com/embed/playlist/4zwUWpSsVgrRwAWObakMTw'
+                    src='https://open.spotify.com/embed/playlist/5k03hLTXJm0xxWBjIR1vHg?utm_source=generator'
                     width='300'
                     height='380'
                     frameBorder='0'
@@ -155,7 +155,7 @@ const Cameo = ({ data }: { data: unknown }): JSX.Element => {
 }
 
 export const getCameoData = graphql`
-  query getCameoData {
+  query getEuphonyData {
     getCoverPhoto: file(relativePath: { eq: "cameo-cover.png" }) {
       childImageSharp {
         gatsbyImageData(
@@ -175,4 +175,4 @@ export const getCameoData = graphql`
   }
 `
 
-export default Cameo
+export default Euphony

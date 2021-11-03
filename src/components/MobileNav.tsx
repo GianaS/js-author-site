@@ -1,24 +1,24 @@
-import React from 'react'
+import { useState, Fragment } from 'react'
 import { Link } from 'gatsby'
-import styled from 'styled-components'
+import { css } from '@emotion/react'
 import {
-  Menu,
-  Button,
-  Icon,
-  Sidebar
+    Menu,
+    Button,
+    Icon,
+    Sidebar
 } from 'semantic-ui-react'
 
 import { colors, fonts } from '../styles/styles'
-import { navItems } from '../utilities'
+import { navItems, NavItem, NotNestedNavItem } from '../utilities'
 
-const StyledButton = styled(Button)`
+const button = css`
   background-color: transparent !important;
   color: ${colors.grey} !important;
   font-size: 30px !important;
   padding-right: 10px !important;
 `
 
-const MenuItemWrapper = styled(Link)`
+const menuItemWrapper = css`
   font-size: 18px;
   padding: 0 20px;
   display: flex;
@@ -26,53 +26,64 @@ const MenuItemWrapper = styled(Link)`
   width: inherit;
 `
 
-const ItemText = styled.p`
+const itemText = css`
   padding-left: 12px;
   font-family: ${fonts.montserrat};
 `
 
 const MobileNav = (): JSX.Element => {
-  const [showSidebar, setShowSidebar] = React.useState(false)
+    const [showSidebar, setShowSidebar] = useState(false)
+    const items: NavItem[] = [
+        {
+            title: 'Home',
+            link: '/',
+            nested: false
+        },
+        ...navItems
+    ]
 
-  const items = [
-    {
-      title: 'Home',
-      link: '/'
-    },
-    ...navItems
-  ]
+    const mobileNavItems = items.reduce((acc, item) => {
+        if (item.nested) {
+            return [...acc, ...item.childItems.map((childItem) => ({
+                title: childItem.title,
+                link: childItem.link,
+                nested: false as const
+            }))]
+        }
+        return [...acc, item]
+    }, [] as NotNestedNavItem[])
 
-  return (
-    <>
-      <StyledButton icon onClick={() => setShowSidebar(!showSidebar)}>
-        <Icon name='bars' />
-      </StyledButton>
-      {
-        showSidebar
-          ?
-          <Sidebar
-            as={Menu}
-            inverted
-            onHide={() => setShowSidebar(false)}
-            vertical
-            visible={showSidebar}
-            direction='right'
-            style={{backgroundColor: colors.beige}}
-          >
-            {items.map(({ title, link }) => {
-              return (
-                <Menu.Item style={{borderBottom: `${colors.offWhite} 1px solid`}} key={title}>
-                  <MenuItemWrapper to={link} onClick={() => setShowSidebar(false)}>
-                    <ItemText>{title}</ItemText>
-                  </MenuItemWrapper>
-                </Menu.Item>
-              )
-            })}
-          </Sidebar>
-          : null
-      }
-    </>
-  )
+    return (
+        <Fragment>
+            <Button css={button} icon onClick={() => setShowSidebar(!showSidebar)}>
+                <Icon name='bars' />
+            </Button>
+            {
+                showSidebar
+                    ?
+                    <Sidebar
+                        as={Menu}
+                        inverted
+                        onHide={() => setShowSidebar(false)}
+                        vertical
+                        visible={showSidebar}
+                        direction='right'
+                        style={{ backgroundColor: colors.beige }}
+                    >
+                        {mobileNavItems.map(({ title, link }) => {
+                            return (
+                                <Menu.Item style={{ borderBottom: `${colors.offWhite} 1px solid` }} key={title}>
+                                    <Link css={menuItemWrapper} to={link} onClick={() => setShowSidebar(false)}>
+                                        <p css={itemText}>{title}</p>
+                                    </Link>
+                                </Menu.Item>
+                            )
+                        })}
+                    </Sidebar>
+                    : null
+            }
+        </Fragment>
+    )
 }
 
 export default MobileNav

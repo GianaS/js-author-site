@@ -13,10 +13,10 @@ module.exports = {
     `gatsby-plugin-image`,
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
-    'gatsby-plugin-styled-components',
     'gatsby-plugin-sitemap',
     'gatsby-plugin-remove-trailing-slashes',
     'gatsby-plugin-react-helmet',
+    'gatsby-plugin-emotion',
     {
       resolve: 'gatsby-source-filesystem',
       options: {

@@ -1,38 +1,25 @@
-import React, { ReactNode } from 'react'
-import styled from 'styled-components'
+import { ReactNode, Fragment } from 'react'
+import { css } from '@emotion/react'
 
 import Header from './Header'
-import { navItems } from '../utilities'
 
-const VALID_PATHS = navItems.map(item => item.link)
-
-const BodyWrapper = styled.div`
+const bodyWrapper = css`
   width: 725px;
+  margin: 35px auto;
 
   @media (max-width: 750px) {
     width: 90%;
   }
-
-  ${({ pathname }: { pathname: string }) => (
-    VALID_PATHS.includes(pathname) ? 'margin: 35px auto;' : 'margin: 0 auto;'
-  )}
 `
 
-type PageLayoutProps = {
-  children: ReactNode,
-  location: { pathname: string }
-}
-
-const PageLayout = ({ children, location }: PageLayoutProps) => {
-  const { pathname } = location
-
+const PageLayout = ({ children }: { children: ReactNode }) => {
   return (
-    <>
+    <Fragment>
       <Header />
-      <BodyWrapper pathname={pathname}>
+      <div css={bodyWrapper}>
         {children}
-      </BodyWrapper>
-    </>
+      </div>
+    </Fragment>
   )
 }
 

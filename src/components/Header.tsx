@@ -1,5 +1,4 @@
-import React from 'react'
-import styled from 'styled-components'
+import { css } from '@emotion/react' 
 import { Link } from 'gatsby'
 
 import Nav from './Nav'
@@ -7,7 +6,7 @@ import MobileNav from './MobileNav'
 import { colors, fonts } from '../styles/styles'
 import { useMedia } from '../utilities'
 
-const HeaderWrapper = styled.div`
+const headerWrapper = css`
   border-bottom: 1px solid ${colors.grey};
   align-items: center;
   position: sticky;
@@ -25,7 +24,7 @@ const HeaderWrapper = styled.div`
   }
 `
 
-const LinkWrapper = styled(Link)`
+const linkWrapper = css`
   color: ${colors.grey};
   text-decoration: none;
   font-family: ${fonts.megrim};
@@ -54,12 +53,12 @@ const Header = (): JSX.Element => {
     : navBreakpoint ? <MobileNav /> : <Nav />
 
   return (
-    <HeaderWrapper id='header-wrapper'>
-      <LinkWrapper to='/' >
+    <div css={headerWrapper} id='header-wrapper'>
+      <Link css={linkWrapper} to='/' >
         Janelle Solviletti
-      </LinkWrapper>
+      </Link>
       {Navigation}
-    </HeaderWrapper>
+    </div>
   )
 }
 
