@@ -47,18 +47,22 @@ const menu = css`
     background-color: ${colors.white};
     position: absolute;
     background-color: #f1f1f1;
-    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 8%);
+    box-shadow: 2px 2px 9px 4px rgb(0 0 0 / 10%);
     z-index: 1001;
     display: flex;
     flex-direction: column;
     border-radius: 2%;
     box-sizing: border-box;
+    width: 200px;
+    left: -50px;
+    top: 100%;
 `
 
 const nestedItem = css`
     ${navItem};
     padding: 12px 12px;
     margin-right: 0;
+    border-radius: 2%;
 
     :hover {
         background-color: #ddd;
@@ -79,6 +83,7 @@ const Nav = () => {
                             onMouseOver={() => setIsOpen(true)}
                             onMouseLeave={() => setIsOpen(false)}
                             tabIndex={0}
+                            css={css`position: relative; padding-bottom: 10px;`}
                         >
                             <a css={css`${navItem}; cursor: pointer;`} >
                                 {item.title}

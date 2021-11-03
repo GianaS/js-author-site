@@ -25,6 +25,7 @@ const makePageWrapper = (headerHeight: string): SerializedStyles => (
 const styledBackgroundImage = css`
     position: fixed;
     z-index: -101;
+    opacity: 8%;
 `
 
 const title = css`
@@ -45,7 +46,6 @@ const section = css`
 
 const styledImage = css`
     box-shadow: 2px 4px 15px ${colors.grey};
-
     width: 296px;
 
     @media (max-width: 700px) {
@@ -120,7 +120,7 @@ const Euphony = ({ data }: { data: unknown }): JSX.Element => {
                 description={META_DESCRIPTION}
             />
             <GatsbyImage
-                image={data.getRosePhoto.childImageSharp.gatsbyImageData}
+                image={data.getFlowerPhoto.childImageSharp.gatsbyImageData}
                 aria-hidden
                 alt=''
                 css={styledBackgroundImage}
@@ -129,7 +129,7 @@ const Euphony = ({ data }: { data: unknown }): JSX.Element => {
             <div css={section}>
                 <GatsbyImage
                     image={data.getCoverPhoto.childImageSharp.gatsbyImageData}
-                    alt='cameo book cover'
+                    alt='euphony book cover'
                     css={styledImage}
                 />
                 <div css={textButtonWrapper}>
@@ -154,9 +154,9 @@ const Euphony = ({ data }: { data: unknown }): JSX.Element => {
     )
 }
 
-export const getCameoData = graphql`
+export const getEuphonyData = graphql`
   query getEuphonyData {
-    getCoverPhoto: file(relativePath: { eq: "cameo-cover.png" }) {
+    getCoverPhoto: file(relativePath: { eq: "euphony-cover.png" }) {
       childImageSharp {
         gatsbyImageData(
           placeholder: BLURRED
@@ -164,7 +164,7 @@ export const getCameoData = graphql`
         )
       }
     }
-    getRosePhoto: file(relativePath: { eq: "rose-transparent.png" }) {
+    getFlowerPhoto: file(relativePath: { eq: "euphony-flower.png" }) {
       childImageSharp {
         gatsbyImageData(
           layout: CONSTRAINED

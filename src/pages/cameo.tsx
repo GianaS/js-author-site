@@ -25,6 +25,7 @@ const makePageWrapper = (headerHeight: string): SerializedStyles => (
 const styledBackgroundImage = css`
     position: fixed;
     z-index: -101;
+    opacity: 50%;
 `
 
 const title = css`
@@ -45,7 +46,6 @@ const section = css`
 
 const styledImage = css`
     box-shadow: 2px 4px 15px ${colors.grey};
-
     width: 296px;
 
     @media (max-width: 700px) {
@@ -129,7 +129,7 @@ const Cameo = ({ data }: { data: unknown }): JSX.Element => {
             <div css={section}>
                 <GatsbyImage
                     image={data.getCoverPhoto.childImageSharp.gatsbyImageData}
-                    alt='cameo book cover'
+                    alt='the cameo book cover'
                     css={styledImage}
                 />
                 <div css={textButtonWrapper}>
@@ -164,7 +164,7 @@ export const getCameoData = graphql`
         )
       }
     }
-    getRosePhoto: file(relativePath: { eq: "rose-transparent.png" }) {
+    getRosePhoto: file(relativePath: { eq: "rose-transparent-original.png" }) {
       childImageSharp {
         gatsbyImageData(
           layout: CONSTRAINED

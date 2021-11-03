@@ -12,7 +12,7 @@ const headerWrapper = css`
   position: sticky;
   top: 0;
   z-index: 1;
-  padding: 30px 0 30px 0;
+  padding: 30px 0 20px 0;
   background-color: ${colors.white};
   display: flex;
   flex-direction: column;
