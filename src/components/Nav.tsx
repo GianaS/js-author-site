@@ -97,7 +97,6 @@ const Nav = () => {
                                                 <Link
                                                     css={nestedItem}
                                                     to={link}
-                                                    activeClassName={'activeLink'}
                                                     key={title}
                                                     onClick={() => setIsOpen(false)}
                                                 >
@@ -115,7 +114,7 @@ const Nav = () => {
                     return (
                         <Link css={navItem}
                             to={link}
-                            activeClassName={'activeLink'}
+                            activeClassName={'activeNavItem'}
                             key={title}
                         >
                             {title}
