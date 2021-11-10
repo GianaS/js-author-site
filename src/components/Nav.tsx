@@ -3,12 +3,12 @@ import { css } from '@emotion/react'
 import { Link } from 'gatsby'
 
 import { navItems } from '../utilities'
-import { colors, fonts } from '../styles/styles'
+import { colors, fonts } from '../shared-styles/styles'
 
 const navItemWrapper = css`
     display: flex;
     justify-content: space-between;
-    width: 640px;
+    width: 670px;
     padding-top: 25px;
 `
 
@@ -16,7 +16,7 @@ const navItem = css`
     font-family: ${fonts.montserrat};
     text-transform: uppercase;
     text-decoration: none;
-    letter-spacing: 7px;
+    letter-spacing: 6px;
     font-size: 18px;
     color: ${colors.beige};
     font-weight: 500;

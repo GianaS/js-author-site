@@ -8,7 +8,7 @@ import {
     Sidebar
 } from 'semantic-ui-react'
 
-import { colors, fonts } from '../styles/styles'
+import { colors, fonts } from '../shared-styles/styles'
 import { navItems, NavItem, NotNestedNavItem } from '../utilities'
 
 const button = css`
@@ -33,16 +33,8 @@ const itemText = css`
 
 const MobileNav = (): JSX.Element => {
     const [showSidebar, setShowSidebar] = useState(false)
-    const items: NavItem[] = [
-        {
-            title: 'Home',
-            link: '/',
-            nested: false
-        },
-        ...navItems
-    ]
 
-    const mobileNavItems = items.reduce((acc, item) => {
+    const mobileNavItems = navItems.reduce((acc, item) => {
         if (item.nested) {
             return [...acc, ...item.childItems.map((childItem) => ({
                 title: childItem.title,

@@ -1,26 +1,26 @@
-import React from 'react'
+import { useState, useEffect } from 'react'
 
 const useMedia = (query: string): boolean => {
-  const [matches, setMatches] = React.useState(
-    window.matchMedia(query).matches
-  )
+    const [matches, setMatches] = useState(
+        window.matchMedia(query).matches
+    )
 
-  React.useEffect(() => {
-    const media = window.matchMedia(query)
+    useEffect(() => {
+        const media = window.matchMedia(query)
 
-    if (media.matches !== matches) {
-      setMatches(media.matches)
-    }
+        if (media.matches !== matches) {
+            setMatches(media.matches)
+        }
 
-    const listener = () => setMatches(media.matches)
-    media.addListener(listener)
+        const listener = () => setMatches(media.matches)
+        media.addListener(listener)
 
-    return () => media.removeListener(listener)
-  }, [query])
+        return () => media.removeListener(listener)
+    }, [query])
 
-  return matches
+    return matches
 }
 
 export {
-  useMedia
+    useMedia
 }

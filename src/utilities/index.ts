@@ -1,9 +1,10 @@
-import { navItems, NavItem, NotNestedNavItem } from './constants'
+import { navItems, NavItem, NotNestedNavItem, CAMEO_AMAZON_LINK } from './constants'
 import { useMedia } from './functions'
 
 export {
   navItems,
   useMedia,
   NavItem,
-  NotNestedNavItem
+  NotNestedNavItem,
+  CAMEO_AMAZON_LINK
 }

@@ -12,8 +12,8 @@ type NavItem = NotNestedNavItem | {
 
 const navItems: NavItem[] = [
     {
-        title: 'About',
-        link: '/about',
+        title: 'Home',
+        link: '/',
         nested: false
     },
     {
@@ -44,8 +44,11 @@ const navItems: NavItem[] = [
     }
 ]
 
+const CAMEO_AMAZON_LINK = 'https://www.amazon.com/dp/B08JLXYL38?ref_=pe_3052080_397514860'
+
 export {
     navItems,
     NavItem,
-    NotNestedNavItem
+    NotNestedNavItem,
+    CAMEO_AMAZON_LINK
 }

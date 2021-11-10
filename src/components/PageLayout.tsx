@@ -4,10 +4,10 @@ import { css } from '@emotion/react'
 import Header from './Header'
 
 const bodyWrapper = css`
-  width: 725px;
+  width: 900px;
   margin: 35px auto;
 
-  @media (max-width: 750px) {
+  @media (max-width: 975px) {
     width: 90%;
   }
 `

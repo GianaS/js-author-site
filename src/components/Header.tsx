@@ -3,7 +3,7 @@ import { Link } from 'gatsby'
 
 import Nav from './Nav'
 import MobileNav from './MobileNav'
-import { colors, fonts } from '../styles/styles'
+import { colors, fonts } from '../shared-styles/styles'
 import { useMedia } from '../utilities'
 
 const headerWrapper = css`

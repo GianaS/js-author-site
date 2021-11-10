@@ -3,7 +3,7 @@ import { css } from '@emotion/react'
 import { Icon } from 'semantic-ui-react'
 
 import Seo from '../components/Seo'
-import { fonts, colors } from '../styles/styles'
+import { fonts, colors } from '../shared-styles/styles'
 
 const title = css`
   font-family: ${fonts.montserrat};

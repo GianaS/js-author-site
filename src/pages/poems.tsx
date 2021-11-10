@@ -4,7 +4,7 @@ import { graphql } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
 
 import Seo from '../components/Seo'
-import { fonts } from '../styles/styles'
+import { fonts } from '../shared-styles/styles'
 
 type Poem = {
     id: string

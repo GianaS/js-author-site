@@ -1,100 +1,22 @@
 import { useEffect, useState } from 'react'
-import { css, SerializedStyles } from '@emotion/react'
 import { graphql } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
 
 import Seo from '../components/Seo'
-import { fonts, colors } from '../styles/styles'
-import { useMedia } from '../utilities'
-
-const makePageWrapper = (headerHeight: string): SerializedStyles => (
-    css`
-        height: calc(100vh - ${headerHeight});
-        
-        iframe {
-            box-shadow: 2px 4px 15px ${colors.grey};
-            margin-left: 40px;
-
-            @media (max-width: 700px) {
-                margin-left: 0;
-            }
-        }
-    `
-)
-
-const styledBackgroundImage = css`
-    position: fixed;
-    z-index: -101;
-    opacity: 8%;
-`
-
-const title = css`
-    font-family: ${fonts.montserrat};
-    font-weight: 400;
-    padding-bottom: 20px;
-`
-
-const section = css`
-    display: flex;
-    padding-bottom: 80px;
-
-    @media (max-width: 700px) {
-        flex-direction: column;
-        padding-bottom: 40px;
-    }
-`
-
-const styledImage = css`
-    box-shadow: 2px 4px 15px ${colors.grey};
-    width: 296px;
-
-    @media (max-width: 700px) {
-        margin-bottom: 30px;
-    }
-`
-
-const text = css`
-    font-family: ${fonts.montserrat};
-    line-height: 1.7;
-    font-size: 18px;
-    padding-bottom: 10px;
-`
-
-const textButtonWrapper = css`
-    padding-left: 40px;
-    flex: 1;
-
-    @media (max-width: 700px) {
-        padding-left: 0;
-    }
-`
-
-const buttonWrapper = css`
-    padding-bottom: 20px;
-
-    @media (max-width: 700px) {
-        padding: 10px 0 30px 0;
-    }
-`
-
-const styledLink = css`
-    text-decoration: none;
-    background-color: ${colors.beige};
-    color: ${colors.white};
-    padding: 9px 13px;
-    font-size: 16px;
-    border-radius: 5px;
-    font-family: ${fonts.montserrat};
-
-    :hover {
-        color: ${colors.white};
-        opacity: .9;
-    }
-`
+import { useMedia, CAMEO_AMAZON_LINK } from '../utilities'
+import { Button } from '../shared-components'
+import { 
+    makePageWrapper,
+    styledBackgroundImage,
+    title,
+    section,
+    styledImage,
+    text,
+    textButtonWrapper
+} from '../shared-styles/books'
 
 const BOOK_DESCRIPTION: JSX.Element = <p css={text}><i>Euphony</i> is a new collection of poetry and prose written by Janelle Solviletti, uncovering those &lsquo;sweet sounds&rsquo; that seemingly exist with us perpetually. If only life had a soundtrack...what would ours sound like?</p>
 const PLAYLIST_DESCRIPTION: JSX.Element = <p css={text}>Each poetic confession in <i>Euphony</i> dives headfirst into the intimate and secretive relationship we share with music, art, and those words that never leave us. Escape in the complexities and intensities of the deep emotions that divide dreamscapes from what is in front of our own eyes.</p>
-const AMAZON_LINK = 'https://www.amazon.com/dp/B08JLXYL38?ref_=pe_3052080_397514860'
 const META_DESCRIPTION = 'Euphony is a new collection of poetry and prose written by Janelle Solviletti, uncovering those sweet sounds that seemingly exist with us perpetually. If only life had a soundtrack...what would ours sound like? Each poetic confession in Euphony dives headfirst into the intimate and secretive relationship we share with music, art, and those words that never leave us. Escape in the complexities and intensities of the deep emotions that divide dreamscapes from what is in front of our own eyes.'
 
 const Euphony = ({ data }: { data: unknown }): JSX.Element => {
@@ -134,9 +56,7 @@ const Euphony = ({ data }: { data: unknown }): JSX.Element => {
                 />
                 <div css={textButtonWrapper}>
                     {!navBreakpoint ? BOOK_DESCRIPTION : null}
-                    <div css={buttonWrapper}>
-                        <a css={styledLink} href={AMAZON_LINK}>Order now</a>
-                    </div>
+                    <Button label='Order now' href={CAMEO_AMAZON_LINK} />
                     {navBreakpoint ? BOOK_DESCRIPTION : null}
                 </div>
             </div>
