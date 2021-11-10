@@ -8,8 +8,8 @@ import {
     Sidebar
 } from 'semantic-ui-react'
 
-import { colors, fonts } from '../shared-styles/styles'
-import { navItems, NavItem, NotNestedNavItem } from '../utilities'
+import { colors, fonts } from '../styles/sharedStyles'
+import { navItems, NotNestedNavItem } from '../utilities'
 
 const button = css`
   background-color: transparent !important;

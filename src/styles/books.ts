@@ -1,6 +1,6 @@
 import { css, SerializedStyles } from '@emotion/react'
 
-import { fonts, colors } from './styles'
+import { fonts, colors } from './sharedStyles'
 
 const makePageWrapper = (headerHeight: string): SerializedStyles => (
     css`

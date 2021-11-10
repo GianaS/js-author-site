@@ -1,9 +1,8 @@
-import { Fragment } from 'react'
 import { css } from '@emotion/react'
 import { Icon } from 'semantic-ui-react'
 
 import Seo from '../components/Seo'
-import { fonts, colors } from '../shared-styles/styles'
+import { fonts, colors, bodyWrapper } from '../styles/sharedStyles'
 
 const title = css`
   font-family: ${fonts.montserrat};
@@ -38,7 +37,7 @@ const META_DESCRIPTION = `Connect with Janelle Solviletti via email, Instagram, 
 
 const Contact = (): JSX.Element => {
     return (
-        <Fragment>
+        <div css={bodyWrapper}>
             <Seo
                 title='Contact | Janelle Solviletti'
                 description={META_DESCRIPTION}
@@ -58,7 +57,7 @@ const Contact = (): JSX.Element => {
                     <Icon css={styledIcon} link name='linkedin' />
                 </a>
             </div>
-        </Fragment>
+        </div>
     )
 }
 

@@ -1,6 +1,6 @@
 import { css, } from '@emotion/react'
 
-import { fonts, colors } from '../shared-styles/styles'
+import { fonts, colors } from '../styles/sharedStyles'
 
 const buttonWrapper = css`
     padding-bottom: 20px;

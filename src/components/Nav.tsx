@@ -3,7 +3,7 @@ import { css } from '@emotion/react'
 import { Link } from 'gatsby'
 
 import { navItems } from '../utilities'
-import { colors, fonts } from '../shared-styles/styles'
+import { colors, fonts } from '../styles/sharedStyles'
 
 const navItemWrapper = css`
     display: flex;

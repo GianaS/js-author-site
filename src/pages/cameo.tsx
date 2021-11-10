@@ -6,7 +6,8 @@ import { css } from '@emotion/react'
 import Seo from '../components/Seo'
 import { useMedia, CAMEO_AMAZON_LINK } from '../utilities'
 import { Button } from '../shared-components'
-import { 
+import { bodyWrapper } from '../styles/sharedStyles'
+import {
     makePageWrapper,
     styledBackgroundImage,
     title,
@@ -14,7 +15,7 @@ import {
     styledImage,
     text,
     textButtonWrapper
-} from '../shared-styles/books'
+} from '../styles/books'
 
 const BOOK_DESCRIPTION: JSX.Element = <p css={text}>“I wish to disunite the postulation that love and time are one and the same.” <i>The Cameo</i> is a short collection of poetry and prose depicting the damage of two souls intertwining, as well as the even bolder proposition that romantic disillusion itself is a mirage. A metaphysical investigation into desire, disorder, and the natural world.</p>
 const PLAYLIST_DESCRIPTION: JSX.Element = <p css={text}>Music transcends through time. Over the years, these songs were part of the making of <i>The Cameo</i>,  and whisper secrets in the margins. Before you turn the page, tune in to the place where it all began.</p>
@@ -37,7 +38,7 @@ const Cameo = ({ data }: { data: unknown }): JSX.Element => {
     }, [])
 
     return (
-        <div css={makePageWrapper(headerHeight)}>
+        <div css={css`${bodyWrapper}; ${makePageWrapper(headerHeight)}`}>
             <Seo
                 title='The Cameo | Janelle Solviletti'
                 description={META_DESCRIPTION}

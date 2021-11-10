@@ -1,8 +1,7 @@
-import { Fragment } from 'react'
 import { css } from '@emotion/react'
 
 import Seo from '../components/Seo'
-import { fonts } from '../shared-styles/styles'
+import { fonts, bodyWrapper } from '../styles/sharedStyles'
 
 const title = css`
     font-family: ${fonts.montserrat};
@@ -14,13 +13,13 @@ const META_DESCRIPTION = 'Janelle Solviletti is a writer from Boston, Massachuse
 
 const Home = (): JSX.Element => {
     return (
-        <Fragment>
+        <div css={bodyWrapper}>
             <Seo
                 title='Home | Janelle Solviletti'
                 description={META_DESCRIPTION}
             />
             <h1 css={title}>Work in Progress</h1>
-        </Fragment>
+        </div>
     )
 }
 

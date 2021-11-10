@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react'
 import { graphql } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
+import { css } from '@emotion/react'
 
 import Seo from '../components/Seo'
 import { useMedia, CAMEO_AMAZON_LINK } from '../utilities'
 import { Button } from '../shared-components'
-import { 
+import { bodyWrapper } from '../styles/sharedStyles'
+import {
     makePageWrapper,
     styledBackgroundImage,
     title,
@@ -13,7 +15,7 @@ import {
     styledImage,
     text,
     textButtonWrapper
-} from '../shared-styles/books'
+} from '../styles/books'
 
 const BOOK_DESCRIPTION: JSX.Element = <p css={text}><i>Euphony</i> is a new collection of poetry and prose written by Janelle Solviletti, uncovering those &lsquo;sweet sounds&rsquo; that seemingly exist with us perpetually. If only life had a soundtrack...what would ours sound like?</p>
 const PLAYLIST_DESCRIPTION: JSX.Element = <p css={text}>Each poetic confession in <i>Euphony</i> dives headfirst into the intimate and secretive relationship we share with music, art, and those words that never leave us. Escape in the complexities and intensities of the deep emotions that divide dreamscapes from what is in front of our own eyes.</p>
@@ -36,7 +38,7 @@ const Euphony = ({ data }: { data: unknown }): JSX.Element => {
     }, [])
 
     return (
-        <div css={makePageWrapper(headerHeight)}>
+        <div css={css`${bodyWrapper}; ${makePageWrapper(headerHeight)}`}>
             <Seo
                 title='Euphony | Janelle Solviletti'
                 description={META_DESCRIPTION}

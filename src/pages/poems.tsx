@@ -1,10 +1,20 @@
-import { Fragment } from 'react'
-import { css } from '@emotion/react'
 import { graphql } from 'gatsby'
+import { css } from '@emotion/react'
 import { GatsbyImage } from 'gatsby-plugin-image'
 
 import Seo from '../components/Seo'
-import { fonts } from '../shared-styles/styles'
+import { bodyWrapper } from '../styles/sharedStyles'
+import {
+    cardTitle,
+    yearSection,
+    formattedPoems,
+    poem,
+    caption,
+    roseIcon,
+    greenBackgroundSection,
+    poemCard,
+    grid
+} from '../styles/poems'
 
 type Poem = {
     id: string
@@ -18,60 +28,20 @@ type SelectedPoems = {
     [_: string]: Poem[]
 }
 
-const title = css`
-  font-family: ${fonts.montserrat};
-  font-weight: 400;
-  padding-bottom: 20px;
-`
-
-const yearSection = css`
-  font-family: ${fonts.montserrat};
-
-  h2 {
-    font-weight: 400;
-    font-size: 22px;
-    padding-bottom: 8px;
-  }
-`
-
-const poemSection = css`
-  display: flex;
-  flex-direction: column;
-  font-size: 18px;
-  padding-bottom: 14px;
-`
-
-const styledPoem = css`
-  display: inline-block;
-  margin-bottom: 18px;
-`
-
-const caption = css`
-  font-family: ${fonts.montserrat};
-  padding: 6px 0 35px 0;
-`
-
-const styledImage = css`
-  height: 35px;
-  width: 35px;
-  top: -6px;
-  display: inline-block;
-`
-
 const buildPoemSection = ({ id, title, publication, link, data }: Poem) => {
     const titleElement: JSX.Element = link
         ? <a href={link}><i>{title}, </i></a>
         : <i>{title}, </i>
 
     return (
-        <span css={styledPoem} key={id}>
+        <span css={poem} key={id}>
             {
                 title === 'The Cameo'
                 &&
                 <GatsbyImage
                     image={data.getRosePhoto.childImageSharp.gatsbyImageData}
-                    alt='janelle self portrait'
-                    css={styledImage}
+                    alt='rose'
+                    css={roseIcon}
                 />
             }
             {titleElement}
@@ -98,32 +68,40 @@ const META_DESCRIPTION = 'View selection of published poems by Janelle Solvilett
 
 const Poem = ({ data }: { data: unknown }): JSX.Element => {
     const { edges: poemsFromApi } = data.allContentfulPoem
-    const formattedPoems = createPoemObject(poemsFromApi)
+    const poemObject = createPoemObject(poemsFromApi)
 
     return (
-        <Fragment>
+        <div css={css`position: relative;`}>
             <Seo
                 title='Poems | Janelle Solviletti'
                 description={META_DESCRIPTION}
             />
-            <h1 css={title}>Selected Poems</h1>
-            {Object.keys(formattedPoems).reverse().map((year, index) => {
-                return (
-                    <div css={yearSection} key={index}>
-                        <h2>{year}</h2>
-                        <div css={poemSection}>
-                            {formattedPoems[year].map((poem) => buildPoemSection({ ...poem, data }))}
-                        </div>
+            <div css={greenBackgroundSection} />
+            <div css={bodyWrapper}>
+                <div css={grid}>
+                    <div css={poemCard}>
+                        <h1 css={cardTitle}>Published Work</h1>
+                        {Object.keys(poemObject).reverse().map((year, index) => {
+                            return (
+                                <div css={yearSection} key={index}>
+                                    <h2>{year}</h2>
+                                    <div css={formattedPoems}>
+                                        {poemObject[year].map((poem) => buildPoemSection({ ...poem, data }))}
+                                    </div>
+                                </div>
+                            )
+                        })}
                     </div>
-                )
-            })}
-            <GatsbyImage
-                image={data.getPoemReadingPhoto.childImageSharp.gatsbyImageData}
-                alt='janelle reading a poem'
-                style={{ marginTop: '40px' }}
-            />
-            <p css={caption}>Janelle reading <i>Penultimate</i> at Marist College.</p>
-        </Fragment>
+                    <div css={css`min-width: 450px; max-width: 650px;`}>
+                        <GatsbyImage
+                            image={data.getPoemReadingPhoto.childImageSharp.gatsbyImageData}
+                            alt='janelle reading a poem'
+                        />
+                        <p css={caption}>Janelle reading <i>Penultimate</i> at Marist College.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     )
 }
 
