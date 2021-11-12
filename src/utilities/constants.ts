@@ -46,9 +46,12 @@ const navItems: NavItem[] = [
 
 const CAMEO_AMAZON_LINK = 'https://www.amazon.com/dp/B08JLXYL38?ref_=pe_3052080_397514860'
 
+const EUPHONY_AMAZON_LINK = 'https://www.amazon.com/dp/B08JLXYL38?ref_=pe_3052080_397514860'
+
 export {
     navItems,
     NavItem,
     NotNestedNavItem,
-    CAMEO_AMAZON_LINK
+    CAMEO_AMAZON_LINK,
+    EUPHONY_AMAZON_LINK
 }

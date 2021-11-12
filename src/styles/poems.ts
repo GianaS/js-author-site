@@ -12,11 +12,11 @@ const greenBackgroundSection = css`
 
 const grid = css`
     display: grid;
-    justify-items: end;
 
     @media (min-width: 975px) {
         grid-template-columns: 1fr 1fr;
         column-gap: 25px;
+        justify-items: end;
     }
     
     @media (max-width: 976px) {
@@ -32,19 +32,16 @@ const poemCard = css`
 `
 
 const cardTitle = css`
-    font-family: ${fonts.montserrat};
+    font-family: ${fonts.yesevaOne};
     font-weight: 400;
     padding-bottom: 20px;
 `
 
-const yearSection = css`
-    font-family: ${fonts.montserrat};
-
-    h2 {
-        font-weight: 400;
-        font-size: 22px;
-        padding-bottom: 8px;
-    }
+const yearHeading = css`
+    font-weight: 400;
+    font-size: 22px;
+    padding-bottom: 8px;
+    font-family: ${fonts.yesevaOne};
 `
 
 const formattedPoems = css`
@@ -52,11 +49,19 @@ const formattedPoems = css`
     flex-direction: column;
     font-size: 18px;
     padding-bottom: 14px;
+    font-family: ${fonts.montserrat};
 `
 
 const poem = css`
     display: inline-block;
     margin-bottom: 18px;
+`
+
+const imageSection = css`
+    @media (min-width: 975px) {
+        min-width: 430px;
+        max-width: 650px;
+    }
 `
 
 const caption = css`
@@ -73,12 +78,13 @@ const roseIcon = css`
 
 export {
     cardTitle,
-    yearSection,
+    yearHeading,
     formattedPoems,
     poem,
     caption,
     roseIcon,
     greenBackgroundSection,
     poemCard,
-    grid
+    grid,
+    imageSection
 }

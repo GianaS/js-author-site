@@ -6,14 +6,15 @@ import Seo from '../components/Seo'
 import { bodyWrapper } from '../styles/sharedStyles'
 import {
     cardTitle,
-    yearSection,
+    yearHeading,
     formattedPoems,
     poem,
     caption,
     roseIcon,
     greenBackgroundSection,
     poemCard,
-    grid
+    grid,
+    imageSection
 } from '../styles/poems'
 
 type Poem = {
@@ -83,8 +84,8 @@ const Poem = ({ data }: { data: unknown }): JSX.Element => {
                         <h1 css={cardTitle}>Published Work</h1>
                         {Object.keys(poemObject).reverse().map((year, index) => {
                             return (
-                                <div css={yearSection} key={index}>
-                                    <h2>{year}</h2>
+                                <div key={index}>
+                                    <h2 css={yearHeading}>{year}</h2>
                                     <div css={formattedPoems}>
                                         {poemObject[year].map((poem) => buildPoemSection({ ...poem, data }))}
                                     </div>
@@ -92,7 +93,7 @@ const Poem = ({ data }: { data: unknown }): JSX.Element => {
                             )
                         })}
                     </div>
-                    <div css={css`min-width: 450px; max-width: 650px;`}>
+                    <div css={imageSection}>
                         <GatsbyImage
                             image={data.getPoemReadingPhoto.childImageSharp.gatsbyImageData}
                             alt='janelle reading a poem'

@@ -6,7 +6,7 @@ const PageLayout = ({ children }: { children: ReactNode }) => {
     return (
         <Fragment>
             <Header />
-                {children}
+            {children}
         </Fragment>
     )
 }

@@ -4,7 +4,7 @@ import { GatsbyImage } from 'gatsby-plugin-image'
 import { css } from '@emotion/react'
 
 import Seo from '../components/Seo'
-import { useMedia, CAMEO_AMAZON_LINK } from '../utilities'
+import { useMedia, EUPHONY_AMAZON_LINK } from '../utilities'
 import { Button } from '../shared-components'
 import { bodyWrapper } from '../styles/sharedStyles'
 import {
@@ -58,7 +58,7 @@ const Euphony = ({ data }: { data: unknown }): JSX.Element => {
                 />
                 <div css={textButtonWrapper}>
                     {!navBreakpoint ? BOOK_DESCRIPTION : null}
-                    <Button label='Order now' href={CAMEO_AMAZON_LINK} />
+                    <Button label='Order now' href={EUPHONY_AMAZON_LINK} />
                     {navBreakpoint ? BOOK_DESCRIPTION : null}
                 </div>
             </div>
