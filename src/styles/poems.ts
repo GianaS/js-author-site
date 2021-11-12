@@ -20,7 +20,7 @@ const grid = css`
     }
     
     @media (max-width: 976px) {
-        grid-template-rows: 1fr 1fr;
+        grid-template-rows: auto;
         row-gap: 30px;
     }
 `
