@@ -69,11 +69,16 @@ const caption = css`
     font-family: ${fonts.montserrat};
 `
 
-const roseIcon = css`
+const cameoIcon = css`
     height: 35px;
     width: 35px;
-    top: -6px;
-    display: inline-block;
+    top: -8px;
+`
+
+const euphonyIcon = css`
+    width: 22px;
+    top: -11px;
+    margin-right: 5px;
 `
 
 export {
@@ -82,7 +87,8 @@ export {
     formattedPoems,
     poem,
     caption,
-    roseIcon,
+    euphonyIcon,
+    cameoIcon,
     greenBackgroundSection,
     poemCard,
     grid,

@@ -10,11 +10,12 @@ import {
     formattedPoems,
     poem,
     caption,
-    roseIcon,
     greenBackgroundSection,
     poemCard,
     grid,
-    imageSection
+    imageSection,
+    euphonyIcon,
+    cameoIcon
 } from '../styles/poems'
 
 type Poem = {
@@ -34,17 +35,29 @@ const buildPoemSection = ({ id, title, publication, link, data }: Poem) => {
         ? <a href={link}><i>{title}, </i></a>
         : <i>{title}, </i>
 
+    let Icon = null
+
+    if (title === 'The Cameo') {
+        Icon = (
+            <GatsbyImage
+                image={data.getRosePhoto.childImageSharp.gatsbyImageData}
+                alt='cameo icon'
+                css={cameoIcon}
+            />
+        )
+    } else if (title === 'Euphony') {
+        Icon = (
+            <GatsbyImage
+                image={data.getEuphonyIcon.childImageSharp.gatsbyImageData}
+                alt='euphony icon'
+                css={euphonyIcon}
+            />
+        )
+    }
+
     return (
         <span css={poem} key={id}>
-            {
-                title === 'The Cameo'
-                &&
-                <GatsbyImage
-                    image={data.getRosePhoto.childImageSharp.gatsbyImageData}
-                    alt='rose'
-                    css={roseIcon}
-                />
-            }
+            {Icon}
             {titleElement}
             {publication}
         </span>
@@ -124,6 +137,14 @@ export const getPoemsData = graphql`
         )
       }
     }
+    getEuphonyIcon: file(relativePath: { eq: "euphony-flower.png" }) {
+        childImageSharp {
+          gatsbyImageData(
+            layout: CONSTRAINED
+            placeholder: BLURRED
+          )
+        }
+      }
     allContentfulPoem(sort: {fields: updatedAt, order: DESC}) {
       edges {
         node {
