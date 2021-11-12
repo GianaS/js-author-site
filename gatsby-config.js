@@ -30,7 +30,8 @@ module.exports = {
           'Megrim',
           'Montserrat\:400,500',
           'Zeyada',
-          'Yeseva One'
+          'Yeseva One',
+          'Cinzel Decorative\:Regular 400'
         ],
         display: 'swap'
       }

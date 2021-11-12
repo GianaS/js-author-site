@@ -27,16 +27,20 @@ const headerWrapper = css`
 const linkWrapper = css`
   color: ${colors.grey};
   text-decoration: none;
-  font-family: ${fonts.megrim};
-  font-weight: normal;
+  font-family: ${fonts.cinzelDecorative} cursive;
   margin-top: 0;
   text-transform: uppercase;
   font-size: 38px;
-  font-weight: 900;
   padding: 15px 0;
 
   @media (max-width: 700px) {
     font-size: 30px;
+    line-height: 28px;
+  }
+
+  @media (max-width: 395px) {
+      font-size: 28px;
+      line-height: 28px;
   }
 
   &:hover {

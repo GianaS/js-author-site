@@ -3,7 +3,7 @@ import { css } from '@emotion/react'
 import { GatsbyImage } from 'gatsby-plugin-image'
 
 import Seo from '../components/Seo'
-import { bodyWrapper } from '../styles/sharedStyles'
+import { bodyWrapper, grid } from '../styles/sharedStyles'
 import {
     cardTitle,
     yearHeading,
@@ -12,7 +12,6 @@ import {
     caption,
     greenBackgroundSection,
     poemCard,
-    grid,
     imageSection,
     euphonyIcon,
     cameoIcon

@@ -10,21 +10,6 @@ const greenBackgroundSection = css`
     z-index: -1;
 `
 
-const grid = css`
-    display: grid;
-
-    @media (min-width: 975px) {
-        grid-template-columns: 1fr 1fr;
-        column-gap: 25px;
-        justify-items: end;
-    }
-    
-    @media (max-width: 976px) {
-        grid-template-rows: auto;
-        row-gap: 30px;
-    }
-`
-
 const poemCard = css`
     background-color: ${colors.offWhite};
     box-shadow: 0px 2px 9px rgba(0, 0, 0, 0.25);
@@ -91,6 +76,5 @@ export {
     cameoIcon,
     greenBackgroundSection,
     poemCard,
-    grid,
     imageSection
 }
