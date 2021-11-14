@@ -10,7 +10,8 @@ const colors = {
     sweetBrown: '#A63D40',
     green: '#7DAA7B',
     redOrange: '#DA532D',
-    mintGreen: '#D8E6D8'
+    mintGreen: '#D8E6D8',
+    blackFont: '#424242'
 }
 
 const fonts = {
@@ -38,7 +39,6 @@ const grid = css`
     @media (min-width: 975px) {
         grid-template-columns: 1fr 1fr;
         column-gap: 25px;
-        justify-items: end;
     }
     
     @media (max-width: 976px) {
