@@ -1,6 +1,7 @@
 import { css, } from '@emotion/react'
 
 import { fonts, colors } from '../styles/sharedStyles'
+import { BREAKPOINT } from '../utilities'
 
 const styledLink = css`
     text-decoration: none;
@@ -19,6 +20,10 @@ const styledLink = css`
     :hover {
         color: ${colors.white};
         opacity: .9;
+    }
+
+    @media (max-width: ${BREAKPOINT}px) {
+        width: 170px;
     }
 `
 

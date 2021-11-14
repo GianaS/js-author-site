@@ -71,6 +71,30 @@ const cameoCover = css`
     max-width: 300px;
     min-width: 250px;
     box-shadow: 2px 4px 15px ${colors.grey};
+
+    @media (max-width: ${BREAKPOINT}px) {
+        max-width: 255px;
+        max-width: 245px;
+    }
+`
+
+const authorBlockSection = css`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 65px 0;
+`
+
+const publishedWorkLink = css`
+    font-family: ${fonts.montserrat};
+    font-size: 18px;
+    text-decoration: none;
+    color: ${colors.sweetBrown};
+    padding: 0 0 32px 0;
+
+    :hover {
+        color: ${colors.redOrange};
+    }
 `
 
 export {
@@ -81,5 +105,7 @@ export {
     cameoCover,
     cameoImageContainer,
     cameoRose,
-    reverseReverse
+    reverseReverse,
+    publishedWorkLink,
+    authorBlockSection
 }
