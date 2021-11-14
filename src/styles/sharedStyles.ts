@@ -1,7 +1,7 @@
 import { css } from '@emotion/react'
 
 const colors = {
-    black: 'black',
+    black: '#000000',
     white: '#F6F6F3',
     grey: '#424242',
     beige: '#9e7762',
@@ -10,8 +10,7 @@ const colors = {
     sweetBrown: '#A63D40',
     green: '#7DAA7B',
     redOrange: '#DA532D',
-    mintGreen: '#D8E6D8',
-    blackFont: '#424242'
+    mintGreen: '#D8E6D8'
 }
 
 const fonts = {

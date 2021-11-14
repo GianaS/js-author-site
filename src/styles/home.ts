@@ -2,7 +2,7 @@ import { css } from '@emotion/react'
 
 import { colors, fonts } from './sharedStyles'
 
-const offWhiteBackgroundSection = css`
+const euphonyBackground = css`
     background-color: ${colors.offWhite};
     height: 600px;
     width: 100%;
@@ -10,20 +10,27 @@ const offWhiteBackgroundSection = css`
     z-index: -1;
 `
 
-const euphonySectionGrid = css`
-    background-color: ${colors.offWhite};
+const cameoBackground = css`
+    background-color: ${colors.mintGreen};
+    height: 600px;
+    width: 100%;
+    position: absolute;
+    z-index: -1;
+    top: 600px;
 `
 
 const sectionTitle = css`
     font-family: ${fonts.yesevaOne};
     font-weight: 400;
     font-size: 72px;
+    color: ${colors.black};
 `
 
 const paragraph = css`
     font-family: ${fonts.montserrat};
     font-size: 18px;
     padding-bottom: 14px;
+    color: ${colors.black};
 `
 
 const chip = css`
@@ -45,7 +52,7 @@ const learnMoreLink = css`
     font-family: ${fonts.montserrat};
     font-size: 18px;
     text-decoration: none;
-    color: ${colors.blackFont};
+    color: ${colors.black};
     padding-left: 80px;
 
     :hover {
@@ -54,10 +61,10 @@ const learnMoreLink = css`
 `
 
 export {
-    offWhiteBackgroundSection,
+    euphonyBackground,
     sectionTitle,
     paragraph,
     chip,
     learnMoreLink,
-    euphonySectionGrid
+    cameoBackground
 }
