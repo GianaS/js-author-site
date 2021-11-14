@@ -1,6 +1,7 @@
 import { css, SerializedStyles } from '@emotion/react'
 
 import { fonts, colors } from './sharedStyles'
+import { BREAKPOINT } from '../utilities'
 
 const makePageWrapper = (headerHeight: string): SerializedStyles => (
     css`
@@ -23,7 +24,7 @@ const styledBackgroundImage = css`
     opacity: 8%;
     margin-left: 140px;
 
-    @media (max-width: 975px) {
+    @media (max-width: ${BREAKPOINT}px) {
         margin-left: 0px;
     }
 `

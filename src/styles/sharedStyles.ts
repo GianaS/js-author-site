@@ -1,5 +1,7 @@
 import { css } from '@emotion/react'
 
+import { BREAKPOINT } from '../utilities'
+
 const colors = {
     black: '#000000',
     white: '#F6F6F3',
@@ -22,12 +24,11 @@ const fonts = {
 }
 
 const bodyWrapper = css`
-    padding: 35px 0;
     margin: 0 auto;
     width: 80%;
     max-width: 1600px;
 
-    @media (max-width: 975px) {
+    @media (max-width: ${BREAKPOINT}px) {
         width: 90%;
     }
 `
@@ -35,14 +36,36 @@ const bodyWrapper = css`
 const grid = css`
     display: grid;
 
-    @media (min-width: 975px) {
+    @media (min-width: ${BREAKPOINT}px) {
         grid-template-columns: 1fr 1fr;
         column-gap: 25px;
     }
     
-    @media (max-width: 976px) {
+    @media (max-width: ${BREAKPOINT + 1}px) {
         grid-template-rows: auto;
         row-gap: 30px;
+    }
+`
+
+const makeBannerBlockGrid = (backgroundColor: string) => css`
+    ${grid};
+    padding: 65px 0;
+    position: relative;
+
+    ::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: -10vw;
+        right: -10vw;
+        background-color: ${backgroundColor};
+        z-index: -1;
+
+        @media (max-width: ${BREAKPOINT}px) {
+            left: -5vw;
+            right: -5vw;
+        }
     }
 `
 
@@ -50,5 +73,6 @@ export {
     colors,
     fonts,
     bodyWrapper,
-    grid
+    grid,
+    makeBannerBlockGrid
 }

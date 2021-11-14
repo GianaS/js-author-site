@@ -1,22 +1,13 @@
 import { css } from '@emotion/react'
 
 import { colors, fonts } from './sharedStyles'
+import { BREAKPOINT } from '../utilities'
 
-const euphonyBackground = css`
-    background-color: ${colors.offWhite};
-    height: 600px;
-    width: 100%;
-    position: absolute;
-    z-index: -1;
-`
-
-const cameoBackground = css`
-    background-color: ${colors.mintGreen};
-    height: 600px;
-    width: 100%;
-    position: absolute;
-    z-index: -1;
-    top: 600px;
+const reverseReverse = css`
+    @media (max-width: ${BREAKPOINT + 1}px) {
+        grid-column-start: 1;
+        grid-row-start: 1;
+    }
 `
 
 const sectionTitle = css`
@@ -53,18 +44,42 @@ const learnMoreLink = css`
     font-size: 18px;
     text-decoration: none;
     color: ${colors.black};
-    padding-left: 80px;
+    margin-left: 12%;
 
     :hover {
         color: ${colors.beige};
     }
 `
 
+const cameoImageContainer = css`
+    ${reverseReverse};
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+`
+
+const cameoRose = css`
+    position: absolute;
+    margin: 0 auto;
+    overflow: hidden;
+    top: -35px;
+    bottom: -35px;
+`
+
+const cameoCover = css`
+    max-width: 300px;
+    min-width: 250px;
+    box-shadow: 2px 4px 15px ${colors.grey};
+`
+
 export {
-    euphonyBackground,
     sectionTitle,
     paragraph,
     chip,
     learnMoreLink,
-    cameoBackground
+    cameoCover,
+    cameoImageContainer,
+    cameoRose,
+    reverseReverse
 }

@@ -90,7 +90,7 @@ const Poem = ({ data }: { data: unknown }): JSX.Element => {
                 description={META_DESCRIPTION}
             />
             <div css={greenBackgroundSection} />
-            <div css={bodyWrapper}>
+            <div css={css`${bodyWrapper}; padding: 65px 0;`}>
                 <div css={grid}>
                     <div css={poemCard}>
                         <h1 css={cardTitle}>Published Work</h1>

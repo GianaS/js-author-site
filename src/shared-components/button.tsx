@@ -6,7 +6,11 @@ const styledLink = css`
     text-decoration: none;
     background-color: ${colors.beige};
     color: ${colors.white};
-    padding: 10px 74px;
+    width: 228px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-size: 18px;
     border-radius: 4%;
     font-family: ${fonts.montserrat};

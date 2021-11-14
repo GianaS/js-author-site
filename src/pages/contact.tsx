@@ -37,7 +37,7 @@ const META_DESCRIPTION = `Connect with Janelle Solviletti via email, Instagram, 
 
 const Contact = (): JSX.Element => {
     return (
-        <div css={bodyWrapper}>
+        <div css={css`${bodyWrapper}; padding: 65px 0;`}>
             <Seo
                 title='Contact | Janelle Solviletti'
                 description={META_DESCRIPTION}

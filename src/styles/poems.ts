@@ -1,5 +1,6 @@
 import { css } from '@emotion/react'
 
+import { BREAKPOINT } from '../utilities'
 import { fonts, colors } from './sharedStyles'
 
 const greenBackgroundSection = css`
@@ -43,7 +44,7 @@ const poem = css`
 `
 
 const imageSection = css`
-    @media (min-width: 975px) {
+    @media (min-width: ${BREAKPOINT}px) {
         min-width: 430px;
         max-width: 650px;
     }
