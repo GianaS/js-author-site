@@ -1,4 +1,4 @@
-import { css } from '@emotion/react'
+import { css, SerializedStyles } from '@emotion/react'
 
 import { BREAKPOINT } from '../utilities'
 
@@ -41,13 +41,19 @@ const grid = css`
         column-gap: 25px;
     }
     
-    @media (max-width: ${BREAKPOINT + 1}px) {
+    @media (max-width: ${BREAKPOINT}px) {
         grid-template-rows: auto;
         row-gap: 30px;
     }
 `
 
-const makeBannerBlockGrid = (backgroundColor: string) => css`
+const reverseReverse = css`
+    @media (max-width: ${BREAKPOINT}px) {
+        grid-row-start: 1;
+    }
+`
+
+const makeBannerBlockGrid = (backgroundColor: string): SerializedStyles => css`
     ${grid};
     padding: 65px 0;
     position: relative;
@@ -66,6 +72,51 @@ const makeBannerBlockGrid = (backgroundColor: string) => css`
             left: -5vw;
             right: -5vw;
         }
+        
+        @media (min-width: 1600px) {
+            left: calc(-1 * (50vw - 50%));
+            right: calc(-1 * (50vw - 50%));
+        }
+    }
+`
+
+const sectionTitle = css`
+    font-family: ${fonts.yesevaOne};
+    font-weight: 400;
+    font-size: 72px;
+    color: ${colors.black};
+`
+
+const paragraph = css`
+    font-family: ${fonts.montserrat};
+    font-size: 18px;
+    padding-bottom: 14px;
+    color: ${colors.black};
+`
+
+const bookImageContainer = css`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+`
+
+const bookFlower = css`
+    position: absolute;
+    margin: 0 auto;
+    overflow: hidden;
+    top: -35px;
+    bottom: -35px;
+`
+
+const bookCover = css`
+    max-width: 300px;
+    min-width: 250px;
+    box-shadow: 2px 4px 15px ${colors.grey};
+
+    @media (max-width: ${BREAKPOINT}px) {
+        max-width: 255px;
+        max-width: 245px;
     }
 `
 
@@ -74,5 +125,11 @@ export {
     fonts,
     bodyWrapper,
     grid,
-    makeBannerBlockGrid
+    makeBannerBlockGrid,
+    sectionTitle,
+    paragraph,
+    reverseReverse,
+    bookImageContainer,
+    bookFlower,
+    bookCover
 }

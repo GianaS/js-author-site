@@ -4,18 +4,22 @@ import { Link, graphql } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
 
 import Seo from '../components/Seo'
-import { bodyWrapper, makeBannerBlockGrid, colors } from '../styles/sharedStyles'
 import { Button } from '../shared-components'
 import { EUPHONY_AMAZON_LINK, CAMEO_AMAZON_LINK } from '../utilities'
 import {
+    bodyWrapper,
+    makeBannerBlockGrid,
+    colors,
     sectionTitle,
     paragraph,
+    bookImageContainer,
+    bookFlower,
+    bookCover,
+    reverseReverse
+} from '../styles/sharedStyles'
+import {
     chip,
     learnMoreLink,
-    cameoCover,
-    cameoImageContainer,
-    cameoRose,
-    reverseReverse,
     publishedWorkLink,
     authorBlockSection
 } from '../styles/home'
@@ -51,15 +55,15 @@ const Home = ({ data }: { data: unknown }): JSX.Element => {
                     <div>
                         <h1 css={sectionTitle}>The Cameo</h1>
                         <p css={paragraph}>{CAMEO_DESCRIPTION}</p>
-                        <div css={css`display: flex; align-items: center;x`}>
+                        <div css={css`display: flex; align-items: center;`}>
                             <Button label='Buy now' href={CAMEO_AMAZON_LINK} />
                             <Link css={learnMoreLink} to='/cameo' >
                                 Learn More
                             </Link>
                         </div>
                     </div>
-                    <div css={cameoImageContainer}>
-                        <div css={cameoRose}>
+                    <div css={css`${bookImageContainer}; ${reverseReverse}`}>
+                        <div css={bookFlower}>
                             <GatsbyImage
                                 image={data?.getRosePhoto?.childImageSharp?.gatsbyImageData}
                                 aria-hidden
@@ -70,7 +74,7 @@ const Home = ({ data }: { data: unknown }): JSX.Element => {
                         <GatsbyImage
                             image={data?.getCoverPhoto?.childImageSharp?.gatsbyImageData}
                             alt='the cameo book cover'
-                            css={cameoCover}
+                            css={bookCover}
                         />
                     </div>
                 </div>
