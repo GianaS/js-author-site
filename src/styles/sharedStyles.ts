@@ -85,6 +85,10 @@ const sectionTitle = css`
     font-weight: 400;
     font-size: 72px;
     color: ${colors.black};
+
+    @media (max-width: ${BREAKPOINT}px) {
+        font-size: 52px;
+    }
 `
 
 const paragraph = css`

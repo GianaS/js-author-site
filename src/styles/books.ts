@@ -1,6 +1,6 @@
 import { css } from '@emotion/react'
 
-import { colors } from './sharedStyles'
+import { colors, sectionTitle } from './sharedStyles'
 import { BREAKPOINT } from '../utilities'
 
 const playlist = css`
@@ -12,8 +12,7 @@ const playlist = css`
     }
 
     @media (max-width: ${BREAKPOINT}px) {
-        width: 70%;
-        min-width: 280px;
+        width: 100%;
     }
 `
 
@@ -28,12 +27,22 @@ const playlistTextCard = css`
     background-color: ${colors.white};
     box-shadow: 0px 4px 9px 2px rgba(0, 0, 0, 0.25);
     padding: 24px;
-    height: fit-content
+    height: fit-content;
+`
+
+const inspirationTitle = css`
+    ${sectionTitle};
+    font-size: 24px;
+
+    @media (max-width: ${BREAKPOINT}px) {
+        font-size: 24px;
+    }
 `
 
 
 export {
     playlist,
     playlistContainer,
-    playlistTextCard
+    playlistTextCard,
+    inspirationTitle
 }

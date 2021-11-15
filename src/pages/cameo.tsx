@@ -20,7 +20,8 @@ import {
 import {
     playlist,
     playlistContainer,
-    playlistTextCard
+    playlistTextCard,
+    inspirationTitle
 } from '../styles/books'
 
 const META_DESCRIPTION = 'The Cameo is a short collection of poetry and prose depicting the damage of two souls intertwining, as well as the even bolder proposition that romantic disillusion itself is a mirage. A metaphysical investigation into desire, disorder, and the natural world. Order The Cameo now!'
@@ -62,7 +63,7 @@ const Cameo = ({ data }: { data: unknown }): JSX.Element => {
                 </div>
                 <div css={makeBannerBlockGrid(colors.mintGreen)}>
                     <div css={playlistTextCard}>
-                        <h2 css={css`${sectionTitle}; font-size: 24px;`}>Inspiration</h2>
+                        <h2 css={inspirationTitle}>Inspiration</h2>
                         <p css={paragraph}>{PLAYLIST_DESCRIPTION}</p>
                     </div>
                     <div css={playlistContainer}>
