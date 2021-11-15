@@ -38,12 +38,12 @@ const grid = css`
 
     @media (min-width: ${BREAKPOINT}px) {
         grid-template-columns: 1fr 1fr;
-        column-gap: 25px;
+        column-gap: 65px;
     }
     
     @media (max-width: ${BREAKPOINT}px) {
         grid-template-rows: auto;
-        row-gap: 30px;
+        row-gap: 65px;
     }
 `
 
@@ -105,8 +105,8 @@ const bookFlower = css`
     position: absolute;
     margin: 0 auto;
     overflow: hidden;
-    top: -35px;
-    bottom: -35px;
+    top: -65px;
+    bottom: -65px;
 `
 
 const bookCover = css`
