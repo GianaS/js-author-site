@@ -1,10 +1,10 @@
-import { Fragment } from 'react'
+import { Fragment, useState } from 'react'
 import { css } from '@emotion/react'
 import { Link, graphql } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
 
 import Seo from '../components/Seo'
-import { Button } from '../shared-components'
+import { Button, Modal } from '../shared-components'
 import { EUPHONY_AMAZON_LINK, CAMEO_AMAZON_LINK } from '../utilities'
 import {
     bodyWrapper,
@@ -30,15 +30,18 @@ const CAMEO_DESCRIPTION = <Fragment><i>The Cameo</i> begins with an astonishing 
 const AUTHOR_DESCRIPTION = <Fragment>Janelle Solviletti is an author from Boston, Massachusetts. She uses storytelling and her own experiences in life to capture, through poetry and prose, those emotions, and moments, that cannot be simply defined or dismissed in time. Her debut book, <i>The Cameo</i>, was released in September 2020, and is known for its lyrical desire to investigate time, disorder and the natural world. In her second book, <i>Euphony</i>, released in November 2021, music is confessional and art is a dreamscape worth diving into. If only life had a soundtrack… Previously, her works have been published in The Horn Pond Review, The Feathertale Review and The Somerville Lyrical. She attended Marist College in Poughkeepsie, New York, and currently lives and works in Boston.</Fragment>
 
 const Home = ({ data }: { data: unknown }): JSX.Element => {
+    const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
+
     return (
         <div css={css`position: relative;`}>
             <Seo
                 title='Home | Janelle Solviletti'
                 description={META_DESCRIPTION}
             />
+            {isModalOpen && <Modal setIsModalOpen={setIsModalOpen}/>}
             <div css={bodyWrapper}>
                 <div css={makeBannerBlockGrid(colors.offWhite)}>
-                    <div>image grid goes here</div>
+                    <div onClick={() => setIsModalOpen(true)}>image grid goes here</div>
                     <div css={reverseReverse}>
                         <div css={chip}>OUT NOW!</div>
                         <h1 css={sectionTitle}>Euphony</h1>
