@@ -127,7 +127,11 @@ const Home = ({ data }: { data: unknown }): JSX.Element => {
         if (!isModalOpen) {
             setSelectedImageIndex(null)
         }
-    }, [isModalOpen])
+        if (!isDesktop) {
+            setIsModalOpen(false)
+            setSelectedImageIndex(null)
+        }
+    }, [isModalOpen, isDesktop])
 
     return (
         <div css={css`position: relative;`}>

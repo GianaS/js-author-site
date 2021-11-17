@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useLayoutEffect, useRef } from 'react'
 import { css } from '@emotion/react'
 import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image'
 
@@ -18,10 +18,10 @@ const modal = css`
     position: relative;
     background-color: ${colors.white};
     box-shadow: 0 2px 8px ${colors.grey};
-    width: 60%;
     display: flex;
     flex-direction: column;
     padding: 30px;
+    width: 530px;
 `
 
 const closeButton = css`
@@ -42,7 +42,6 @@ const closeButton = css`
 
 const captionContainer = css`
     display: grid;
-    grid-area: '1/1';
     position: relative;
     place-items: center;
 `
@@ -62,26 +61,49 @@ type ModalProps = {
 }
 
 const Modal = ({ setIsModalOpen, caption, altText, imageData }: ModalProps) => {
+    const closeButtonRef = useRef<HTMLDivElement>(null)
+
     useEffect(() => {
+        const closeModal = (event: KeyboardEvent) => {
+            if (event.key === 'Escape') {
+                setIsModalOpen(false)
+            }
+        }
+
         document.body.style.overflow = 'hidden'
-        const closeButton = document.getElementById('close-button')
-        closeButton && closeButton.focus()
+        window.addEventListener('keyup', closeModal)
 
         return () => {
             document.body.style.overflow = 'auto'
+            window.removeEventListener('keyup', closeModal)
         }
+    }, [])
+
+    useLayoutEffect(() => {
+        closeButtonRef.current?.focus()
     }, [])
 
     return (
         <div css={backdrop} onClick={() => setIsModalOpen(false)}>
-            <div css={modal}>
+            <div css={modal} onClick={(event) => event.stopPropagation()}>
                 <div
+                    ref={closeButtonRef}
                     tabIndex={0}
                     id='close-button'
                     role='button'
                     css={closeButton}
                     onClick={() => setIsModalOpen(false)}
-                    onKeyUp={(event) => event.key === "Enter" && setIsModalOpen(false)}
+                    onKeyDown={(event) => {
+                        if (event.key === 'Tab') {
+                            event.preventDefault()
+                        }
+                    }}
+                    onKeyUp={(event) => {
+                        if (event.key === 'Enter') {
+                            setIsModalOpen(false)
+                        }
+                    }}
+
                 >
                     X
                 </div>
@@ -89,7 +111,7 @@ const Modal = ({ setIsModalOpen, caption, altText, imageData }: ModalProps) => {
                     <GatsbyImage
                         image={imageData}
                         alt={altText}
-                        css={css`grid-area: '1/1';`}
+                        css={css`max-height: 70vh; object-position: 'bottom'`}
                     />
                     <div css={captionContainer}>
                         <h1 css={captionHeading}>{caption}</h1>
