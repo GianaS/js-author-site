@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react'
 
+const isBrowser = typeof window !== "undefined"
+
 const useMedia = (query: string): boolean => {
     const [matches, setMatches] = useState(
-        window.matchMedia(query).matches
+        isBrowser && window.matchMedia(query).matches
     )
 
     useEffect(() => {

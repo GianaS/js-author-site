@@ -1,23 +1,23 @@
 import { css } from '@emotion/react'
 
 import { colors, sectionTitle } from './sharedStyles'
-import { BREAKPOINT } from '../utilities'
+import { MOBILE_BREAKPOINT } from '../utilities'
 
 const playlist = css`
     box-shadow: 2px 4px 15px ${colors.grey};
     height: 500px;
 
-    @media (min-width: ${BREAKPOINT}px) {
+    @media (min-width: ${MOBILE_BREAKPOINT}px) {
         max-width: 400px;
     }
 
-    @media (max-width: ${BREAKPOINT}px) {
+    @media (max-width: ${MOBILE_BREAKPOINT}px) {
         width: 100%;
     }
 `
 
 const playlistContainer = css`
-    @media (max-width: ${BREAKPOINT}px) {
+    @media (max-width: ${MOBILE_BREAKPOINT}px) {
         display: flex;
         justify-content: center;
     }
@@ -34,7 +34,7 @@ const inspirationTitle = css`
     ${sectionTitle};
     font-size: 24px;
 
-    @media (max-width: ${BREAKPOINT}px) {
+    @media (max-width: ${MOBILE_BREAKPOINT}px) {
         font-size: 24px;
     }
 `

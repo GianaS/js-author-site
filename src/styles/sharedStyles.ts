@@ -1,6 +1,6 @@
 import { css, SerializedStyles } from '@emotion/react'
 
-import { BREAKPOINT } from '../utilities'
+import { MOBILE_BREAKPOINT } from '../utilities'
 
 const colors = {
     black: '#000000',
@@ -28,7 +28,7 @@ const bodyWrapper = css`
     width: 80%;
     max-width: 1600px;
 
-    @media (max-width: ${BREAKPOINT}px) {
+    @media (max-width: ${MOBILE_BREAKPOINT}px) {
         width: 90%;
     }
 `
@@ -36,19 +36,19 @@ const bodyWrapper = css`
 const grid = css`
     display: grid;
 
-    @media (min-width: ${BREAKPOINT}px) {
+    @media (min-width: ${MOBILE_BREAKPOINT}px) {
         grid-template-columns: 1fr 1fr;
         column-gap: 65px;
     }
     
-    @media (max-width: ${BREAKPOINT}px) {
+    @media (max-width: ${MOBILE_BREAKPOINT}px) {
         grid-template-rows: auto;
         row-gap: 65px;
     }
 `
 
 const reverseReverse = css`
-    @media (max-width: ${BREAKPOINT}px) {
+    @media (max-width: ${MOBILE_BREAKPOINT - 1}px) {
         grid-row-start: 1;
     }
 `
@@ -68,7 +68,7 @@ const makeBannerBlockGrid = (backgroundColor: string): SerializedStyles => css`
         background-color: ${backgroundColor};
         z-index: -1;
 
-        @media (max-width: ${BREAKPOINT}px) {
+        @media (max-width: ${MOBILE_BREAKPOINT}px) {
             left: -5vw;
             right: -5vw;
         }
@@ -86,7 +86,7 @@ const sectionTitle = css`
     font-size: 72px;
     color: ${colors.black};
 
-    @media (max-width: ${BREAKPOINT}px) {
+    @media (max-width: ${MOBILE_BREAKPOINT}px) {
         font-size: 52px;
     }
 `
@@ -118,7 +118,7 @@ const bookCover = css`
     min-width: 250px;
     box-shadow: 2px 4px 15px ${colors.grey};
 
-    @media (max-width: ${BREAKPOINT}px) {
+    @media (max-width: ${MOBILE_BREAKPOINT}px) {
         max-width: 255px;
         max-width: 245px;
     }

@@ -4,7 +4,7 @@ import {
     NotNestedNavItem,
     CAMEO_AMAZON_LINK,
     EUPHONY_AMAZON_LINK,
-    BREAKPOINT
+    MOBILE_BREAKPOINT
 } from './constants'
 import { useMedia } from './functions'
 
@@ -15,5 +15,5 @@ export {
     NotNestedNavItem,
     CAMEO_AMAZON_LINK,
     EUPHONY_AMAZON_LINK,
-    BREAKPOINT
+    MOBILE_BREAKPOINT
 }

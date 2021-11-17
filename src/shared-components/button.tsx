@@ -1,7 +1,7 @@
 import { css, } from '@emotion/react'
 
 import { fonts, colors } from '../styles/sharedStyles'
-import { BREAKPOINT } from '../utilities'
+import { MOBILE_BREAKPOINT } from '../utilities'
 
 const styledLink = css`
     text-decoration: none;
@@ -22,7 +22,7 @@ const styledLink = css`
         opacity: .9;
     }
 
-    @media (max-width: ${BREAKPOINT}px) {
+    @media (max-width: ${MOBILE_BREAKPOINT}px) {
         width: 170px;
     }
 `
