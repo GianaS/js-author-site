@@ -111,7 +111,7 @@ const Modal = ({ setIsModalOpen, caption, altText, imageData }: ModalProps) => {
                     <GatsbyImage
                         image={imageData}
                         alt={altText}
-                        css={css`max-height: 70vh; object-position: 'bottom'`}
+                        css={css`max-height: 70vh; object-position: 'bottom';`}
                     />
                     <div css={captionContainer}>
                         <h1 css={captionHeading}>{caption}</h1>

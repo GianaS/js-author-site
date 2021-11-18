@@ -19,7 +19,7 @@ const styledLink = css`
 
     :hover {
         color: ${colors.white};
-        opacity: .9;
+        opacity: .8;
     }
 
     @media (max-width: ${MOBILE_BREAKPOINT}px) {

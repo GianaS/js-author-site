@@ -26,7 +26,9 @@ import {
     chip,
     learnMoreLink,
     publishedWorkLink,
-    authorBlockSection
+    authorBlockSection,
+    gridOfImages,
+    imageCell
 } from '../styles/home'
 
 const META_DESCRIPTION = 'Janelle Solviletti is a writer from Boston, Massachusetts. Euphony is her second poetry collection, following her debut poetry book, The Cameo, released in September 2020. Previously, she published works in The Horn Pond Review, The Feathertale Review and The Somerville Lyrical. She attended Marist College in Poughkeepsie, New York, and currently lives and works in Boston.'
@@ -110,16 +112,24 @@ const Home = ({ data }: { data: unknown }): JSX.Element => {
 
     const ImageSection = isDesktop
         ? (
-            homeImageGridMap.map((item, index) =>
-                <div
-                    key={item.altText}
-                    onClick={() => {
-                        setIsModalOpen(true)
-                        setSelectedImageIndex(index)
-                    }}>
-                    Image {index}
-                </div>
-            )
+            <div css={gridOfImages}>
+                {homeImageGridMap.map((item, index) =>
+                    <div
+                        role='button'
+                        tabIndex={0}
+                        key={item.altText}
+                        onClick={() => {
+                            setIsModalOpen(true)
+                            setSelectedImageIndex(index)
+                        }}>
+                        <GatsbyImage
+                            image={homeImageGridMap[index].imageData}
+                            alt={homeImageGridMap[index].altText}
+                            css={imageCell}
+                        />
+                    </div>
+                )}
+            </div>
         )
         : <div>THE MOBILE VIEW</div>
 
