@@ -1,10 +1,10 @@
 import { Fragment, useState, useEffect } from 'react'
 import { css } from '@emotion/react'
 import { Link, graphql } from 'gatsby'
-import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image'
+import { GatsbyImage } from 'gatsby-plugin-image'
 
 import Seo from '../components/Seo'
-import { Button, Modal } from '../shared-components'
+import { Button, Modal, Carousel, HomeImage } from '../shared-components'
 import {
     EUPHONY_AMAZON_LINK,
     CAMEO_AMAZON_LINK,
@@ -35,12 +35,6 @@ const META_DESCRIPTION = 'Janelle Solviletti is a writer from Boston, Massachuse
 const EUPHONY_DESCRIPTION = <Fragment><i>Euphony</i> is a new collection of poetry and prose written by Janelle Solviletti, uncovering those ‘sweet sounds’ that seemingly exist with us perpetually. If only life had a soundtrack….what would ours sound like? Each poetic confession in Euphony dives headfirst into the intimate and secretive relationship we share with music, art, and those words that never leave us.</Fragment>
 const CAMEO_DESCRIPTION = <Fragment><i>The Cameo</i> begins with an astonishing claim: &lsquo;I wish to disunite the postulation that love and time are one and the same.&rsquo; From there, it offers lyrical proof for this claim, through means wily &lsquo;urban revolt&rsquo; and &lsquo;manmade revelation,&rsquo; relational &lsquo;In sequence/it seems you are immemorial&rsquo; and sacred. Depicting with great pathos the damage of two souls intertwining, as well as the even bolder proposition that romantic disillusion itself is a mirage: &lsquo;I think I made you up.&rsquo;</Fragment>
 const AUTHOR_DESCRIPTION = <Fragment>Janelle Solviletti is an author from Boston, Massachusetts. She uses storytelling and her own experiences in life to capture, through poetry and prose, those emotions, and moments, that cannot be simply defined or dismissed in time. Her debut book, <i>The Cameo</i>, was released in September 2020, and is known for its lyrical desire to investigate time, disorder and the natural world. In her second book, <i>Euphony</i>, released in November 2021, music is confessional and art is a dreamscape worth diving into. If only life had a soundtrack… Previously, her works have been published in The Horn Pond Review, The Feathertale Review and The Somerville Lyrical. She attended Marist College in Poughkeepsie, New York, and currently lives and works in Boston.</Fragment>
-
-type HomeImage = {
-    imageData: IGatsbyImageData
-    caption: string
-    altText: string
-}
 
 const Home = ({ data }: { data: unknown }): JSX.Element => {
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
@@ -113,27 +107,29 @@ const Home = ({ data }: { data: unknown }): JSX.Element => {
     const ImageSection = isDesktop
         ? (
             <div>
-                <div css={gridOfImages}>
-                    {homeImageGridMap.map((item, index) =>
-                        <div
-                            role='button'
-                            tabIndex={0}
-                            key={item.altText}
-                            onClick={() => {
-                                setIsModalOpen(true)
-                                setSelectedImageIndex(index)
-                            }}>
-                            <GatsbyImage
-                                image={homeImageGridMap[index].imageData}
-                                alt={homeImageGridMap[index].altText}
-                                css={imageCell}
-                            />
-                        </div>
-                    )}
+                <div>
+                    <div css={gridOfImages}>
+                        {homeImageGridMap.map((item, index) =>
+                            <div
+                                role='button'
+                                tabIndex={0}
+                                key={item.altText}
+                                onClick={() => {
+                                    setIsModalOpen(true)
+                                    setSelectedImageIndex(index)
+                                }}>
+                                <GatsbyImage
+                                    image={homeImageGridMap[index].imageData}
+                                    alt={homeImageGridMap[index].altText}
+                                    css={imageCell}
+                                />
+                            </div>
+                        )}
+                    </div>
                 </div>
             </div>
         )
-        : <div>THE MOBILE VIEW</div>
+        : <Carousel childArray={homeImageGridMap} />
 
     useEffect(() => {
         if (!isModalOpen) {
