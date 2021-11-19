@@ -112,23 +112,25 @@ const Home = ({ data }: { data: unknown }): JSX.Element => {
 
     const ImageSection = isDesktop
         ? (
-            <div css={gridOfImages}>
-                {homeImageGridMap.map((item, index) =>
-                    <div
-                        role='button'
-                        tabIndex={0}
-                        key={item.altText}
-                        onClick={() => {
-                            setIsModalOpen(true)
-                            setSelectedImageIndex(index)
-                        }}>
-                        <GatsbyImage
-                            image={homeImageGridMap[index].imageData}
-                            alt={homeImageGridMap[index].altText}
-                            css={imageCell}
-                        />
-                    </div>
-                )}
+            <div>
+                <div css={gridOfImages}>
+                    {homeImageGridMap.map((item, index) =>
+                        <div
+                            role='button'
+                            tabIndex={0}
+                            key={item.altText}
+                            onClick={() => {
+                                setIsModalOpen(true)
+                                setSelectedImageIndex(index)
+                            }}>
+                            <GatsbyImage
+                                image={homeImageGridMap[index].imageData}
+                                alt={homeImageGridMap[index].altText}
+                                css={imageCell}
+                            />
+                        </div>
+                    )}
+                </div>
             </div>
         )
         : <div>THE MOBILE VIEW</div>

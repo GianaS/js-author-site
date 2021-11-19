@@ -61,6 +61,7 @@ const imageCell = css`
     height: 170px;
     box-shadow: 0 2px 8px ${colors.grey};
     cursor: pointer;
+
     :hover {
         opacity: .8;
     }
