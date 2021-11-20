@@ -4,8 +4,8 @@ import { GatsbyImage } from 'gatsby-plugin-image'
 import { css } from '@emotion/react'
 
 import Seo from '../components/Seo'
-import { CAMEO_AMAZON_LINK } from '../utilities'
-import { Button } from '../shared-components'
+import { CAMEO_AMAZON_LINK, MOBILE_BREAKPOINT, useMedia } from '../utilities'
+import { Button, Carousel, CustomImage } from '../shared-components'
 import {
     bodyWrapper,
     makeBannerBlockGrid,
@@ -21,7 +21,8 @@ import {
     playlist,
     playlistContainer,
     playlistTextCard,
-    inspirationTitle
+    inspirationTitle,
+    carousel
 } from '../styles/books'
 
 const META_DESCRIPTION = 'The Cameo is a short collection of poetry and prose depicting the damage of two souls intertwining, as well as the even bolder proposition that romantic disillusion itself is a mirage. A metaphysical investigation into desire, disorder, and the natural world. Order The Cameo now!'
@@ -29,6 +30,26 @@ const CAMEO_DESCRIPTION = <Fragment> <i>The Cameo</i> begins with an astonishing
 const PLAYLIST_DESCRIPTION = <Fragment>Music transcends through time. Over the years, these songs were part of the making of <i>The Cameo</i>,  and whisper secrets in the margins. Before you turn the page, tune in to the place where it all began.</Fragment>
 
 const Cameo = ({ data }: { data: unknown }): JSX.Element => {
+    const isDesktop = useMedia(`(min-width: ${MOBILE_BREAKPOINT}px)`)
+
+    const homeImageGridMap: CustomImage[] = [
+        {
+            imageData: data?.getOne?.childImageSharp?.gatsbyImageData,
+            caption: 'With nothing but a melody to hold onto...',
+            altText: 'bench with leaves and poetry book'
+        },
+        {
+            imageData: data?.getTwo?.childImageSharp?.gatsbyImageData,
+            caption: 'Now I pass through your neighborhood cloaked...',
+            altText: 'janelle solviletti walking down the street'
+        },
+        {
+            imageData: data?.getThree?.childImageSharp?.gatsbyImageData,
+            caption: 'Settlers in the garden, waiting for the knock…...',
+            altText: 'stone stairs on an autumn day'
+        }
+    ]
+
     return (
         <div css={css`position: relative;`}>
             <Seo
@@ -58,8 +79,12 @@ const Cameo = ({ data }: { data: unknown }): JSX.Element => {
                         <Button label='Buy now' href={CAMEO_AMAZON_LINK} />
                     </div>
                 </div>
-                <div css={makeBannerBlockGrid(colors.white)}>
-                    <div>image viewing here</div>
+                <div css={carousel}>
+                    <Carousel
+                        childArray={homeImageGridMap}
+                        centerMode={isDesktop}
+                        isCard={true}
+                    />
                 </div>
                 <div css={makeBannerBlockGrid(colors.mintGreen)}>
                     <div css={playlistTextCard}>
@@ -86,20 +111,52 @@ const Cameo = ({ data }: { data: unknown }): JSX.Element => {
 export const getCameoData = graphql`
   query getCameoData {
     getCoverPhoto: file(relativePath: { eq: "cameo-cover.png" }) {
-      childImageSharp {
-        gatsbyImageData(
-          placeholder: BLURRED
-          layout: CONSTRAINED
-        )
-      }
+        childImageSharp {
+            gatsbyImageData(
+                placeholder: BLURRED
+                layout: CONSTRAINED
+            )
+        }
     }
     getRosePhoto: file(relativePath: { eq: "rose-transparent-original.png" }) {
-      childImageSharp {
-        gatsbyImageData(
-          layout: CONSTRAINED
-          placeholder: BLURRED
-        )
-      }
+        childImageSharp {
+            gatsbyImageData(
+                layout: CONSTRAINED
+                placeholder: BLURRED
+            )
+        }
+    }
+    getOne: file(relativePath: { eq: "home-grid/One.JPG" }) {
+        childImageSharp {
+            gatsbyImageData(
+                layout: CONSTRAINED
+                placeholder: BLURRED
+            )
+        }
+    }
+    getTwo: file(relativePath: { eq: "home-grid/Two.JPG" }) {
+        childImageSharp {
+            gatsbyImageData(
+                placeholder: BLURRED
+                layout: CONSTRAINED
+            )
+        }
+    }
+    getThree: file(relativePath: { eq: "home-grid/Three.JPG" }) {
+        childImageSharp {
+            gatsbyImageData(
+                placeholder: BLURRED
+                layout: CONSTRAINED
+            )
+        }
+    }
+    getFour: file(relativePath: { eq: "home-grid/Four.JPG" }) {
+        childImageSharp {
+            gatsbyImageData(
+                placeholder: BLURRED
+                layout: CONSTRAINED
+            )
+        }
     }
   }
 `
