@@ -210,7 +210,7 @@ const Home = ({ data }: { data: unknown }): JSX.Element => {
                     <GatsbyImage
                         image={data?.getHeadshot?.childImageSharp?.gatsbyImageData}
                         alt='headshot of janelle'
-                        css={css`max-width: 615px;`}
+                        css={css`max-width: 550px;`}
                     />
                 </div>
             </div>

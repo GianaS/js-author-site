@@ -152,7 +152,7 @@ const Euphony = ({ data }: { data: unknown }): JSX.Element => {
 
 export const getEuphonyData = graphql`
   query getEuphonyData {
-    getCoverPhoto: file(relativePath: { eq: "euphony-cover.png" }) {
+    getCoverPhoto: file(relativePath: { eq: "euphony-cover-final.png" }) {
       childImageSharp {
         gatsbyImageData(
           placeholder: BLURRED
