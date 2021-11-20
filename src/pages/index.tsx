@@ -4,7 +4,7 @@ import { Link, graphql } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
 
 import Seo from '../components/Seo'
-import { Button, Modal, Carousel, HomeImage } from '../shared-components'
+import { Button, Modal, Carousel, CustomImage } from '../shared-components'
 import {
     EUPHONY_AMAZON_LINK,
     CAMEO_AMAZON_LINK,
@@ -41,7 +41,7 @@ const Home = ({ data }: { data: unknown }): JSX.Element => {
     const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null)
     const isDesktop = useMedia(`(min-width: ${MOBILE_BREAKPOINT}px)`)
 
-    const homeImageGridMap: HomeImage[] = [
+    const homeImageGridMap: CustomImage[] = [
         {
             imageData: data?.getOne?.childImageSharp?.gatsbyImageData,
             caption: 'With nothing but a melody to hold onto...',
