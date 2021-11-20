@@ -25,7 +25,7 @@ const CustomCarousel = ({ childArray, centerMode = false, isCard = false }: Cust
             showStatus={false}
             centerMode={centerMode}
             centerSlidePercentage={40}
-            css={css`width: 100%; padding: 30px;`}
+            css={css`width: 100%; padding: 30px 0;`}
         >
             {childArray.map((child, index) => (
                 isCard

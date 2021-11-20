@@ -4,7 +4,7 @@ import { GatsbyImage } from 'gatsby-plugin-image'
 import { css } from '@emotion/react'
 
 import Seo from '../components/Seo'
-import { EUPHONY_AMAZON_LINK } from '../utilities'
+import { EUPHONY_AMAZON_LINK, useMedia, MOBILE_BREAKPOINT } from '../utilities'
 import { Button, Carousel, CustomImage } from '../shared-components'
 import {
     bodyWrapper,
@@ -21,7 +21,8 @@ import {
     playlist,
     playlistContainer,
     playlistTextCard,
-    inspirationTitle
+    inspirationTitle,
+    carousel
 } from '../styles/books'
 
 const META_DESCRIPTION = 'Euphony is a new collection of poetry and prose written by Janelle Solviletti, uncovering those sweet sounds that seemingly exist with us perpetually. If only life had a soundtrack...what would ours sound like? Each poetic confession in Euphony dives headfirst into the intimate and secretive relationship we share with music, art, and those words that never leave us. Escape in the complexities and intensities of the deep emotions that divide dreamscapes from what is in front of our own eyes.'
@@ -29,6 +30,8 @@ const EUPHONY_DESCRIPTION = <Fragment>The rendition goes on and on…time again,
 const PLAYLIST_DESCRIPTION = <Fragment>The melodies that are cast through <i>Euphony</i> start here. This is the sound that carries through each season with relentless pursuit, finding its home in the ear of each listener to interpret. Memories defined. Time memorialized. Music is by definition a form of harmony and emotional expression.</Fragment>
 
 const Euphony = ({ data }: { data: unknown }): JSX.Element => {
+    const isDesktop = useMedia(`(min-width: ${MOBILE_BREAKPOINT}px)`)
+
     const homeImageGridMap: CustomImage[] = [
         {
             imageData: data?.getOne?.childImageSharp?.gatsbyImageData,
@@ -121,10 +124,10 @@ const Euphony = ({ data }: { data: unknown }): JSX.Element => {
                         <Button label='Buy now' href={EUPHONY_AMAZON_LINK} />
                     </div>
                 </div>
-                <div css={css`${makeBannerBlockGrid(colors.white)}; display: flex; justify-content: center;`}>
+                <div css={carousel}>
                     <Carousel
                         childArray={homeImageGridMap}
-                        centerMode={true}
+                        centerMode={isDesktop}
                         isCard={true}
                     />
                 </div>

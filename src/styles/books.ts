@@ -1,7 +1,19 @@
 import { css } from '@emotion/react'
 
-import { colors, sectionTitle } from './sharedStyles'
+import { colors, sectionTitle, makeBannerBlockGrid } from './sharedStyles'
 import { MOBILE_BREAKPOINT } from '../utilities'
+
+const carousel = css`
+    ${makeBannerBlockGrid(colors.white)};
+    display: flex;
+    justify-content: center;
+    margin: 0 -10vw;
+    max-width: 1920px;
+
+    @media (max-width: ${MOBILE_BREAKPOINT}px) {
+        margin: 0 -5vw;
+    }
+`
 
 const playlist = css`
     box-shadow: 2px 4px 15px ${colors.grey};
@@ -39,10 +51,10 @@ const inspirationTitle = css`
     }
 `
 
-
 export {
     playlist,
     playlistContainer,
     playlistTextCard,
-    inspirationTitle
+    inspirationTitle,
+    carousel
 }
