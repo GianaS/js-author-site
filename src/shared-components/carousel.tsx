@@ -69,6 +69,7 @@ const CustomCarousel = ({ childArray, isCard = false }: CustomCarouselProps) => 
                 showStatus={false}
                 centerSlidePercentage={40}
                 centerMode={true}
+                useKeyboardArrows
                 css={css`${sharedStyles}; ${centerMode}`}
             >
                 {contents}
@@ -79,6 +80,7 @@ const CustomCarousel = ({ childArray, isCard = false }: CustomCarouselProps) => 
                 showStatus={false}
                 centerSlidePercentage={40}
                 centerMode={false}
+                useKeyboardArrows
                 css={css`${sharedStyles}; ${notCenterMode}`}
             >
                 {contents}
