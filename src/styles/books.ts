@@ -13,6 +13,10 @@ const carousel = css`
     @media (max-width: ${MOBILE_BREAKPOINT}px) {
         margin: 0 -5vw;
     }
+
+    @media (min-width: 1920px) {
+        margin: 0 auto;
+    }
 `
 
 const playlist = css`

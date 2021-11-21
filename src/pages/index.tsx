@@ -104,32 +104,26 @@ const Home = ({ data }: { data: unknown }): JSX.Element => {
         }
     ]
 
-    const ImageSection = isDesktop
-        ? (
-            <div>
-                <div>
-                    <div css={gridOfImages}>
-                        {homeImageGridMap.map((item, index) =>
-                            <div
-                                role='button'
-                                tabIndex={0}
-                                key={item.altText}
-                                onClick={() => {
-                                    setIsModalOpen(true)
-                                    setSelectedImageIndex(index)
-                                }}>
-                                <GatsbyImage
-                                    image={homeImageGridMap[index].imageData}
-                                    alt={homeImageGridMap[index].altText}
-                                    css={imageCell}
-                                />
-                            </div>
-                        )}
-                    </div>
+    const ImageGrid = (
+        <div css={gridOfImages}>
+            {homeImageGridMap.map((item, index) =>
+                <div
+                    role='button'
+                    tabIndex={0}
+                    key={item.altText}
+                    onClick={() => {
+                        setIsModalOpen(true)
+                        setSelectedImageIndex(index)
+                    }}>
+                    <GatsbyImage
+                        image={homeImageGridMap[index].imageData}
+                        alt={homeImageGridMap[index].altText}
+                        css={imageCell}
+                    />
                 </div>
-            </div>
-        )
-        : <Carousel childArray={homeImageGridMap} />
+            )}
+        </div>
+    )
 
     useEffect(() => {
         if (!isModalOpen) {
@@ -160,7 +154,8 @@ const Home = ({ data }: { data: unknown }): JSX.Element => {
             <div css={bodyWrapper}>
                 <div css={makeBannerBlockGrid(colors.offWhite)}>
                     <div>
-                        {ImageSection}
+                        {ImageGrid}
+                        <Carousel childArray={homeImageGridMap} hasMultipleViews={false} />
                     </div>
                     <div css={reverseReverse}>
                         <div css={chip}>OUT NOW!</div>

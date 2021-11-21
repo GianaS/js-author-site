@@ -2,15 +2,15 @@ import { Fragment } from 'react'
 import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image'
 import { Carousel } from 'react-responsive-carousel'
 import { css } from '@emotion/react'
+import { Icon } from 'semantic-ui-react'
 
 import { colors } from '../styles/sharedStyles'
 import ImageCard from './imageCard'
 import { MOBILE_BREAKPOINT } from '../utilities'
 
-const sharedStyles = css`
+const carousel = css`
     width: 100%;
     padding: 30px 0;
-    margin: 0 auto;
 `
 
 const centerMode = css`
@@ -29,6 +29,30 @@ const notCenterMode = css`
     }
 `
 
+const arrowStyles = css`
+    position: absolute;
+    z-index: 2;
+    top: calc(50% - 15px);
+    cursor: pointer;
+
+    font-size: 24px;
+    box-shadow: 0 2px 8px ${colors.grey};
+    border-radius: 50%;
+    background-color: ${colors.white};
+    color: ${colors.grey};
+
+    :hover {
+        background-color: ${colors.offWhite}; 
+    }
+`
+
+const icon = css`
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 !important;
+`
+
 type CustomImage = {
     imageData: IGatsbyImageData
     caption: string
@@ -37,10 +61,31 @@ type CustomImage = {
 
 type CustomCarouselProps = {
     childArray: CustomImage[]
+    hasMultipleViews?: boolean
     isCard?: boolean
 }
 
-const CustomCarousel = ({ childArray, isCard = false }: CustomCarouselProps) => {
+const makeRightArrow = (onClickHandler: () => void, label: string) => (
+    <div
+        role='button'
+        onClick={onClickHandler}
+        title={label}
+        css={css`${arrowStyles}; left: 15px; padding: 9px 9px 9px 6px;`}>
+        <Icon name='caret left' css={icon} />
+    </div>
+)
+
+const makeLeftArrow = (onClickHandler: () => void, label: string) => (
+    <div
+        role='button'
+        onClick={onClickHandler}
+        title={label}
+        css={css`${arrowStyles}; right: 15px; padding: 9px 6px 9px 9px;`}>
+        <Icon name='caret right' css={icon} />
+    </div>
+)
+
+const CustomCarousel = ({ childArray, isCard = false, hasMultipleViews = true }: CustomCarouselProps) => {
     const contents = (
         childArray.map((child, index) => (
             isCard
@@ -63,17 +108,26 @@ const CustomCarousel = ({ childArray, isCard = false }: CustomCarouselProps) => 
 
     return (
         <Fragment>
-            <Carousel
-                showArrows
-                infiniteLoop
-                showStatus={false}
-                centerSlidePercentage={40}
-                centerMode={true}
-                useKeyboardArrows
-                css={css`${sharedStyles}; ${centerMode}`}
-            >
-                {contents}
-            </Carousel>
+            {hasMultipleViews && (
+                <Carousel
+                    showArrows
+                    infiniteLoop
+                    showStatus={false}
+                    centerSlidePercentage={40}
+                    centerMode={true}
+                    useKeyboardArrows
+                    showThumbs={false}
+                    css={css`${carousel}; ${centerMode}`}
+                    renderArrowPrev={(onClickHandler, hasPrev, label) =>
+                        hasPrev && makeRightArrow(onClickHandler, label)
+                    }
+                    renderArrowNext={(onClickHandler, hasNext, label) =>
+                        hasNext && makeLeftArrow(onClickHandler, label)
+                    }
+                >
+                    {contents}
+                </Carousel>
+            )}
             <Carousel
                 showArrows
                 infiniteLoop
@@ -81,7 +135,14 @@ const CustomCarousel = ({ childArray, isCard = false }: CustomCarouselProps) => 
                 centerSlidePercentage={40}
                 centerMode={false}
                 useKeyboardArrows
-                css={css`${sharedStyles}; ${notCenterMode}`}
+                showThumbs={false}
+                css={css`${carousel}; ${notCenterMode}`}
+                renderArrowPrev={(onClickHandler, hasPrev, label) =>
+                    hasPrev && makeRightArrow(onClickHandler, label)
+                }
+                renderArrowNext={(onClickHandler, hasNext, label) =>
+                    hasNext && makeLeftArrow(onClickHandler, label)
+                }
             >
                 {contents}
             </Carousel>

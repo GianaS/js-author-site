@@ -26,7 +26,7 @@ const modal = css`
 
 const closeButton = css`
     background-color: ${colors.white};
-    padding: 10px 16px;
+    padding: 12px 16px;
     border-radius: 50%;
     box-shadow: 0 2px 8px ${colors.grey};
     position: absolute;
@@ -34,6 +34,7 @@ const closeButton = css`
     bottom: 100%;
     margin-bottom: 15px;
     cursor: pointer;
+    font-size: 24px;
 
     :hover {
         background-color: ${colors.offWhite}; 
@@ -105,7 +106,7 @@ const Modal = ({ setIsModalOpen, caption, altText, imageData }: ModalProps) => {
                     }}
 
                 >
-                    X
+                    &#215;
                 </div>
                 <div css={css`display: grid;`}>
                     <GatsbyImage

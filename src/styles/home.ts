@@ -1,6 +1,7 @@
 import { css } from '@emotion/react'
 
 import { colors, fonts } from './sharedStyles'
+import { MOBILE_BREAKPOINT } from '../utilities'
 
 const chip = css`
     width: 136px;
@@ -55,6 +56,10 @@ const gridOfImages = css`
     grid-template-columns: 1fr 1fr 1fr;
     column-gap: 12px;
     row-gap: 10px;
+
+    @media (max-width: ${MOBILE_BREAKPOINT}px) {
+        display: none;
+    }
 `
 
 const imageCell = css`
