@@ -30,8 +30,6 @@ const EUPHONY_DESCRIPTION = <Fragment>The rendition goes on and on…time again,
 const PLAYLIST_DESCRIPTION = <Fragment>The melodies that are cast through <i>Euphony</i> start here. This is the sound that carries through each season with relentless pursuit, finding its home in the ear of each listener to interpret. Memories defined. Time memorialized. Music is by definition a form of harmony and emotional expression.</Fragment>
 
 const Euphony = ({ data }: { data: unknown }): JSX.Element => {
-    const isDesktop = useMedia(`(min-width: ${MOBILE_BREAKPOINT}px)`)
-
     const homeImageGridMap: CustomImage[] = [
         {
             imageData: data?.getOne?.childImageSharp?.gatsbyImageData,
@@ -127,7 +125,6 @@ const Euphony = ({ data }: { data: unknown }): JSX.Element => {
                 <div css={carousel}>
                     <Carousel
                         childArray={homeImageGridMap}
-                        centerMode={isDesktop}
                         isCard={true}
                     />
                 </div>

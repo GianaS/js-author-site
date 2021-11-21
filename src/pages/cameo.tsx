@@ -30,8 +30,6 @@ const CAMEO_DESCRIPTION = <Fragment> <i>The Cameo</i> begins with an astonishing
 const PLAYLIST_DESCRIPTION = <Fragment>Music transcends through time. Over the years, these songs were part of the making of <i>The Cameo</i>,  and whisper secrets in the margins. Before you turn the page, tune in to the place where it all began.</Fragment>
 
 const Cameo = ({ data }: { data: unknown }): JSX.Element => {
-    const isDesktop = useMedia(`(min-width: ${MOBILE_BREAKPOINT}px)`)
-
     const homeImageGridMap: CustomImage[] = [
         {
             imageData: data?.getOne?.childImageSharp?.gatsbyImageData,
@@ -82,7 +80,6 @@ const Cameo = ({ data }: { data: unknown }): JSX.Element => {
                 <div css={carousel}>
                     <Carousel
                         childArray={homeImageGridMap}
-                        centerMode={isDesktop}
                         isCard={true}
                     />
                 </div>
