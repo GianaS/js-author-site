@@ -10,6 +10,7 @@ import { MOBILE_BREAKPOINT } from '../utilities'
 const sharedStyles = css`
     width: 100%;
     padding: 30px 0;
+    margin: 0 auto;
 `
 
 const centerMode = css`

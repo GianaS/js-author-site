@@ -4,7 +4,7 @@ import { GatsbyImage } from 'gatsby-plugin-image'
 import { css } from '@emotion/react'
 
 import Seo from '../components/Seo'
-import { EUPHONY_AMAZON_LINK, useMedia, MOBILE_BREAKPOINT } from '../utilities'
+import { EUPHONY_AMAZON_LINK } from '../utilities'
 import { Button, Carousel, CustomImage } from '../shared-components'
 import {
     bodyWrapper,
