@@ -12,7 +12,8 @@ const colors = {
     sweetBrown: '#A63D40',
     green: '#7DAA7B',
     redOrange: '#DA532D',
-    mintGreen: '#D8E6D8'
+    mintGreen: '#D8E6D8',
+    greenForText: '#7CAB7D'
 }
 
 const fonts = {
