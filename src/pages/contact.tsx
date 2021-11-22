@@ -12,6 +12,12 @@ import {
     iconSection,
     iconLink
 } from '../styles/contact'
+import {
+    AUTHOR_AMAZON_LINK,
+    INSTAGRAM_LINK,
+    LINKED_IN_LINK,
+    SPOTIFY_LINK
+} from '../utilities'
 
 const BOOK_EMAIL: JSX.Element = <a css={bookLink} href='mailto:book.janellesolviletti@gmail.com'>book.janellesolviletti@gmail.com</a>
 const META_DESCRIPTION = `Connect with Janelle Solviletti via email, Instagram, Linkedin, or Spotify.  To order personalized copies or for other inqueries, please email ${BOOK_EMAIL}.`
@@ -31,14 +37,17 @@ const Contact = (): JSX.Element => {
                         To order personalized copies or for other inqueries, please email {BOOK_EMAIL}
                     </p>
                     <div css={iconSection}>
-                        <a css={iconLink} href='https://www.instagram.com/janellesolviletti'>
+                        <a css={iconLink} href={INSTAGRAM_LINK}>
                             <Icon link name='instagram' />
                         </a>
-                        <a css={iconLink} href='https://open.spotify.com/user/1253446971?si=uiZ6iE7NSnO8EWCfgweR9g'>
+                        <a css={iconLink} href={SPOTIFY_LINK}>
                             <Icon link name='spotify' />
                         </a>
-                        <a css={iconLink} href='http://linkedin.com/in/janelle-solviletti'>
+                        <a css={iconLink} href={LINKED_IN_LINK}>
                             <Icon link name='linkedin' />
+                        </a>
+                        <a css={iconLink} href={AUTHOR_AMAZON_LINK}>
+                            <Icon link name='amazon' />
                         </a>
                     </div>
                 </div>

@@ -9,7 +9,14 @@ import {
 } from 'semantic-ui-react'
 
 import { colors, fonts } from '../styles/sharedStyles'
-import { navItems, NotNestedNavItem } from '../utilities'
+import {
+    navItems,
+    NotNestedNavItem,
+    AUTHOR_AMAZON_LINK,
+    LINKED_IN_LINK,
+    SPOTIFY_LINK,
+    INSTAGRAM_LINK
+} from '../utilities'
 
 const button = css`
   background-color: transparent !important;
@@ -29,6 +36,25 @@ const menuItemWrapper = css`
 const itemText = css`
   padding-left: 12px;
   font-family: ${fonts.montserrat};
+`
+
+const footer = css`
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 12px;
+`
+
+const iconLink = css`
+    font-size: 36px;
+    color: ${colors.white};
+
+    :hover {
+        color: ${colors.white};
+    }
 `
 
 const MobileNav = (): JSX.Element => {
@@ -62,15 +88,31 @@ const MobileNav = (): JSX.Element => {
                         direction='right'
                         style={{ backgroundColor: colors.beige }}
                     >
-                        {mobileNavItems.map(({ title, link }) => {
-                            return (
-                                <Menu.Item style={{ borderBottom: `${colors.offWhite} 1px solid` }} key={title}>
-                                    <Link css={menuItemWrapper} to={link} onClick={() => setShowSidebar(false)}>
-                                        <p css={itemText}>{title}</p>
-                                    </Link>
-                                </Menu.Item>
-                            )
-                        })}
+                        <Fragment>
+                            {mobileNavItems.map(({ title, link }) => {
+                                return (
+                                    <Menu.Item style={{ borderBottom: `${colors.offWhite} 1px solid` }} key={title}>
+                                        <Link css={menuItemWrapper} to={link} onClick={() => setShowSidebar(false)}>
+                                            <p css={itemText}>{title}</p>
+                                        </Link>
+                                    </Menu.Item>
+                                )
+                            })}
+                            <div css={footer}>
+                                <a css={iconLink} href={INSTAGRAM_LINK}>
+                                    <Icon link name='instagram' />
+                                </a>
+                                <a css={iconLink} href={SPOTIFY_LINK}>
+                                    <Icon link name='spotify' />
+                                </a>
+                                <a css={iconLink} href={LINKED_IN_LINK}>
+                                    <Icon link name='linkedin' />
+                                </a>
+                                <a css={iconLink} href={AUTHOR_AMAZON_LINK}>
+                                    <Icon link name='amazon' />
+                                </a>
+                            </div>
+                        </Fragment>
                     </Sidebar>
                     : null
             }

@@ -56,7 +56,7 @@ const cardTitle = css`
 const iconSection = css`
     display: flex;
     justify-content: space-between;
-    width: 200px;
+    width: 250px;
     padding: 20px 0 0 0;
 `
 
