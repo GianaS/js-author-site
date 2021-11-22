@@ -23,8 +23,12 @@ const learnMoreLink = css`
     font-size: 18px;
     text-decoration: none;
     color: ${colors.black};
-    margin-left: 12%;
+    margin-left: 32px;
     font-weight: 500;
+
+    @media (max-width: 330px) {
+        margin-left: 14px;
+    }
 
     :hover {
         color: ${colors.beige};
