@@ -1,129 +1,121 @@
-import React from 'react'
-import styled from 'styled-components'
 import { graphql } from 'gatsby'
+import { css } from '@emotion/react'
 import { GatsbyImage } from 'gatsby-plugin-image'
 
 import Seo from '../components/Seo'
-import { fonts } from '../styles/styles'
+import { bodyWrapper, grid } from '../styles/sharedStyles'
+import {
+    cardTitle,
+    yearHeading,
+    formattedPoems,
+    poem,
+    caption,
+    greenBackgroundSection,
+    poemCard,
+    imageSection,
+    euphonyIcon,
+    cameoIcon
+} from '../styles/poems'
 
 type Poem = {
-  id: string
-  title: string
-  publication: string
-  link?: string
-  data?: unknown
+    id: string
+    title: string
+    publication: string
+    link?: string
+    data?: unknown
 }
 
 type SelectedPoems = {
-  [_: string]: Poem[]
+    [_: string]: Poem[]
 }
 
-const Title = styled.h1`
-  font-family: ${fonts.montserrat};
-  font-weight: 400;
-  padding-bottom: 20px;
-`
-
-const YearSection = styled.div`
-  font-family: ${fonts.montserrat};
-
-  h2 {
-    font-weight: 400;
-    font-size: 22px;
-    padding-bottom: 8px;
-  }
-`
-
-const PoemSection = styled.div`
-  display: flex;
-  flex-direction: column;
-  font-size: 18px;
-  padding-bottom: 14px;
-`
-
-const StyledPoem = styled.span`
-  display: inline-block;
-  margin-bottom: 18px;
-`
-
-const Caption = styled.p`
-  font-family: ${fonts.montserrat};
-  padding: 6px 0 35px 0;
-`
-
-const StyledImage = styled(GatsbyImage)`
-  height: 35px;
-  width: 35px;
-  top: -6px;
-  display: inline-block;
-`
-
 const buildPoemSection = ({ id, title, publication, link, data }: Poem) => {
-  const titleElement: JSX.Element = link
-    ? <a href={link}><i>{title}, </i></a>
-    : <i>{title}, </i>
+    const titleElement: JSX.Element = link
+        ? <a href={link}><i>{title}, </i></a>
+        : <i>{title}, </i>
 
-  return (
-    <StyledPoem key={id}>
-      {
-        title === 'The Cameo'
-        &&
-        <StyledImage
-          image={data.getRosePhoto.childImageSharp.gatsbyImageData}
-          alt='janelle self portrait'
-        />
-      }
-      {titleElement}
-      {publication}
-    </StyledPoem>
-  )
+    let Icon = null
+
+    if (title === 'The Cameo') {
+        Icon = (
+            <GatsbyImage
+                image={data.getRosePhoto.childImageSharp.gatsbyImageData}
+                alt='cameo icon'
+                css={cameoIcon}
+            />
+        )
+    } else if (title === 'Euphony') {
+        Icon = (
+            <GatsbyImage
+                image={data.getEuphonyIcon.childImageSharp.gatsbyImageData}
+                alt='euphony icon'
+                css={euphonyIcon}
+            />
+        )
+    }
+
+    return (
+        <span css={poem} key={id}>
+            {Icon}
+            {titleElement}
+            {publication}
+        </span>
+    )
 }
 
 const createPoemObject = (poemsFromApi): SelectedPoems => {
-  return poemsFromApi.reduce((acc, poemObject) => {
-    const { node } = poemObject
-    const { year, ...poemWithoutYear } = node
+    return poemsFromApi.reduce((acc, poemObject) => {
+        const { node } = poemObject
+        const { year, ...poemWithoutYear } = node
 
-    if (acc[year] === undefined) {
-      return { ...acc, [year]: [poemWithoutYear] }
-    } else {
-      acc[year].push(poemWithoutYear)
-      return acc
-    }
-  }, {})
+        if (acc[year] === undefined) {
+            return { ...acc, [year]: [poemWithoutYear] }
+        } else {
+            acc[year].push(poemWithoutYear)
+            return acc
+        }
+    }, {})
 }
 
-const META_DESCRIPTION = 'View selection of published poems by Janelle Solviletti.'
+const META_DESCRIPTION = 'View a selection of published poems by author Janelle Solviletti.'
 
 const Poem = ({ data }: { data: unknown }): JSX.Element => {
-  const { edges: poemsFromApi } = data.allContentfulPoem
-  const formattedPoems = createPoemObject(poemsFromApi)
+    const { edges: poemsFromApi } = data.allContentfulPoem
+    const poemObject = createPoemObject(poemsFromApi)
 
-  return (
-    <>
-      <Seo
-        title='Poems | Janelle Solviletti'
-        description={META_DESCRIPTION}
-      />
-      <Title>Selected Poems</Title>
-      {Object.keys(formattedPoems).reverse().map((year, index) => {
-        return (
-          <YearSection key={index}>
-            <h2>{year}</h2>
-            <PoemSection>
-              {formattedPoems[year].map((poem) => buildPoemSection({ ...poem, data }))}
-            </PoemSection>
-          </YearSection>
-        )
-      })}
-      <GatsbyImage
-        image={data.getPoemReadingPhoto.childImageSharp.gatsbyImageData}
-        alt='janelle reading a poem'
-        style={{ marginTop: '40px' }}
-      />
-      <Caption>Janelle reading <i>Penultimate</i> at Marist College.</Caption>
-    </>
-  )
+    return (
+        <div css={css`position: relative;`}>
+            <Seo
+                title='Poems | Janelle Solviletti'
+                description={META_DESCRIPTION}
+            />
+            <div css={greenBackgroundSection} />
+            <div css={css`${bodyWrapper}; padding: 65px 0;`}>
+                <div css={grid}>
+                    <div css={poemCard}>
+                        <h1 css={cardTitle}>Published Work</h1>
+                        {Object.keys(poemObject).reverse().map((year, index) => {
+                            return (
+                                <div key={index}>
+                                    <h2 css={yearHeading}>{year}</h2>
+                                    <div css={formattedPoems}>
+                                        {poemObject[year].map((poem) => buildPoemSection({ ...poem, data }))}
+                                    </div>
+                                </div>
+                            )
+                        })}
+                    </div>
+                    <div css={imageSection}>
+                        <GatsbyImage
+                            image={data.getPoemReadingPhoto.childImageSharp.gatsbyImageData}
+                            alt='janelle reading a poem'
+                        />
+                        <p css={caption}>Janelle reading <i>Penultimate</i> at Marist College.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
 }
 
 export const getPoemsData = graphql`
@@ -144,6 +136,14 @@ export const getPoemsData = graphql`
         )
       }
     }
+    getEuphonyIcon: file(relativePath: { eq: "euphony-flower.png" }) {
+        childImageSharp {
+          gatsbyImageData(
+            layout: CONSTRAINED
+            placeholder: BLURRED
+          )
+        }
+      }
     allContentfulPoem(sort: {fields: updatedAt, order: DESC}) {
       edges {
         node {

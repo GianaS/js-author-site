@@ -1,39 +1,54 @@
-import React, { ReactNode } from 'react'
-import styled from 'styled-components'
+import { ReactNode, Fragment, useState } from 'react'
+import { Button, Icon } from 'semantic-ui-react'
+import { Link } from 'gatsby'
 
-import Header from './Header'
-import { navItems } from '../utilities'
+import Nav from './Nav'
+import MobileSidebar from './MobileSidebar'
+import { useMedia } from '../utilities'
+import {
+    headerWrapper,
+    linkWrapper,
+    mobileNavButton
+} from '../styles/pageLayout'
 
-const VALID_PATHS = navItems.map(item => item.link)
+const PageLayout = ({ children }: { children: ReactNode }) => {
+    const [showMobileSidebar, setShowMobileSidebar] = useState(false)
 
-const BodyWrapper = styled.div`
-  width: 725px;
+    const navBreakpoint = typeof window !== 'undefined'
+        ? useMedia('(max-width: 700px)')
+        : undefined
+    const isDesktop = navBreakpoint !== undefined && !navBreakpoint
+    const isMobile = navBreakpoint !== undefined && navBreakpoint
 
-  @media (max-width: 750px) {
-    width: 90%;
-  }
+    const DesktopNavButtons = isDesktop && <Nav />
+    const MobileNavButton = isMobile && (
+        <Button css={mobileNavButton} icon onClick={() => setShowMobileSidebar(!showMobileSidebar)}>
+            <Icon name='bars' />
+        </Button>
+    )
 
-  ${({ pathname }: { pathname: string }) => (
-    VALID_PATHS.includes(pathname) ? 'margin: 35px auto;' : 'margin: 0 auto;'
-  )}
-`
+    const Header = (
+        <div css={headerWrapper} id='header-wrapper'>
+            <Link css={linkWrapper} to='/' >
+                Janelle Solviletti
+            </Link>
+            {DesktopNavButtons}
+            {MobileNavButton}
+        </div>
+    )
 
-type PageLayoutProps = {
-  children: ReactNode,
-  location: { pathname: string }
-}
-
-const PageLayout = ({ children, location }: PageLayoutProps) => {
-  const { pathname } = location
-
-  return (
-    <>
-      <Header />
-      <BodyWrapper pathname={pathname}>
-        {children}
-      </BodyWrapper>
-    </>
-  )
+    return (
+        <Fragment>
+            {Header}
+            {isMobile && showMobileSidebar && (
+                <MobileSidebar
+                    setShowMobileSidebar={setShowMobileSidebar}
+                    showMobileSidebar={showMobileSidebar}
+                />
+            )}
+            {children}
+        </Fragment>
+    )
 }
 
 export default PageLayout

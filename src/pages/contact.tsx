@@ -1,65 +1,59 @@
-import React from 'react'
-import styled from 'styled-components'
+import { css } from '@emotion/react'
 import { Icon } from 'semantic-ui-react'
 
 import Seo from '../components/Seo'
-import { fonts, colors } from '../styles/styles'
+import {
+    wrapper,
+    backgroundSection,
+    text,
+    bookLink,
+    infoCard,
+    cardTitle,
+    iconSection,
+    iconLink
+} from '../styles/contact'
+import {
+    AUTHOR_AMAZON_LINK,
+    INSTAGRAM_LINK,
+    LINKED_IN_LINK,
+    SPOTIFY_LINK
+} from '../utilities'
 
-const Title = styled.h1`
-  font-family: ${fonts.montserrat};
-  font-weight: 400;
-  padding-bottom: 20px;
-`
-
-const Text = styled.p`
-  font-size: 18px;
-  line-height: 30px;
-  font-family: ${fonts.montserrat};
-`
-
-const IconSection = styled.div`
-  display: flex;
-  justify-content: space-between;
-  padding-top: 34px;
-  width: 190px;
-`
-
-const StyledIcon = styled(Icon)`
-  color: ${colors.green};
-  font-size: 3em !important;
-
-  &:hover {
-    opacity: 0;
-  }
-`
-
-const BOOK_EMAIL: JSX.Element = <a href='mailto:book.janellesolviletti@gmail.com'>book.janellesolviletti@gmail.com</a>
-const META_DESCRIPTION = `Connect with Janelle Solviletti via email, Instagram, Linkedin, or Spotify.  To order personalized copies of The Cameo, or for other inqueries, please email ${BOOK_EMAIL}.`
+const BOOK_EMAIL: JSX.Element = <a css={bookLink} href='mailto:book.janellesolviletti@gmail.com'>book.janellesolviletti@gmail.com</a>
+const META_DESCRIPTION = `Connect with Janelle Solviletti via email, Instagram, Linkedin, Spotify, and Amazon.  To order personalized copies or for other inqueries, email ${BOOK_EMAIL}.`
 
 const Contact = (): JSX.Element => {
-  return (
-    <>
-      <Seo
-        title='Contact | Janelle Solviletti'
-        description={META_DESCRIPTION}
-      />
-      <Title>Connect With Janelle</Title>
-      <Text>
-        To order personalized copies of <i>The Cameo</i>, or for other inqueries, please email {BOOK_EMAIL}
-      </Text>
-      <IconSection>
-        <a href='https://www.instagram.com/janellesolviletti'>
-          <StyledIcon link name='instagram' />
-        </a>
-        <a href='https://open.spotify.com/user/1253446971?si=uiZ6iE7NSnO8EWCfgweR9g'>
-          <StyledIcon link name='spotify' />
-        </a>
-        <a href='http://linkedin.com/in/janelle-solviletti'>
-          <StyledIcon link name='linkedin' />
-        </a>
-      </IconSection>
-    </>
-  )
+    return (
+        <div css={css`position: relative;`}>
+            <Seo
+                title='Contact | Janelle Solviletti'
+                description={META_DESCRIPTION}
+            />
+            <div css={backgroundSection} />
+            <div css={wrapper}>
+                <div css={infoCard}>
+                    <h1 css={cardTitle}>Connect With Janelle</h1>
+                    <p css={text}>
+                        To order personalized copies or for other inqueries, please email {BOOK_EMAIL}
+                    </p>
+                    <div css={iconSection}>
+                        <a css={iconLink} href={INSTAGRAM_LINK}>
+                            <Icon link name='instagram' />
+                        </a>
+                        <a css={iconLink} href={SPOTIFY_LINK}>
+                            <Icon link name='spotify' />
+                        </a>
+                        <a css={iconLink} href={LINKED_IN_LINK}>
+                            <Icon link name='linkedin' />
+                        </a>
+                        <a css={iconLink} href={AUTHOR_AMAZON_LINK}>
+                            <Icon link name='amazon' />
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
 }
 
 export default Contact
