@@ -240,7 +240,7 @@ export const getHomeData = graphql`
                 )
             }
         }
-        getOne: file(relativePath: { eq: "home-grid/One.JPG" }) {
+        getOne: file(relativePath: { eq: "euphony-images/One.JPG" }) {
             childImageSharp {
                 gatsbyImageData(
                     layout: CONSTRAINED
@@ -248,7 +248,7 @@ export const getHomeData = graphql`
                 )
             }
         }
-        getTwo: file(relativePath: { eq: "home-grid/Two.JPG" }) {
+        getTwo: file(relativePath: { eq: "euphony-images/Two.JPG" }) {
             childImageSharp {
                 gatsbyImageData(
                     placeholder: BLURRED
@@ -256,7 +256,7 @@ export const getHomeData = graphql`
                 )
             }
         }
-        getThree: file(relativePath: { eq: "home-grid/Three.JPG" }) {
+        getThree: file(relativePath: { eq: "euphony-images/Three.JPG" }) {
             childImageSharp {
                 gatsbyImageData(
                     placeholder: BLURRED
@@ -264,7 +264,7 @@ export const getHomeData = graphql`
                 )
             }
         }
-        getFour: file(relativePath: { eq: "home-grid/Four.JPG" }) {
+        getFour: file(relativePath: { eq: "euphony-images/Four.JPG" }) {
             childImageSharp {
                 gatsbyImageData(
                     placeholder: BLURRED
@@ -272,7 +272,7 @@ export const getHomeData = graphql`
                 )
             }
         }
-        getFive: file(relativePath: { eq: "home-grid/Five.JPG" }) {
+        getFive: file(relativePath: { eq: "euphony-images/Five.JPG" }) {
             childImageSharp {
                 gatsbyImageData(
                     placeholder: BLURRED
@@ -280,7 +280,7 @@ export const getHomeData = graphql`
                 )
             }
         }
-        getSix: file(relativePath: { eq: "home-grid/Six.JPG" }) {
+        getSix: file(relativePath: { eq: "euphony-images/Six.JPG" }) {
             childImageSharp {
                 gatsbyImageData(
                     placeholder: BLURRED
@@ -288,7 +288,7 @@ export const getHomeData = graphql`
                 )
             }
         }
-        getSeven: file(relativePath: { eq: "home-grid/Seven.JPG" }) {
+        getSeven: file(relativePath: { eq: "euphony-images/Seven.JPG" }) {
             childImageSharp {
                 gatsbyImageData(
                     placeholder: BLURRED
@@ -296,7 +296,7 @@ export const getHomeData = graphql`
                 )
             }
         }
-        getEight: file(relativePath: { eq: "home-grid/Eight.JPG" }) {
+        getEight: file(relativePath: { eq: "euphony-images/Eight.JPG" }) {
             childImageSharp {
                 gatsbyImageData(
                     placeholder: BLURRED
@@ -304,7 +304,7 @@ export const getHomeData = graphql`
                 )
             }
         }
-        getNine: file(relativePath: { eq: "home-grid/Nine.JPG" }) {
+        getNine: file(relativePath: { eq: "euphony-images/Nine.JPG" }) {
             childImageSharp {
                 gatsbyImageData(
                     placeholder: BLURRED
@@ -312,7 +312,7 @@ export const getHomeData = graphql`
                 )
             }
         }
-        getTen: file(relativePath: { eq: "home-grid/Ten.JPG" }) {
+        getTen: file(relativePath: { eq: "euphony-images/Ten.JPG" }) {
             childImageSharp {
                 gatsbyImageData(
                     placeholder: BLURRED
@@ -320,7 +320,7 @@ export const getHomeData = graphql`
                 )
             }
         }
-        getEleven: file(relativePath: { eq: "home-grid/Eleven.JPG" }) {
+        getEleven: file(relativePath: { eq: "euphony-images/Eleven.JPG" }) {
             childImageSharp {
                 gatsbyImageData(
                     placeholder: BLURRED
@@ -328,7 +328,7 @@ export const getHomeData = graphql`
                 )
             }
         }
-        getTwelve: file(relativePath: { eq: "home-grid/Twelve.JPG" }) {
+        getTwelve: file(relativePath: { eq: "euphony-images/Twelve.JPG" }) {
             childImageSharp {
                 gatsbyImageData(
                     placeholder: BLURRED

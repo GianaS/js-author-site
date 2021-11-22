@@ -33,18 +33,43 @@ const Cameo = ({ data }: { data: unknown }): JSX.Element => {
     const homeImageGridMap: CustomImage[] = [
         {
             imageData: data?.getOne?.childImageSharp?.gatsbyImageData,
-            caption: 'With nothing but a melody to hold onto',
-            altText: 'bench with leaves and poetry book'
+            caption: 'One',
+            altText: ''
         },
         {
             imageData: data?.getTwo?.childImageSharp?.gatsbyImageData,
-            caption: 'Now I pass through your neighborhood cloaked',
-            altText: 'janelle solviletti walking down the street'
+            caption: 'Two',
+            altText: ''
         },
         {
             imageData: data?.getThree?.childImageSharp?.gatsbyImageData,
-            caption: 'Settlers in the garden, waiting for the knock',
-            altText: 'stone stairs on an autumn day'
+            caption: 'Three',
+            altText: ''
+        },
+        {
+            imageData: data?.getFour?.childImageSharp?.gatsbyImageData,
+            caption: 'Four',
+            altText: ''
+        },
+        {
+            imageData: data?.getFive?.childImageSharp?.gatsbyImageData,
+            caption: 'Five',
+            altText: ''
+        },
+        {
+            imageData: data?.getSix?.childImageSharp?.gatsbyImageData,
+            caption: 'Six',
+            altText: ''
+        },
+        {
+            imageData: data?.getSeven?.childImageSharp?.gatsbyImageData,
+            caption: 'Seven',
+            altText: ''
+        },
+        {
+            imageData: data?.getEight?.childImageSharp?.gatsbyImageData,
+            caption: 'Eight',
+            altText: ''
         }
     ]
 
@@ -123,7 +148,7 @@ export const getCameoData = graphql`
             )
         }
     }
-    getOne: file(relativePath: { eq: "home-grid/One.JPG" }) {
+    getOne: file(relativePath: { eq: "cameo-images/One.JPG" }) {
         childImageSharp {
             gatsbyImageData(
                 layout: CONSTRAINED
@@ -131,7 +156,7 @@ export const getCameoData = graphql`
             )
         }
     }
-    getTwo: file(relativePath: { eq: "home-grid/Two.JPG" }) {
+    getTwo: file(relativePath: { eq: "cameo-images/Two.JPG" }) {
         childImageSharp {
             gatsbyImageData(
                 placeholder: BLURRED
@@ -139,7 +164,7 @@ export const getCameoData = graphql`
             )
         }
     }
-    getThree: file(relativePath: { eq: "home-grid/Three.JPG" }) {
+    getThree: file(relativePath: { eq: "cameo-images/Three.JPG" }) {
         childImageSharp {
             gatsbyImageData(
                 placeholder: BLURRED
@@ -147,7 +172,39 @@ export const getCameoData = graphql`
             )
         }
     }
-    getFour: file(relativePath: { eq: "home-grid/Four.JPG" }) {
+    getFour: file(relativePath: { eq: "cameo-images/Four.JPG" }) {
+        childImageSharp {
+            gatsbyImageData(
+                placeholder: BLURRED
+                layout: CONSTRAINED
+            )
+        }
+    }
+    getFive: file(relativePath: { eq: "cameo-images/Five.JPG" }) {
+        childImageSharp {
+            gatsbyImageData(
+                placeholder: BLURRED
+                layout: CONSTRAINED
+            )
+        }
+    }
+    getSix: file(relativePath: { eq: "cameo-images/Six.JPG" }) {
+        childImageSharp {
+            gatsbyImageData(
+                placeholder: BLURRED
+                layout: CONSTRAINED
+            )
+        }
+    }
+    getSeven: file(relativePath: { eq: "cameo-images/Seven.JPG" }) {
+        childImageSharp {
+            gatsbyImageData(
+                placeholder: BLURRED
+                layout: CONSTRAINED
+            )
+        }
+    }
+    getEight: file(relativePath: { eq: "cameo-images/Eight.JPG" }) {
         childImageSharp {
             gatsbyImageData(
                 placeholder: BLURRED
