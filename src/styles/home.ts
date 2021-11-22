@@ -72,11 +72,18 @@ const imageCell = css`
     }
 `
 
+const gridButton = css`
+    :focus-visible {
+        outline: 4px solid blue;
+    }
+`
+
 export {
     chip,
     learnMoreLink,
     publishedWorkLink,
     authorBlockSection,
     gridOfImages,
-    imageCell
+    imageCell,
+    gridButton
 }

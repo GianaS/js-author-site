@@ -28,7 +28,8 @@ import {
     publishedWorkLink,
     authorBlockSection,
     gridOfImages,
-    imageCell
+    imageCell,
+    gridButton
 } from '../styles/home'
 
 const META_DESCRIPTION = 'Learn more about Janelle Solviletti, an author from Boston, Massachusetts. Her debut book, The Cameo, is known for its lyrical desire to investigate time, disorder and the natural world. In her second book, Euphony, music is confessional and art is a dreamscape worth diving into.'
@@ -111,6 +112,7 @@ const Home = ({ data }: { data: unknown }): JSX.Element => {
                     role='button'
                     tabIndex={0}
                     key={item.altText}
+                    css={gridButton}
                     onClick={() => {
                         setIsModalOpen(true)
                         setSelectedImageIndex(index)
