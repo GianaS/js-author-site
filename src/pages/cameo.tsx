@@ -33,17 +33,17 @@ const Cameo = ({ data }: { data: unknown }): JSX.Element => {
     const homeImageGridMap: CustomImage[] = [
         {
             imageData: data?.getOne?.childImageSharp?.gatsbyImageData,
-            caption: 'With nothing but a melody to hold onto...',
+            caption: 'With nothing but a melody to hold onto',
             altText: 'bench with leaves and poetry book'
         },
         {
             imageData: data?.getTwo?.childImageSharp?.gatsbyImageData,
-            caption: 'Now I pass through your neighborhood cloaked...',
+            caption: 'Now I pass through your neighborhood cloaked',
             altText: 'janelle solviletti walking down the street'
         },
         {
             imageData: data?.getThree?.childImageSharp?.gatsbyImageData,
-            caption: 'Settlers in the garden, waiting for the knock…...',
+            caption: 'Settlers in the garden, waiting for the knock',
             altText: 'stone stairs on an autumn day'
         }
     ]

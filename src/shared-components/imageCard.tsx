@@ -22,6 +22,7 @@ const captionHeading = css`
     font-family: ${fonts.montserrat};
     padding-top: 30px;
     font-weight: 400;
+    font-style: italic;
 `
 
 type ImageCardProps = {

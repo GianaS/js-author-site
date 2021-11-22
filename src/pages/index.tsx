@@ -44,62 +44,62 @@ const Home = ({ data }: { data: unknown }): JSX.Element => {
     const homeImageGridMap: CustomImage[] = [
         {
             imageData: data?.getOne?.childImageSharp?.gatsbyImageData,
-            caption: 'With nothing but a melody to hold onto...',
+            caption: 'With nothing but a melody to hold onto',
             altText: 'bench with leaves and poetry book'
         },
         {
             imageData: data?.getTwo?.childImageSharp?.gatsbyImageData,
-            caption: 'Now I pass through your neighborhood cloaked...',
+            caption: 'Now I pass through your neighborhood cloaked',
             altText: 'janelle solviletti walking down the street'
         },
         {
             imageData: data?.getThree?.childImageSharp?.gatsbyImageData,
-            caption: 'Settlers in the garden, waiting for the knock…...',
+            caption: 'Settlers in the garden, waiting for the knock',
             altText: 'stone stairs on an autumn day'
         },
         {
             imageData: data?.getFour?.childImageSharp?.gatsbyImageData,
-            caption: 'You and I, at the mercy of a breeze, find the axis in conversation...',
+            caption: 'You and I, at the mercy of a breeze, find the axis in conversation',
             altText: 'poetry book in a bush'
         },
         {
             imageData: data?.getFive?.childImageSharp?.gatsbyImageData,
-            caption: 'In hindsight, all things hang in the air if you are alive to it...',
+            caption: 'In hindsight, all things hang in the air if you are alive to it',
             altText: 'emptry street with autumn foliage'
         },
         {
             imageData: data?.getSix?.childImageSharp?.gatsbyImageData,
-            caption: 'We’re all looking at the same scene, makeshift in the shadows...',
+            caption: 'We’re all looking at the same scene, makeshift in the shadows',
             altText: 'janelle solviletti standin near lake'
         },
         {
             imageData: data?.getSeven?.childImageSharp?.gatsbyImageData,
-            caption: 'Nothing but a clear cost and you/I at its end...',
+            caption: 'Nothing but a clear cost and you/I at its end',
             altText: 'lake with fall foliage'
         },
         {
             imageData: data?.getEight?.childImageSharp?.gatsbyImageData,
-            caption: 'It was that symphonic poem that set us free...',
+            caption: 'It was that symphonic poem that set us free',
             altText: 'janelle solviletti walking down street'
         },
         {
             imageData: data?.getNine?.childImageSharp?.gatsbyImageData,
-            caption: 'In the off season, our tongues frost over like an oath to autumn...',
+            caption: 'In the off season, our tongues frost over like an oath to autumn',
             altText: 'two trees in autumn'
         },
         {
             imageData: data?.getTen?.childImageSharp?.gatsbyImageData,
-            caption: 'On pause between plots...',
+            caption: 'On pause between plots',
             altText: 'empty tables and chairs next to fall foliage'
         },
         {
             imageData: data?.getEleven?.childImageSharp?.gatsbyImageData,
-            caption: 'Eventually, that little world has your wits...',
+            caption: 'Eventually, that little world has your wits',
             altText: 'euphony poetry book in leaves'
         },
         {
             imageData: data?.getTwelve?.childImageSharp?.gatsbyImageData,
-            caption: 'Euphony is in the ear of the listener...',
+            caption: 'Euphony is in the ear of the listener',
             altText: 'janelle solviletti holding two copies of euphony poetry book'
         }
     ]
@@ -158,11 +158,12 @@ const Home = ({ data }: { data: unknown }): JSX.Element => {
                         <Carousel childArray={homeImageGridMap} hasMultipleViews={false} />
                     </div>
                     <div css={reverseReverse}>
-                        <div css={chip}>OUT NOW!</div>
+                        <div css={chip}>OUT SOON!</div>
                         <h1 css={sectionTitle}>Euphony</h1>
                         <p css={paragraph}>{EUPHONY_DESCRIPTION}</p>
                         <div css={css`display: flex; align-items: center;`}>
-                            <Button label='Buy now' href={EUPHONY_AMAZON_LINK} />
+                            {/* <Button label='Buy now' href={EUPHONY_AMAZON_LINK} /> */}
+                            <Button label='Available Nov 24' href={EUPHONY_AMAZON_LINK} disabled />
                             <Link css={learnMoreLink} to='/euphony' >
                                 Learn More
                             </Link>

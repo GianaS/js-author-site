@@ -27,8 +27,29 @@ const styledLink = css`
     }
 `
 
-const Button = ({ label, href }: { label: string, href: string }) => {
-    return <a css={styledLink} href={href}>{label}</a>
+const disabledLink = css`
+    ${styledLink};
+    box-shadow: none;
+    background-color: ${colors.grey};
+    opacity: .6;
+
+    :hover {
+        opacity: .6;
+    }
+`
+
+type ButtonProps = {
+    label: string
+    href: string
+    disabled?: boolean
+}
+
+const Button = ({ label, href, disabled = false }: ButtonProps) => {
+    return (
+        disabled
+            ? <div css={disabledLink}>{label}</div>
+            : <a css={styledLink} href={href}>{label}</a>
+    )
 }
 
 export default Button

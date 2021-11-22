@@ -26,13 +26,13 @@ const navItems: NavItem[] = [
         nested: true,
         childItems: [
             {
-                title: 'The Cameo',
-                link: '/cameo',
+                title: 'Euphony',
+                link: '/euphony',
                 nested: false
             },
             {
-                title: 'Euphony',
-                link: '/euphony',
+                title: 'The Cameo',
+                link: '/cameo',
                 nested: false
             }
         ]

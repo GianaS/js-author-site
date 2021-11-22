@@ -45,6 +45,7 @@ const captionContainer = css`
     display: grid;
     position: relative;
     place-items: center;
+    font-style: italic;
 `
 
 const captionHeading = css`
