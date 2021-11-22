@@ -9,6 +9,7 @@ const carousel = css`
     justify-content: center;
     margin: 0 -10vw;
     max-width: 1920px;
+    overflow-x: hidden;
 
     @media (max-width: ${MOBILE_BREAKPOINT}px) {
         margin: 0 -5vw;

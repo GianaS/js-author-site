@@ -3,6 +3,7 @@ import { css } from '@emotion/react'
 import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image'
 
 import { colors, fonts } from '../styles/sharedStyles'
+import { MOBILE_BREAKPOINT } from '../utilities'
 
 const backdrop = css`
     position: fixed;
@@ -22,6 +23,10 @@ const modal = css`
     flex-direction: column;
     padding: 30px;
     width: 530px;
+
+    @media (max-width: ${MOBILE_BREAKPOINT}px) {
+        padding: 20px 16px;
+    }
 `
 
 const closeButton = css`
@@ -41,10 +46,19 @@ const closeButton = css`
     }
 `
 
+const image = css`
+    max-height: 70vh;
+    object-position: 'bottom';
+
+    @media (max-width: ${MOBILE_BREAKPOINT - 200}px) {
+        max-height: 56vh;
+    }
+`
+
 const captionContainer = css`
     display: grid;
     position: relative;
-    place-items: center;
+    text-align: center;
     font-style: italic;
 `
 
@@ -53,6 +67,10 @@ const captionHeading = css`
     font-family: ${fonts.montserrat};
     padding-top: 30px;
     font-weight: 400;
+
+    @media (max-width: ${MOBILE_BREAKPOINT}px) {
+        padding-top: 20px;
+    }
 `
 
 type ModalProps = {
@@ -113,7 +131,7 @@ const Modal = ({ setIsModalOpen, caption, altText, imageData }: ModalProps) => {
                     <GatsbyImage
                         image={imageData}
                         alt={altText}
-                        css={css`max-height: 70vh; object-position: 'bottom';`}
+                        css={image}
                     />
                     <div css={captionContainer}>
                         <h1 css={captionHeading}>{caption}</h1>

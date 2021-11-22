@@ -2,6 +2,7 @@ import { css } from '@emotion/react'
 import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image'
 
 import { colors, fonts } from '../styles/sharedStyles'
+import { MOBILE_BREAKPOINT } from '../utilities'
 
 const card = css`
     background-color: ${colors.white};
@@ -9,12 +10,17 @@ const card = css`
     position: relative;
     height: 680px;
     margin: 30px;
+    padding: 30px;
+
+    @media (max-width: ${MOBILE_BREAKPOINT}px) {
+        padding: 20px 16px;
+    }
 `
 
 const captionContainer = css`
     display: grid;
     position: relative;
-    place-items: center;
+    text-align: center;
 `
 
 const captionHeading = css`
@@ -23,6 +29,10 @@ const captionHeading = css`
     padding-top: 30px;
     font-weight: 400;
     font-style: italic;
+
+    @media (max-width: ${MOBILE_BREAKPOINT}px) {
+        padding-top: 20px;
+    }
 `
 
 type ImageCardProps = {
@@ -34,7 +44,7 @@ type ImageCardProps = {
 const ImageCard = ({ caption, altText, imageData }: ImageCardProps) => {
     return (
         <div css={card}>
-            <div css={css`display: grid; padding: 30px;`}>
+            <div css={css`display: grid;`}>
                 <GatsbyImage
                     image={imageData}
                     alt={altText}
