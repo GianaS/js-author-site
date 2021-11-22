@@ -33,8 +33,8 @@ const Euphony = ({ data }: { data: unknown }): JSX.Element => {
     const homeImageGridMap: CustomImage[] = [
         {
             imageData: data?.getOne?.childImageSharp?.gatsbyImageData,
-            caption: 'With nothing but a melody to hold onto',
-            altText: 'bench with leaves and poetry book'
+            caption: 'In hindsight, all things hang in the air if you are alive to it',
+            altText: 'empty street with autumn foliage'
         },
         {
             imageData: data?.getTwo?.childImageSharp?.gatsbyImageData,
@@ -53,8 +53,8 @@ const Euphony = ({ data }: { data: unknown }): JSX.Element => {
         },
         {
             imageData: data?.getFive?.childImageSharp?.gatsbyImageData,
-            caption: 'In hindsight, all things hang in the air if you are alive to it',
-            altText: 'emptry street with autumn foliage'
+            caption: 'With nothing but a melody to hold onto',
+            altText: 'bench with leaves and poetry book'
         },
         {
             imageData: data?.getSix?.childImageSharp?.gatsbyImageData,

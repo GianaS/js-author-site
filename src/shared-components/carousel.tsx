@@ -83,9 +83,15 @@ type CustomCarouselProps = {
     childArray: CustomImage[]
     hasMultipleViews?: boolean
     isCard?: boolean
+    onClick?: () => (index: number) => void
 }
 
-const CustomCarousel = ({ childArray, isCard = false, hasMultipleViews = true }: CustomCarouselProps) => {
+const CustomCarousel = ({
+    childArray,
+    onClick,
+    isCard = false,
+    hasMultipleViews = true
+}: CustomCarouselProps) => {
     const contents = (
         childArray.map((child, index) => (
             isCard
@@ -96,13 +102,19 @@ const CustomCarousel = ({ childArray, isCard = false, hasMultipleViews = true }:
                     altText={child.altText}
                     caption={child.caption}
                 />
-                : <GatsbyImage
+                :
+                <div
                     key={index}
-                    image={child.imageData}
-                    alt={child.altText}
-                    css={css`height: 500px; box-shadow: 0 2px 8px ${colors.grey};`}
-                />
-
+                    role='button'
+                    css={css`cursor: pointer;`}
+                    onClick={() => onClick && onClick()(index)}
+                >
+                    <GatsbyImage
+                        image={child.imageData}
+                        alt={child.altText}
+                        css={css`height: 500px; box-shadow: 0 2px 8px ${colors.grey};`}
+                    />
+                </div>
         ))
     )
 
