@@ -1,7 +1,12 @@
-import Home from './index'
+import { useEffect } from 'react'
+import { navigate } from 'gatsby'
 
-const NotFound = (): JSX.Element => {
-    return <Home />
+const NotFound = () => {
+    useEffect(() => {
+        navigate('/')
+    }, [])
+
+    return null
 }
 
 export default NotFound
