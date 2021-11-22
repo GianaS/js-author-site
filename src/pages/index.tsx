@@ -157,7 +157,6 @@ const Home = ({ data }: { data: unknown }): JSX.Element => {
                             childArray={homeImageGridMap}
                             hasMultipleViews={false}
                             onClick={() => (index) => {
-                                console.log("this is index", index)
                                 setIsModalOpen(true)
                                 setSelectedImageIndex(index)
                             }}
