@@ -20,7 +20,7 @@ import {
 } from '../utilities'
 
 const BOOK_EMAIL: JSX.Element = <a css={bookLink} href='mailto:book.janellesolviletti@gmail.com'>book.janellesolviletti@gmail.com</a>
-const META_DESCRIPTION = `Connect with Janelle Solviletti via email, Instagram, Linkedin, or Spotify.  To order personalized copies or for other inqueries, please email ${BOOK_EMAIL}.`
+const META_DESCRIPTION = `Connect with Janelle Solviletti via email, Instagram, Linkedin, Spotify, and Amazon.  To order personalized copies or for other inqueries, email ${BOOK_EMAIL}.`
 
 const Contact = (): JSX.Element => {
     return (

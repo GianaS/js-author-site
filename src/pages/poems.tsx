@@ -77,7 +77,7 @@ const createPoemObject = (poemsFromApi): SelectedPoems => {
     }, {})
 }
 
-const META_DESCRIPTION = 'View selection of published poems by Janelle Solviletti.'
+const META_DESCRIPTION = 'View a selection of published poems by author Janelle Solviletti.'
 
 const Poem = ({ data }: { data: unknown }): JSX.Element => {
     const { edges: poemsFromApi } = data.allContentfulPoem

@@ -25,9 +25,9 @@ import {
     carousel
 } from '../styles/books'
 
-const META_DESCRIPTION = 'The Cameo is a short collection of poetry and prose depicting the damage of two souls intertwining, as well as the even bolder proposition that romantic disillusion itself is a mirage. A metaphysical investigation into desire, disorder, and the natural world. Order The Cameo now!'
+const META_DESCRIPTION = 'Learn more about Janelle Solviletti\'s debut book, The Cameo.  It is known for its lyrical desire to investigate time, disorder and the natural world.'
 const CAMEO_DESCRIPTION = <Fragment> <i>The Cameo</i> begins with an astonishing claim: &lsquo;I wish to disunite the postulation that love and time are one and the same.&rsquo; From there, it offers lyrical proof for this claim, through means wily &lsquo;urban revolt&rsquo; and &lsquo;manmade revelation,&rsquo; relational &lsquo;In sequence/it seems you are immemorial&rsquo; and sacred. Depicting with great pathos the damage of two souls intertwining, as well as the even bolder proposition that romantic disillusion itself is a mirage: &lsquo;I think I made you up.&rsquo; The metaphysical investigation into desire, disorder, and the natural world, invoke the declamation: &lsquo;I am nothing but my own end&rsquo; as well as the argument for the powers of being to prevail against the temporal forces that oppose it. Step inside, and &lsquo;luxuriate the moments&rsquo; with a new voice that proclaims, &lsquo;My lips are an index of sinners I’m not done speaking for.&rsquo;</Fragment>
-const PLAYLIST_DESCRIPTION = <Fragment>Music transcends through time. Over the years, these songs were part of the making of <i>The Cameo</i>,  and whisper secrets in the margins. Before you turn the page, tune in to the place where it all began.</Fragment>
+const PLAYLIST_DESCRIPTION = <Fragment>Music transcends through time. Over the years, these songs were part of the making of <i>The Cameo</i>, and whisper secrets in the margins. Before you turn the page, tune in to the place where it all began.</Fragment>
 
 const Cameo = ({ data }: { data: unknown }): JSX.Element => {
     const homeImageGridMap: CustomImage[] = [
