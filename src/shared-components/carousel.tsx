@@ -53,18 +53,6 @@ const icon = css`
     margin: 0 !important;
 `
 
-type CustomImage = {
-    imageData: IGatsbyImageData
-    caption: string
-    altText: string
-}
-
-type CustomCarouselProps = {
-    childArray: CustomImage[]
-    hasMultipleViews?: boolean
-    isCard?: boolean
-}
-
 const makeRightArrow = (onClickHandler: () => void, label: string) => (
     <div
         role='button'
@@ -84,6 +72,18 @@ const makeLeftArrow = (onClickHandler: () => void, label: string) => (
         <Icon name='caret right' css={icon} />
     </div>
 )
+
+type CustomImage = {
+    imageData: IGatsbyImageData
+    caption: string
+    altText: string
+}
+
+type CustomCarouselProps = {
+    childArray: CustomImage[]
+    hasMultipleViews?: boolean
+    isCard?: boolean
+}
 
 const CustomCarousel = ({ childArray, isCard = false, hasMultipleViews = true }: CustomCarouselProps) => {
     const contents = (
