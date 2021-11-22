@@ -40,7 +40,7 @@ const PageLayout = ({ children }: { children: ReactNode }) => {
     return (
         <Fragment>
             {Header}
-            {isMobile && (
+            {isMobile && showMobileSidebar && (
                 <MobileSidebar
                     setShowMobileSidebar={setShowMobileSidebar}
                     showMobileSidebar={showMobileSidebar}
