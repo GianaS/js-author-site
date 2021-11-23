@@ -29,7 +29,7 @@
     "gatsby-plugin-remove-trailing-slashes": "^4.0.0",
     "gatsby-plugin-robots-txt": "^1.6.14",
     "gatsby-plugin-sharp": "^4.0.1",
-    "gatsby-plugin-sitemap": "^5.0.0",
+    "gatsby-plugin-sitemap": "^5.2.0",
     "gatsby-plugin-styled-components": "^5.0.0",
     "gatsby-source-contentful": "^6.0.0",
     "gatsby-source-filesystem": "^4.0.0",
