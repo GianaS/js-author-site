@@ -7,7 +7,7 @@ const styledLink = css`
     text-decoration: none;
     background-color: ${colors.beige};
     color: ${colors.white};
-    width: 228px;
+    width: 222px;
     height: 40px;
     display: flex;
     align-items: center;

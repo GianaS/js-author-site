@@ -163,12 +163,11 @@ const Home = ({ data }: { data: unknown }): JSX.Element => {
                         />
                     </div>
                     <div css={reverseReverse}>
-                        <div css={chip}>OUT SOON!</div>
+                        <div css={chip}>OUT NOW!</div>
                         <h1 css={sectionTitle}>Euphony</h1>
                         <p css={paragraph}>{EUPHONY_DESCRIPTION}</p>
                         <div css={css`display: flex; align-items: center;`}>
-                            {/* <Button label='Buy now' href={EUPHONY_AMAZON_LINK} /> */}
-                            <Button label='Available Nov 24' href={EUPHONY_AMAZON_LINK} disabled />
+                            <Button label='Buy now' href={EUPHONY_AMAZON_LINK} />
                             <Link css={learnMoreLink} to='/euphony' >
                                 Learn More
                             </Link>

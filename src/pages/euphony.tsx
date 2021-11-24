@@ -119,8 +119,7 @@ const Euphony = ({ data }: { data: unknown }): JSX.Element => {
                     <div css={reverseReverse}>
                         <h1 css={sectionTitle}>Euphony</h1>
                         <p css={paragraph}>{EUPHONY_DESCRIPTION}</p>
-                        {/* <Button label='Buy now' href={EUPHONY_AMAZON_LINK} /> */}
-                        <Button label='Available Nov 24' href={EUPHONY_AMAZON_LINK} disabled />
+                        <Button label='Buy now' href={EUPHONY_AMAZON_LINK} />
                     </div>
                 </div>
                 <div css={carousel}>
