@@ -85,9 +85,9 @@ const Nav = () => {
                             tabIndex={0}
                             css={css`position: relative; padding-bottom: 10px;`}
                         >
-                            <a css={css`${navItem}; cursor: pointer;`} >
+                            <div css={css`${navItem}; cursor: pointer;`} >
                                 {item.title}
-                            </a>
+                            </div>
                             {isOpen && (
                                 <div css={menu}>
                                     {item.childItems.map((childItem) => {
