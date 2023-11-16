@@ -4,7 +4,7 @@ import { GatsbyImage } from 'gatsby-plugin-image'
 import { css } from '@emotion/react'
 
 import Seo from '../components/Seo'
-import { EUPHONY_AMAZON_LINK } from '../utilities'
+// import { EUPHONY_AMAZON_LINK } from '../utilities'
 import { Button, Carousel, CustomImage } from '../shared-components'
 import {
     bodyWrapper,
@@ -119,7 +119,7 @@ const Euphony = ({ data }: { data: unknown }): JSX.Element => {
                     <div css={reverseReverse}>
                         <h1 css={sectionTitle}>Euphony</h1>
                         <p css={paragraph}>{EUPHONY_DESCRIPTION}</p>
-                        <Button label='Buy now' href={EUPHONY_AMAZON_LINK} />
+                        {/* <Button label='Buy now' href={EUPHONY_AMAZON_LINK} /> */}
                     </div>
                 </div>
                 <div css={carousel}>

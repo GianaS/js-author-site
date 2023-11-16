@@ -3,14 +3,6 @@ import { css } from '@emotion/react'
 import { MOBILE_BREAKPOINT } from '../utilities'
 import { fonts, colors } from './sharedStyles'
 
-const greenBackgroundSection = css`
-    background-color: ${colors.mintGreen};
-    height: 400px;
-    width: 100%;
-    position: absolute;
-    z-index: -1;
-`
-
 const poemCard = css`
     background-color: ${colors.offWhite};
     box-shadow: 0px 2px 9px rgba(0, 0, 0, 0.25);
@@ -75,7 +67,6 @@ export {
     caption,
     euphonyIcon,
     cameoIcon,
-    greenBackgroundSection,
     poemCard,
     imageSection
 }

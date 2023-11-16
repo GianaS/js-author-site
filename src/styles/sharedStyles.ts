@@ -59,6 +59,10 @@ const makeBannerBlockGrid = (backgroundColor: string): SerializedStyles => css`
     padding: 65px 0;
     position: relative;
 
+    @media (max-width: ${MOBILE_BREAKPOINT}px) {
+        row-gap: 30px;
+    }
+
     ::before {
         content: '';
         position: absolute;
