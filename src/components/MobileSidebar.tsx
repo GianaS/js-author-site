@@ -11,7 +11,6 @@ import { colors, fonts } from '../styles/sharedStyles'
 import {
     navItems,
     NotNestedNavItem,
-    AUTHOR_AMAZON_LINK,
     LINKED_IN_LINK,
     SPOTIFY_LINK,
     INSTAGRAM_LINK
@@ -100,9 +99,6 @@ const MobileSidebar = ({ setShowMobileSidebar, showMobileSidebar }: MobileSideba
                     </a>
                     <a css={iconLink} href={LINKED_IN_LINK}>
                         <Icon link name='linkedin' />
-                    </a>
-                    <a css={iconLink} href={AUTHOR_AMAZON_LINK}>
-                        <Icon link name='amazon' />
                     </a>
                 </div>
             </Fragment>

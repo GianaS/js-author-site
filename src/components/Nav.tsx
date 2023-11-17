@@ -8,7 +8,7 @@ import { colors, fonts } from '../styles/sharedStyles'
 const navItemWrapper = css`
     display: flex;
     justify-content: space-between;
-    width: 670px;
+    width: 500px;
     padding-top: 25px;
 `
 

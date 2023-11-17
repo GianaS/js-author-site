@@ -4,7 +4,7 @@ import { GatsbyImage } from 'gatsby-plugin-image'
 import { css } from '@emotion/react'
 
 import Seo from '../components/Seo'
-import { CAMEO_AMAZON_LINK } from '../utilities'
+// import { CAMEO_AMAZON_LINK } from '../utilities'
 import { Button, Carousel, CustomImage } from '../shared-components'
 import {
     bodyWrapper,
@@ -79,7 +79,7 @@ const Cameo = ({ data }: { data: unknown }): JSX.Element => {
                     <div css={reverseReverse}>
                         <h1 css={sectionTitle}>The Cameo</h1>
                         <p css={paragraph}>{CAMEO_DESCRIPTION}</p>
-                        <Button label='Buy now' href={CAMEO_AMAZON_LINK} />
+                        {/* <Button label='Buy now' href={CAMEO_AMAZON_LINK} /> */}
                     </div>
                 </div>
                 <div css={carousel}>

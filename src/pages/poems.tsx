@@ -10,11 +10,8 @@ import {
     formattedPoems,
     poem,
     caption,
-    greenBackgroundSection,
     poemCard,
     imageSection,
-    euphonyIcon,
-    cameoIcon
 } from '../styles/poems'
 
 type Poem = {
@@ -22,41 +19,19 @@ type Poem = {
     title: string
     publication: string
     link?: string
-    data?: unknown
 }
 
 type SelectedPoems = {
     [_: string]: Poem[]
 }
 
-const buildPoemSection = ({ id, title, publication, link, data }: Poem) => {
+const buildPoemSection = ({ id, title, publication, link }: Poem) => {
     const titleElement: JSX.Element = link
         ? <a href={link}><i>{title}, </i></a>
         : <i>{title}, </i>
 
-    let Icon = null
-
-    if (title === 'The Cameo') {
-        Icon = (
-            <GatsbyImage
-                image={data.getRosePhoto.childImageSharp.gatsbyImageData}
-                alt='cameo icon'
-                css={cameoIcon}
-            />
-        )
-    } else if (title === 'Euphony') {
-        Icon = (
-            <GatsbyImage
-                image={data.getEuphonyIcon.childImageSharp.gatsbyImageData}
-                alt='euphony icon'
-                css={euphonyIcon}
-            />
-        )
-    }
-
     return (
         <span css={poem} key={id}>
-            {Icon}
             {titleElement}
             {publication}
         </span>
@@ -89,7 +64,6 @@ const Poem = ({ data }: { data: unknown }): JSX.Element => {
                 title='Poems | Janelle Solviletti'
                 description={META_DESCRIPTION}
             />
-            <div css={greenBackgroundSection} />
             <div css={css`${bodyWrapper}; padding: 65px 0;`}>
                 <div css={grid}>
                     <div css={poemCard}>
